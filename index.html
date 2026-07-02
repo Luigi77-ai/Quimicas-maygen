@@ -48,7 +48,11 @@
     body{
       font-family:'Inter',sans-serif;
       color:var(--ink);
-      background:var(--bg);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(51,169,224,.10), transparent 20%),
+        radial-gradient(circle at 90% 20%, rgba(207,215,53,.10), transparent 18%),
+        radial-gradient(circle at 40% 80%, rgba(197,12,12,.07), transparent 16%),
+        var(--bg);
       line-height:1.55;
       overflow-x:hidden;
     }
@@ -127,7 +131,7 @@
       pointer-events:none;
       z-index:2;
       transform:translate(-50%,-50%);
-      background:radial-gradient(circle, rgba(51,169,224,0.12) 0%, rgba(51,169,224,0.05) 34%, rgba(51,169,224,0) 70%);
+      background:radial-gradient(circle, rgba(51,169,224,0.14) 0%, rgba(197,12,12,0.06) 34%, rgba(51,169,224,0) 70%);
       mix-blend-mode:multiply;
       transition:left .08s linear, top .08s linear, opacity .2s ease;
       opacity:.65;
@@ -143,25 +147,42 @@
 
     .bubble{
       position:absolute;
-      bottom:-140px;
+      bottom:-160px;
       border-radius:50%;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(51,169,224,.22) 42%, rgba(51,169,224,.04) 75%);
-      border:1px solid rgba(51,169,224,.10);
+      border:1px solid rgba(255,255,255,.38);
       animation:floatBubble linear infinite;
-      filter:blur(.2px);
+      filter:blur(.15px);
+      box-shadow:
+        0 0 18px rgba(51,169,224,.14),
+        inset 0 0 14px rgba(255,255,255,.14);
+    }
+
+    .bubble.b1{
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.98), rgba(51,169,224,.42) 38%, rgba(51,169,224,.10) 70%);
+    }
+
+    .bubble.b2{
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.96), rgba(207,215,53,.34) 40%, rgba(207,215,53,.08) 72%);
+    }
+
+    .bubble.b3{
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.96), rgba(197,12,12,.26) 42%, rgba(197,12,12,.08) 74%);
+    }
+
+    .bubble.b4{
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.98), rgba(42,57,156,.28) 42%, rgba(42,57,156,.08) 74%);
     }
 
     @keyframes floatBubble{
       0%{
-        transform:translateY(0) scale(.9);
+        transform:translateY(0) scale(.88);
         opacity:0;
       }
       10%{
-        opacity:.8;
+        opacity:.92;
       }
       100%{
-        transform:translateY(-120vh) scale(1.18);
+        transform:translateY(-122vh) scale(1.22);
         opacity:0;
       }
     }
@@ -280,8 +301,8 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 90% 12%, rgba(51,169,224,.12), transparent 28%),
-        radial-gradient(circle at 8% 82%, rgba(207,215,53,.10), transparent 24%);
+        radial-gradient(circle at 92% 8%, rgba(51,169,224,.12), transparent 26%),
+        radial-gradient(circle at 6% 88%, rgba(207,215,53,.10), transparent 22%);
       pointer-events:none;
       z-index:0;
     }
@@ -322,20 +343,14 @@
 
     .hero h1 em{
       font-style:normal;
-      color:var(--blue);
+      background:linear-gradient(90deg, var(--blue) 0%, var(--sky) 28%, var(--lime) 52%, #F1B31C 70%, var(--wine) 100%);
+      background-size:200% auto;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      animation:energyShift 4.6s linear infinite;
       position:relative;
-    }
-
-    .hero h1 em::after{
-      content:'';
-      position:absolute;
-      left:0;
-      bottom:4px;
-      width:100%;
-      height:10px;
-      background:rgba(51,169,224,.16);
-      border-radius:999px;
-      z-index:-1;
+      text-shadow:0 8px 24px rgba(51,169,224,.10);
     }
 
     .hero .lede{
@@ -419,102 +434,106 @@
 
     .hero-visual{
       position:relative;
-      min-height:470px;
+      min-height:500px;
     }
 
     .hero-panel{
       position:relative;
       height:100%;
-      min-height:470px;
-      border-radius:36px;
-      background:linear-gradient(160deg, #ffffff 0%, #eef6fc 100%);
+      min-height:500px;
+      border-radius:40px;
+      background:linear-gradient(180deg, #eef2f7 0%, #edf2f8 100%);
       border:1px solid rgba(42,57,156,.08);
       box-shadow:var(--shadow-md);
       overflow:hidden;
     }
 
-    .hero-panel::before{
-      content:'';
+    .hero-bg-arc{
       position:absolute;
-      inset:18px;
-      border-radius:28px;
-      background:
-        linear-gradient(160deg, rgba(42,57,156,.06), rgba(51,169,224,.08));
-      pointer-events:none;
+      top:-70px;
+      right:-120px;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(151,216,247,.95) 0%, rgba(151,216,247,.85) 50%, rgba(151,216,247,.55) 100%);
+      opacity:.78;
     }
 
-    .hero-orbit{
+    .hero-core-wrap{
       position:absolute;
       inset:0;
       display:flex;
       align-items:center;
       justify-content:center;
-      z-index:1;
+      z-index:2;
     }
 
-    .hero-ring{
-      width:320px;
-      height:320px;
+    .hero-rainbow-ring{
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:46% 54% 50% 50% / 56% 44% 56% 44%;
+      background:conic-gradient(
+        from 210deg,
+        #0B8ED6 0deg,
+        #36ABE3 75deg,
+        #C7D935 135deg,
+        #E1B127 200deg,
+        #D85D15 255deg,
+        #C50C0C 315deg,
+        #2A399C 360deg
+      );
+      box-shadow:0 34px 54px rgba(42,57,156,.16);
+      transform:rotate(-12deg);
+      animation:softSpin 16s linear infinite;
+    }
+
+    .hero-blue-sphere{
+      position:absolute;
+      width:374px;
+      height:374px;
       border-radius:50%;
-      border:1px solid rgba(42,57,156,.08);
       background:
-        radial-gradient(circle at 50% 50%, #fff 0%, #fff 56%, rgba(51,169,224,.06) 100%);
-      box-shadow:inset 0 0 0 16px rgba(255,255,255,.52);
-      position:relative;
-    }
-
-    .hero-ring::before{
-      content:'';
-      position:absolute;
-      inset:18px;
-      border-radius:50%;
-      border:1px dashed rgba(42,57,156,.16);
-      animation:spin 26s linear infinite;
-    }
-
-    .hero-ring::after{
-      content:'';
-      position:absolute;
-      inset:0;
-      margin:auto;
-      width:74%;
-      height:74%;
-      border-radius:50%;
-      background:#fff;
-      box-shadow:0 18px 34px rgba(42,57,156,.08);
+        radial-gradient(circle at 34% 28%, rgba(255,255,255,.92) 0%, rgba(255,255,255,.46) 12%, rgba(54,171,227,.92) 42%, rgba(11,142,214,.98) 68%, rgba(42,57,156,1) 100%);
+      box-shadow:
+        inset -16px -22px 40px rgba(0,0,0,.10),
+        0 32px 54px rgba(42,57,156,.16);
     }
 
     .hero-logo{
       position:absolute;
       inset:0;
       margin:auto;
-      width:190px;
-      height:190px;
+      width:150px;
+      height:150px;
       object-fit:contain;
-      z-index:3;
-      filter:drop-shadow(0 12px 24px rgba(42,57,156,.14));
+      z-index:4;
+      filter:drop-shadow(0 12px 24px rgba(255,255,255,.18));
       animation:floatY 6s ease-in-out infinite;
     }
 
     .hero-note{
       position:absolute;
-      z-index:4;
+      z-index:5;
       background:rgba(255,255,255,.96);
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:14px 16px;
+      border:1px solid rgba(42,57,156,.08);
+      border-radius:20px;
+      padding:16px 18px;
       box-shadow:0 18px 34px rgba(17,32,63,.10);
-      min-width:190px;
+      min-width:240px;
     }
 
-    .hero-note small{
-      display:block;
-      font-size:10.5px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:var(--blue);
-      margin-bottom:6px;
+    .hero-note .note-row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .hero-note .dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      flex-shrink:0;
     }
 
     .hero-note strong{
@@ -522,25 +541,35 @@
       font-size:13.5px;
       color:var(--navy);
       line-height:1.35;
+      font-weight:800;
     }
 
-    .note-a{top:54px; right:34px}
-    .note-b{bottom:42px; left:28px}
+    .note-a{top:54px; left:34px}
+    .note-b{bottom:40px; right:34px}
 
-    .hero-gridline{
+    .note-a .dot{background:var(--lime-dark)}
+    .note-b .dot{background:var(--wine)}
+
+    .hero-small-dot{
       position:absolute;
-      inset:auto 0 0 0;
-      height:110px;
-      background:
-        linear-gradient(to top, rgba(42,57,156,.06), transparent),
-        repeating-linear-gradient(
-          to right,
-          transparent 0,
-          transparent 78px,
-          rgba(42,57,156,.05) 79px,
-          rgba(42,57,156,.05) 80px
-        );
-      z-index:0;
+      border-radius:50%;
+      opacity:.38;
+    }
+
+    .hero-small-dot.d1{
+      width:16px;
+      height:16px;
+      left:82px;
+      bottom:72px;
+      background:#C8D342;
+    }
+
+    .hero-small-dot.d2{
+      width:14px;
+      height:14px;
+      left:156px;
+      top:250px;
+      background:#A9CCF0;
     }
 
     .wave{
@@ -701,16 +730,29 @@
       font-weight:800;
     }
 
-    .stars{
+    .rating-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
       font-size:11.5px;
       color:var(--lime-dark);
       font-weight:800;
     }
 
+    .rating-badge svg{
+      width:13px;
+      height:13px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
     .services-strip{
       background:var(--wine);
-      border-top:1px solid rgba(255,255,255,.15);
-      border-bottom:1px solid rgba(255,255,255,.15);
+      border-top:1px solid rgba(255,255,255,.14);
+      border-bottom:1px solid rgba(255,255,255,.14);
       overflow:hidden;
       position:relative;
       z-index:3;
@@ -754,7 +796,7 @@
       display:flex;
       align-items:center;
       gap:10px;
-      color:var(--navy);
+      color:#fff;
       font-size:14px;
       font-weight:800;
       letter-spacing:.01em;
@@ -764,7 +806,7 @@
     .service-pill svg{
       width:18px;
       height:18px;
-      stroke:var(--navy);
+      stroke:#fff;
       fill:none;
       stroke-width:2;
       stroke-linecap:round;
@@ -773,7 +815,7 @@
     }
 
     .industries{
-      background:var(--bg);
+      background:transparent;
     }
 
     .ind-grid{
@@ -964,7 +1006,7 @@
     .membership{
       background:
         radial-gradient(circle at 12% 10%, rgba(51,169,224,.08), transparent 24%),
-        var(--bg);
+        transparent;
     }
 
     .mem-grid{
@@ -1476,9 +1518,9 @@
       to{transform:translateX(-50%)}
     }
 
-    @keyframes spin{
-      from{transform:rotate(0deg)}
-      to{transform:rotate(360deg)}
+    @keyframes softSpin{
+      from{transform:rotate(-12deg)}
+      to{transform:rotate(348deg)}
     }
 
     @keyframes spinReverse{
@@ -1494,6 +1536,11 @@
     @keyframes pulseSoft{
       0%,100%{transform:scale(.95); opacity:.65}
       50%{transform:scale(1.08); opacity:1}
+    }
+
+    @keyframes energyShift{
+      0%{background-position:0% 50%}
+      100%{background-position:200% 50%}
     }
 
     @media (max-width:1100px){
@@ -1535,7 +1582,17 @@
       }
 
       .hero-visual{
-        min-height:420px;
+        min-height:460px;
+      }
+
+      .hero-rainbow-ring{
+        width:360px;
+        height:360px;
+      }
+
+      .hero-blue-sphere{
+        width:320px;
+        height:320px;
       }
     }
 
@@ -1578,31 +1635,32 @@
 
       .hero-panel,
       .about-panel{
-        min-height:360px;
+        min-height:390px;
       }
 
-      .hero-ring{
-        width:260px;
-        height:260px;
+      .hero-rainbow-ring{
+        width:300px;
+        height:300px;
+      }
+
+      .hero-blue-sphere{
+        width:265px;
+        height:265px;
       }
 
       .hero-logo{
-        width:150px;
-        height:150px;
+        width:122px;
+        height:122px;
       }
 
       .hero-note{
-        position:relative;
-        top:auto;
-        left:auto;
-        right:auto;
-        bottom:auto;
-        margin:14px 18px 0;
+        min-width:auto;
+        max-width:240px;
+        padding:14px 15px;
       }
 
-      .hero-visual{
-        min-height:auto;
-      }
+      .note-a{top:30px;left:18px}
+      .note-b{bottom:24px;right:18px}
 
       .form-grid{
         grid-template-columns:1fr;
@@ -1690,8 +1748,11 @@
 
       <div class="hero-visual reveal">
         <div class="hero-panel">
-          <div class="hero-orbit">
-            <div class="hero-ring"></div>
+          <div class="hero-bg-arc"></div>
+
+          <div class="hero-core-wrap">
+            <div class="hero-rainbow-ring"></div>
+            <div class="hero-blue-sphere"></div>
             <img
               src="images/Logo Maygen Nuevo-01.png"
               alt="Maygen"
@@ -1700,16 +1761,21 @@
           </div>
 
           <div class="hero-note note-a">
-            <small>Línea especializada</small>
-            <strong>Desinfección hospitalaria y protocolos de higiene.</strong>
+            <div class="note-row">
+              <span class="dot"></span>
+              <strong>Desinfección hospitalaria</strong>
+            </div>
           </div>
 
           <div class="hero-note note-b">
-            <small>Cobertura operativa</small>
-            <strong>Soluciones para hotelería, negocios, hospitales y hogares.</strong>
+            <div class="note-row">
+              <span class="dot"></span>
+              <strong>Limpieza industrial</strong>
+            </div>
           </div>
 
-          <div class="hero-gridline"></div>
+          <span class="hero-small-dot d1" aria-hidden="true"></span>
+          <span class="hero-small-dot d2" aria-hidden="true"></span>
         </div>
       </div>
     </div>
@@ -1742,7 +1808,10 @@
             <h3>Limpiador de Gota</h3>
             <div class="bs-foot">
               <span class="price">L. 185.00</span>
-              <span class="stars">★ 4.9</span>
+              <span class="rating-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+                4.9
+              </span>
             </div>
           </div>
         </article>
@@ -1757,7 +1826,10 @@
             <h3>Antiséptico Clínico</h3>
             <div class="bs-foot">
               <span class="price">L. 240.00</span>
-              <span class="stars">★ 4.8</span>
+              <span class="rating-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+                4.8
+              </span>
             </div>
           </div>
         </article>
@@ -1772,7 +1844,10 @@
             <h3>Amenities Kit Pro</h3>
             <div class="bs-foot">
               <span class="price">L. 310.00</span>
-              <span class="stars">★ 4.9</span>
+              <span class="rating-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+                4.9
+              </span>
             </div>
           </div>
         </article>
@@ -1787,7 +1862,10 @@
             <h3>Multiusos Citrus</h3>
             <div class="bs-foot">
               <span class="price">L. 95.00</span>
-              <span class="stars">★ 4.7</span>
+              <span class="rating-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+                4.7
+              </span>
             </div>
           </div>
         </article>
@@ -1802,7 +1880,10 @@
             <h3>Desengrasante Industrial</h3>
             <div class="bs-foot">
               <span class="price">L. 220.00</span>
-              <span class="stars">★ 4.8</span>
+              <span class="rating-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+                4.8
+              </span>
             </div>
           </div>
         </article>
@@ -1817,37 +1898,10 @@
             <h3>Limpiador de Gota</h3>
             <div class="bs-foot">
               <span class="price">L. 185.00</span>
-              <span class="stars">★ 4.9</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="bs-card">
-          <div class="bs-media">
-            <span class="bs-badge">Top hospitales</span>
-            <div class="product-shape"></div>
-          </div>
-          <div class="bs-body">
-            <span class="bs-cat">Hospitalario</span>
-            <h3>Antiséptico Clínico</h3>
-            <div class="bs-foot">
-              <span class="price">L. 240.00</span>
-              <span class="stars">★ 4.8</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="bs-card">
-          <div class="bs-media">
-            <span class="bs-badge">Favorito hoteles</span>
-            <div class="product-shape"></div>
-          </div>
-          <div class="bs-body">
-            <span class="bs-cat">Hotelería</span>
-            <h3>Amenities Kit Pro</h3>
-            <div class="bs-foot">
-              <span class="price">L. 310.00</span>
-              <span class="stars">★ 4.9</span>
+              <span class="rating-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.2 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path></svg>
+                4.9
+              </span>
             </div>
           </div>
         </article>
@@ -2312,9 +2366,7 @@
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.14 });
 
@@ -2327,12 +2379,10 @@
 
     window.addEventListener('scroll', () => {
       let current = '#inicio';
-
       sections.forEach((section) => {
         const top = section.offsetTop - 140;
         if (window.scrollY >= top) current = '#' + section.id;
       });
-
       navLinks.forEach((link) => {
         link.classList.toggle('active', link.getAttribute('href') === current);
       });
@@ -2354,19 +2404,20 @@
     });
 
     const bubbleField = document.getElementById('bubbleField');
-    const bubbleCount = 22;
+    const bubbleClasses = ['b1','b2','b3','b4'];
+    const bubbleCount = 28;
 
     for (let i = 0; i < bubbleCount; i++) {
       const bubble = document.createElement('span');
-      bubble.className = 'bubble';
+      bubble.className = `bubble ${bubbleClasses[Math.floor(Math.random() * bubbleClasses.length)]}`;
 
-      const size = Math.random() * 34 + 10;
+      const size = Math.random() * 42 + 12;
       bubble.style.width = `${size}px`;
       bubble.style.height = `${size}px`;
       bubble.style.left = `${Math.random() * 100}vw`;
       bubble.style.animationDuration = `${Math.random() * 12 + 12}s`;
       bubble.style.animationDelay = `${Math.random() * 10}s`;
-      bubble.style.opacity = `${Math.random() * 0.55 + 0.18}`;
+      bubble.style.opacity = `${Math.random() * 0.5 + 0.3}`;
 
       bubbleField.appendChild(bubble);
     }
