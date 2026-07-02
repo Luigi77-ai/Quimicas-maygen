@@ -1,1 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maygen — Efervescencia Natural</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --azul: #0066FF;
+  --azul-claro: #00AAFF;
+  --turquesa: #00E5CC;
+  --verde: #00FF88;
+  --blanco: #FFFFFF;
+  --gris-oscuro: #0A0F1E;
+  --gris-medio: #1A2035;
+  --gris-claro: #F0F4FF;
+  --gradiente: linear-gradient(135deg, #0066FF 0%, #00AAFF 50%, #00E5CC 100%);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: var(--gris-oscuro); color: var(--blanco); overflow-x: hidden; }
 
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gris-oscuro); }
+::-webkit-scrollbar-thumb { background: var(--azul-claro); border-radius: 3px; }
+
+/* ===== BURBUJAS FONDO ===== */
+.burbujas-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+.burbuja { position: absolute; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(0,170,255,0.3), rgba(0,229,204,0.05)); border: 1px solid rgba(0,170,255,0.2); animation: flotar linear infinite; }
+@keyframes flotar {
+  0% { transform: translateY(110vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ===== NAV ===== */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 60px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; }
+nav.scrolled { background: rgba(10,15,30,0.95); backdrop-filter: blur(20px); padding: 14px 60px; border-bottom: 1px solid rgba(0,170,255,0.2); box-shadow: 0 4px 30px rgba(0,102,255,0.15); }
+.logo { font-size: 28px; font-weight: 900; letter-spacing: 3px; background: var(--gradiente); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+.nav-links { display: flex; gap: 35px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.3s; position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gradiente); transition: width 0.3s; }
+.nav-links a:hover { color: var(--turquesa); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { background: var(--gradiente); color: white !important; padding: 10px 24px; border-radius: 25px; font-weight: 700 !important; box-shadow: 0 4px 20px rgba(0,102,255,0.4); }
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,102,255,0.6) !important; }
+
+/* ===== HERO ===== */
+#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: radial-gradient(ellipse at 20% 50%, rgba(0,102,255,0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(0,229,204,0.1) 0%, transparent 50%); }
+.hero-content { text-align: center; z-index: 2; position: relative; padding: 0 20px; }
+.hero-badge { display: inline-block; background: rgba(0,170,255,0.15); border: 1px solid rgba(0,170,255,0.4); color: var(--azul-claro); padding: 8px 20px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; animation: fadeDown 0.8s ease forwards; }
+.hero-title { font-size: clamp(52px, 8vw, 100px); font-weight: 900; line-height: 1; margin-bottom: 20px; animation: fadeUp 1s ease 0.2s both; }
+.hero-title span { display: block; background: var(--gradiente); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(18px, 3vw, 28px); color: rgba(255,255,255,0.7); margin-bottom: 50px; animation: fadeUp 1s ease 0.4s both; }
+.hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s ease 0.6s both; }
+.btn-primario { background: var(--gradiente); color: white; padding: 16px 40px; border-radius: 50px; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 30px rgba(0,102,255,0.4); }
+.btn-primario:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 40px rgba(0,102,255,0.6); }
+.btn-secundario { border: 2px solid rgba(0,229,204,0.6); color: var(--turquesa); padding: 16px 40px; border-radius: 50px; font-weight: 600; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.3s; backdrop-filter: blur(10px); }
+.btn-secundario:hover { background: rgba(0,229,204,0.1); border-color: var(--turquesa); transform: translateY(-3px); }
+.hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; }
+.hero-scroll span { display: block; width: 24px; height: 24px; border-right: 2px solid var(--azul-claro); border-bottom: 2px solid var(--azul-claro); transform: rotate(45deg); margin: -8px auto; opacity: 0.7; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)} }
+.hero-olas { position: absolute; bottom: -2px; left: 0; width: 100%; }
+
+/* ===== PARTÍCULAS HERO ===== */
+.particulas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.particula { position: absolute; border-radius: 50%; animation: particula-float linear infinite; }
+@keyframes particula-float { 0%{transform:translateY(0) rotate(0deg);opacity:1} 100%{transform:translateY(-600px) rotate(720deg);opacity:0} }
+
+@keyframes fadeDown { from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)} }
+
+/* ===== SECCIONES ===== */
+section { position: relative; z-index: 2; }
+.seccion-titulo { text-align: center; margin-bottom: 70px; }
+.seccion-titulo .etiqueta { display: inline-block; color: var(--turquesa); font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
+.seccion-titulo h2 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.1; }
+.seccion-titulo h2 span { background: var(--gradiente); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.seccion-titulo p { color: rgba(255,255,255,0.6); font-size: 17px; margin-top: 15px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+/* ===== NOSOTROS ===== */
+#nosotros { padding: 120px 60px; }
+.nosotros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
+.nosotros-visual { position: relative; }
+.nosotros-img-wrap { width: 100%; aspect-ratio: 1; border-radius: 30px; background: radial-gradient(circle at 40% 40%, rgba(0,102,255,0.3), rgba(0,229,204,0.1)); border: 1px solid rgba(0,170,255,0.2); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.molecula-svg { width: 70%; animation: rotar 20s linear infinite; }
+.nosotros-badge { position: absolute; bottom: -20px; right: -20px; background: var(--gradiente); padding: 20px 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,102,255,0.4); }
+.nosotros-badge .num { font-size: 40px; font-weight: 900; display: block; }
+.nosotros-badge .txt { font-size: 12px; letter-spacing: 2px; opacity: 0.9; }
+.nosotros-texto h3 { font-size: 36px; font-weight: 800; margin-bottom: 20px; }
+.nosotros-texto p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+.valores-lista { list-style: none; margin-top: 30px; }
+.valores-lista li { display: flex; align-items: center; gap: 15px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); font-size: 15px; }
+.valores-lista li::before { content: ''; width: 8px; height: 8px; background: var(--turquesa); border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 10px var(--turquesa); }
+@keyframes rotar { from{transform:rotate(0deg)}to{transform:rotate(360deg)} }
+
+/* ===== PRODUCTOS ===== */
+#productos { padding: 120px 60px; background: linear-gradient(180deg, transparent 0%, rgba(0,102,255,0.05) 50%, transparent 100%); }
+.productos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.producto-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px; transition: all 0.4s ease; position: relative; overflow: hidden; cursor: pointer; }
+.producto-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradiente); transform: scaleX(0); transition: transform 0.4s; }
+.producto-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.06); border-color: rgba(0,170,255,0.3); box-shadow: 0 30px 60px rgba(0,102,255,0.2); }
+.producto-card:hover::before { transform: scaleX(1); }
+.producto-icono { width: 70px; height: 70px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 25px; }
+.icono-azul { background: rgba(0,102,255,0.2); border: 1px solid rgba(0,102,255,0.4); }
+.icono-turquesa { background: rgba(0,229,204,0.2); border: 1px solid rgba(0,229,204,0.4); }
+.icono-verde { background: rgba(0,255,136,0.2); border: 1px solid rgba(0,255,136,0.4); }
+.producto-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.producto-card p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; margin-bottom: 25px; }
+.producto-tag { display: inline-block; background: rgba(0,170,255,0.15); border: 1px solid rgba(0,170,255,0.3); color: var(--azul-claro); padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+
+/* ===== EFERVESCENCIA / PROCESO ===== */
+#proceso { padding: 120px 60px; }
+.proceso-wrapper { max-width: 1000px; margin: 0 auto; }
+.proceso-steps { position: relative; }
+.proceso-linea { position: absolute; left: 39px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--azul), var(--turquesa), var(--verde)); }
+.paso { display: flex; gap: 40px; margin-bottom: 60px; position: relative; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease; }
+.paso.visible { opacity: 1; transform: translateX(0); }
+.paso-num { width: 80px; height: 80px; border-radius: 50%; background: var(--gris-medio); border: 2px solid var(--azul-claro); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; color: var(--azul-claro); flex-shrink: 0; position: relative; z-index: 1; transition: all 0.3s; box-shadow: 0 0 20px rgba(0,170,255,0.2); }
+.paso:hover .paso-num { background: var(--azul-claro); color: white; box-shadow: 0 0 40px rgba(0,170,255,0.6); transform: scale(1.1); }
+.paso-contenido { padding-top: 15px; }
+.paso-contenido h3 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.paso-contenido p { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; }
+
+/* ===== STATS ===== */
+#stats { padding: 80px 60px; background: var(--gradiente); position: relative; overflow: hidden; }
+#stats::before { content: ''; position: absolute; top: -50%; left: -10%; right: -10%; bottom: -50%; background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 60%); animation: pulso 4s ease-in-out infinite; }
+@keyframes pulso { 0%,100%{transform:scale(1)}50%{transform:scale(1.05)} }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+.stat-item { text-align: center; }
+.stat-num { font-size: clamp(40px, 6vw, 70px); font-weight: 900; display: block; }
+.stat-label { font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85; margin-top: 8px; }
+.stat-sep { width: 40px; height: 2px; background: rgba(255,255,255,0.4); margin: 12px auto 0; }
+
+/* ===== BENEFICIOS ===== */
+#beneficios { padding: 120px 60px; }
+.beneficios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1200px; margin: 0 auto; }
+.beneficio-item { text-align: center; padding: 40px 30px; border-radius: 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); transition: all 0.4s; }
+.beneficio-item:hover { background: rgba(0,170,255,0.08); border-color: rgba(0,170,255,0.25); transform: translateY(-5px); }
+.beneficio-icono { font-size: 48px; margin-bottom: 20px; display: block; filter: drop-shadow(0 0 20px rgba(0,229,204,0.5)); }
+.beneficio-item h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.beneficio-item p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; }
+
+/* ===== TESTIMONIOS ===== */
+#testimonios { padding: 120px 60px; background: linear-gradient(180deg, transparent, rgba(0,102,255,0.05), transparent); }
+.testimonios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1200px; margin: 0 auto; }
+.testimonio-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 35px; transition: all 0.3s; position: relative; }
+.testimonio-card::before { content: '"'; font-size: 100px; line-height: 0.8; color: rgba(0,170,255,0.15); position: absolute; top: 20px; left: 25px; font-family: 'Playfair Display', serif; }
+.testimonio-card:hover { border-color: rgba(0,170,255,0.3); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,102,255,0.15); }
+.estrellas { color: #FFD700; font-size: 16px; margin-bottom: 20px; letter-spacing: 2px; }
+.testimonio-card p { color: rgba(255,255,255,0.75); font-size: 15px; line-height: 1.7; margin-bottom: 25px; font-style: italic; position: relative; z-index: 1; }
+.testimonio-autor { display: flex; align-items: center; gap: 12px; }
+.autor-avatar { width: 45px; height: 45px; border-radius: 50%; background: var(--gradiente); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
+.autor-nombre { font-weight: 700; font-size: 14px; }
+.autor-empresa { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px; }
+
+/* ===== CONTACTO ===== */
+#contacto { padding: 120px 60px; }
+.contacto-wrap { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 30px; padding: 60px; }
+.contacto-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group.full { grid-column: 1/-1; }
+.form-group label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--azul-claro); }
+.form-group input, .form-group textarea, .form-group select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 14px 18px; color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; outline: none; transition: all 0.3s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--azul-claro); background: rgba(0,170,255,0.08); box-shadow: 0 0 20px rgba(0,170,255,0.15); }
+.form-group select option { background: var(--gris-oscuro); }
+.form-group textarea { min-height: 130px; resize: vertical; }
+.btn-submit { grid-column: 1/-1; background: var(--gradiente); color: white; border: none; padding: 18px; border-radius: 50px; font-weight: 700; font-size: 15px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 30px rgba(0,102,255,0.4); }
+.btn-submit:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,102,255,0.6); }
+
+/* ===== FOOTER ===== */
+footer { background: rgba(0,0,0,0.5); border-top: 1px solid rgba(255,255,255,0.06); padding: 60px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; max-width: 1200px; margin: 0 auto; margin-bottom: 50px; }
+.footer-brand .logo-footer { font-size: 26px; font-weight: 900; letter-spacing: 3px; background: var(--gradiente); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; margin-bottom: 15px; }
+.footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; }
+.footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--azul-claro); margin-bottom: 20px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: rgba(255,255,255,0.55); font-size: 14px; text-decoration: none; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(--turquesa); }
+.footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); font-size: 13px; }
+.redes { display: flex; gap: 12px; margin-top: 20px; }
+.red-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 16px; text-decoration: none; transition: all 0.3s; }
+.red-icon:hover { background: var(--gradiente); border-color: transparent; transform: translateY(-3px); }
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== CURSOR GLOW ===== */
+.cursor-glow { position: fixed; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,170,255,0.06) 0%, transparent 70%); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: left 0.1s, top 0.1s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  nav { padding: 15px 25px; }
+  nav.scrolled { padding: 12px 25px; }
+  .nav-links { display: none; }
+  #nosotros, #productos, #proceso, #stats, #beneficios, #testimonios, #contacto { padding: 80px 25px; }
+  .nosotros-grid { grid-template-columns: 1fr; gap: 50px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .beneficios-grid { grid-template-columns: 1fr; }
+  .testimonios-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .contacto-form { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+}
+</style>
+</head>
+<body>
+<!-- CURSOR GLOW -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- BURBUJAS FONDO -->
+<div class="burbujas-bg" id="burbujasBg"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="logo">MAYGEN</a>
+  <ul class="nav-links">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#beneficios">Beneficios</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="particulas" id="particulas"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Química que transforma ✦</div>
+    <h1 class="hero-title">
+      MAYGEN
+      <span>Efervescencia</span>
+    </h1>
+    <p class="hero-subtitle">Soluciones químicas que purifican, protegen y renuevan</p>
+    <div class="hero-btns">
+      <a href="#productos" class="btn-primario">Ver Productos</a>
+      <a href="#contacto" class="btn-secundario">Solicitar Cotización</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span><span></span><span></span>
+  </div>
+  <svg class="hero-olas" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="rgba(10,15,30,0.8)"/>
+  </svg>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="nosotros-grid">
+    <div class="nosotros-visual reveal">
+      <div class="nosotros-img-wrap">
+        <svg class="molecula-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="15" fill="rgba(0,170,255,0.8)"/>
+          <circle cx="55" cy="65" r="10" fill="rgba(0,229,204,0.7)"/>
+          <circle cx="145" cy="65" r="10" fill="rgba(0,255,136,0.7)"/>
+          <circle cx="55" cy="135" r="10" fill="rgba(0,102,255,0.7)"/>
+          <circle cx="145" cy="135" r="10" fill="rgba(0,229,204,0.7)"/>
+          <circle cx="100" cy="30" r="8" fill="rgba(0,255,136,0.5)"/>
+          <circle cx="100" cy="170" r="8" fill="rgba(0,102,255,0.5)"/>
+          <line x1="100" y1="100" x2="55" y2="65" stroke="rgba(0,170,255,0.4)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="145" y2="65" stroke="rgba(0,229,204,0.4)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="55" y2="135" stroke="rgba(0,102,255,0.4)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="145" y2="135" stroke="rgba(0,229,204,0.4)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="100" y2="30" stroke="rgba(0,255,136,0.4)" stroke-width="2"/>
+          <line x1="100" y1="100" x2="100" y2="170" stroke="rgba(0,102,255,0.4)" stroke-width="2"/>
+          <circle cx="100" cy="100" r="40" stroke="rgba(0,170,255,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="100" cy="100" r="70" stroke="rgba(0,229,204,0.08)" stroke-width="1" stroke-dasharray="2 6"/>
+        </svg>
+        <div class="nosotros-badge">
+          <span class="num">+15</span>
+          <span class="txt">AÑOS DE EXPERIENCIA</span>
+        </div>
+      </div>
+    </div>
+    <div class="nosotros-texto reveal">
+      <div class="seccion-titulo" style="text-align:left;margin-bottom:30px;">
+        <span class="etiqueta">Quiénes somos</span>
+        <h2>Ciencia al servicio de la <span>limpieza</span></h2>
+      </div>
+      <p>En Maygen desarrollamos productos de limpieza e higiene industrial y doméstica con formulaciones avanzadas que garantizan resultados superiores, respetando el medio ambiente.</p>
+      <p>Nuestra filosofía de efervescencia representa la energía, la vitalidad y el poder de transformación que cada uno de nuestros productos lleva consigo.</p>
+      <ul class="valores-lista">
+        <li>Innovación química continua</li>
+        <li>Certificaciones de calidad y seguridad</li>
+        <li>Compromiso ambiental responsable</li>
+        <li>Soporte técnico especializado</li>
+        <li>Entregas a nivel nacional</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Catálogo</span>
+    <h2>Nuestros <span>Productos</span></h2>
+    <p>Líneas especializadas para cada necesidad de limpieza e higiene</p>
+  </div>
+  <div class="productos-grid">
+    <div class="producto-card reveal">
+      <div class="producto-icono icono-azul">🧪</div>
+      <h3>Línea Industrial</h3>
+      <p>Desengrasantes, removedores y limpiadores de alta potencia para entornos industriales exigentes. Fórmulas concentradas de máximo rendimiento.</p>
+      <span class="producto-tag">Alta Concentración</span>
+    </div>
+    <div class="producto-card reveal">
+      <div class="producto-icono icono-turquesa">🫧</div>
+      <h3>Línea Hogar</h3>
+      <p>Productos de limpieza doméstica con fragancias agradables y fórmulas suaves pero efectivas. Seguros para toda la familia.</p>
+      <span class="producto-tag">Uso Doméstico</span>
+    </div>
+    <div class="producto-card reveal">
+      <div class="producto-icono icono-verde">🌿</div>
+      <h3>Línea Eco</h3>
+      <p>Formulaciones biodegradables con ingredientes naturales. La misma efectividad con menor impacto ambiental. Certificados ecológicos.</p>
+      <span class="producto-tag">Biodegradable</span>
+    </div>
+    <div class="producto-card reveal">
+      <div class="producto-icono icono-azul">🏥</div>
+      <h3>Línea Sanitización</h3>
+      <p>Desinfectantes hospitalarios y comerciales con acción antimicrobiana comprobada. Cumplen con normativas sanitarias internacionales.</p>
+      <span class="producto-tag">Grado Médico</span>
+    </div>
+    <div class="producto-card reveal">
+      <div class="producto-icono icono-turquesa">🍽️</div>
+      <h3>Línea Alimentos</h3>
+      <p>Productos especializados para industria alimentaria. Limpiadores y desinfectantes aptos para superficies en contacto con alimentos.</p>
+      <span class="producto-tag">Food Grade</span>
+    </div>
+    <div class="producto-card reveal">
+      <div class="producto-icono icono-verde">✨</div>
+      <h3>Línea Premium</h3>
+      <p>Nuestra selección élite con tecnología de vanguardia. Resultados excepcionales para clientes que exigen lo mejor en limpieza.</p>
+      <span class="producto-tag">Top Premium</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="500">0</span>+
+      <div class="stat-sep"></div>
+      <span class="stat-label">Clientes Activos</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="50">0</span>+
+      <div class="stat-sep"></div>
+      <span class="stat-label">Productos en Catálogo</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="15">0</span>+
+      <div class="stat-sep"></div>
+      <span class="stat-label">Años de Experiencia</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="98">0</span>%
+      <div class="stat-sep"></div>
+      <span class="stat-label">Clientes Satisfechos</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Cómo trabajamos</span>
+    <h2>Proceso de <span>Efervescencia</span></h2>
+    <p>De la fórmula a tus manos, un proceso riguroso de calidad</p>
+  </div>
+  <div class="proceso-wrapper">
+    <div class="proceso-steps">
+      <div class="proceso-linea"></div>
+      <div class="paso">
+        <div class="paso-num">01</div>
+        <div class="paso-contenido">
+          <h3>Consulta y Diagnóstico</h3>
+          <p>Analizamos tus necesidades específicas de limpieza e higiene. Nuestro equipo técnico evalúa las superficies, contaminantes y condiciones de uso para recomendar la solución ideal.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">02</div>
+        <div class="paso-contenido">
+          <h3>Formulación Especializada</h3>
+          <p>Nuestros químicos desarrollan o seleccionan la fórmula perfecta para tu caso. Empleamos tecnología de última generación para garantizar la máxima eficacia y seguridad.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">03</div>
+        <div class="paso-contenido">
+          <h3>Control de Calidad</h3>
+          <p>Cada lote pasa por rigurosas pruebas de calidad antes de salir de nuestra planta. Verificamos eficacia, estabilidad y cumplimiento de normativas vigentes.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">04</div>
+        <div class="paso-contenido">
+          <h3>Entrega y Capacitación</h3>
+          <p>Entregamos tu pedido y capacitamos a tu personal en el uso correcto de los productos. Te acompañamos con soporte técnico continuo para maximizar resultados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Por qué elegirnos</span>
+    <h2>Beneficios <span>Maygen</span></h2>
+    <p>Más que productos, una alianza estratégica para tu empresa</p>
+  </div>
+  <div class="beneficios-grid">
+    <div class="beneficio-item reveal">
+      <span class="beneficio-icono">⚡</span>
+      <h3>Acción Efervescente</h3>
+      <p>Nuestras fórmulas actúan con energía y rapidez, logrando resultados visibles desde el primer uso.</p>
+    </div>
+    <div class="beneficio-item reveal">
+      <span class="beneficio-icono">🌊</span>
+      <h3>Formulación Avanzada</h3>
+      <p>Tecnología química de vanguardia que potencia la limpieza con menor cantidad de producto.</p>
+    </div>
+    <div class="beneficio-item reveal">
+      <span class="beneficio-icono">🛡️</span>
+      <h3>Seguridad Certificada</h3>
+      <p>Todos nuestros productos cuentan con certificaciones de seguridad y hojas de datos de seguridad (SDS).</p>
+    </div>
+    <div class="beneficio-item reveal">
+      <span class="beneficio-icono">🌱</span>
+      <h3>Eco-Responsable</h3>
+      <p>Comprometidos con el medio ambiente, desarrollamos fórmulas con menor huella ecológica.</p>
+    </div>
+    <div class="beneficio-item reveal">
+      <span class="beneficio-icono">💡</span>
+      <h3>Asesoría Técnica</h3>
+      <p>Equipo de químicos expertos disponibles para orientarte en la solución más eficiente para tu necesidad.</p>
+    </div>
+    <div class="beneficio-item reveal">
+      <span class="beneficio-icono">🚀</span>
+      <h3>Entrega Express</h3>
+      <p>Logística eficiente que garantiza la entrega de tu pedido en tiempo y forma, a nivel nacional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Lo que dicen</span>
+    <h2>Clientes que <span>confían</span></h2>
+  </div>
+  <div class="testimonios-grid">
+    <div class="testimonio-card reveal">
+      <div class="estrellas">★★★★★</div>
+      <p>Los productos de Maygen transformaron nuestro proceso de limpieza industrial. La eficacia es impresionante y el soporte técnico es excelente.</p>
+      <div class="testimonio-autor">
+        <div class="autor-avatar">RC</div>
+        <div>
+          <div class="autor-nombre">Roberto Castillo</div>
+          <div class="autor-empresa">Director de Operaciones, MetalTec SA</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card reveal">
+      <div class="estrellas">★★★★★</div>
+      <p>Llevamos 3 años trabajando con Maygen para nuestra cadena de restaurantes. Sus productos de línea alimentaria son confiables y efectivos.</p>
+      <div class="testimonio-autor">
+        <div class="autor-avatar">ML</div>
+        <div>
+          <div class="autor-nombre">María López</div>
+          <div class="autor-empresa">Gerente General, Grupo Gastro</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card reveal">
+      <div class="estrellas">★★★★★</div>
+      <p>La línea Eco de Maygen nos permitió cumplir con nuestros objetivos de sustentabilidad sin sacrificar la calidad de limpieza. Totalmente recomendado.</p>
+      <div class="testimonio-autor">
+        <div class="autor-avatar">JP</div>
+        <div>
+          <div class="autor-nombre">Jorge Pacheco</div>
+          <div class="autor-empresa">Coordinador EHS, Empresa Verde</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Hablemos</span>
+    <h2>Solicita tu <span>Cotización</span></h2>
+    <p>Cuéntanos tu necesidad y te enviamos una propuesta personalizada</p>
+  </div>
+  <div class="contacto-wrap reveal">
+    <form class="contacto-form" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>Nombre *</label>
+        <input type="text" placeholder="Tu nombre completo" required>
+      </div>
+      <div class="form-group">
+        <label>Empresa</label>
+        <input type="text" placeholder="Nombre de tu empresa">
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" placeholder="tu@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input type="tel" placeholder="+52 55 0000 0000">
+      </div>
+      <div class="form-group full">
+        <label>Línea de Interés</label>
+        <select>
+          <option>Selecciona una línea de producto...</option>
+          <option>Línea Industrial</option>
+          <option>Línea Hogar</option>
+          <option>Línea Eco</option>
+          <option>Línea Sanitización</option>
+          <option>Línea Alimentos</option>
+          <option>Línea Premium</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Mensaje</label>
+        <textarea placeholder="Cuéntanos sobre tus necesidades de limpieza e higiene..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Enviar Solicitud ✦</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-footer">MAYGEN</span>
+      <p>Soluciones químicas con efervescencia natural. Innovación, calidad y compromiso en cada gota.</p>
+      <div class="redes">
+        <a href="#" class="red-icon">📘</a>
+        <a href="#" class="red-icon">📷</a>
+        <a href="#" class="red-icon">💼</a>
+        <a href="#" class="red-icon">🐦</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Productos</h4>
+      <ul>
+        <li><a href="#">Línea Industrial</a></li>
+        <li><a href="#">Línea Hogar</a></li>
+        <li><a href="#">Línea Eco</a></li>
+        <li><a href="#">Línea Sanitización</a></li>
+        <li><a href="#">Línea Premium</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Proceso</a></li>
+        <li><a href="#">Certificaciones</a></li>
+        <li><a href="#">Sostenibilidad</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="#">📍 Ciudad de México</a></li>
+        <li><a href="#">📞 55 0000 0000</a></li>
+        <li><a href="#">✉️ info@maygen.mx</a></li>
+        <li><a href="#">🕐 Lun–Vie 9–18h</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Maygen — Todos los derechos reservados. Hecho con efervescencia ✦</p>
+  </div>
+</footer>
+
+<script>
+// ===== BURBUJAS ANIMADAS =====
+const burbujasBg = document.getElementById('burbujasBg');
+function crearBurbuja() {
+  const b = document.createElement('div');
+  b.className = 'burbuja';
+  const size = Math.random() * 80 + 20;
+  b.style.cssText = `
+    width: ${size}px;
+    height: ${size}px;
+    left: ${Math.random() * 100}%;
+    animation-duration: ${Math.random() * 15 + 10}s;
+    animation-delay: ${Math.random() * 5}s;
+  `;
+  burbujasBg.appendChild(b);
+  setTimeout(() => b.remove(), 25000);
+}
+setInterval(crearBurbuja, 1500);
+for (let i = 0; i < 8; i++) setTimeout(crearBurbuja, i * 300);
+
+// ===== PARTÍCULAS HERO =====
+const particulasEl = document.getElementById('particulas');
+const colores = ['rgba(0,102,255,', 'rgba(0,170,255,', 'rgba(0,229,204,', 'rgba(0,255,136,'];
+function crearParticula() {
+  const p = document.createElement('div');
+  p.className = 'particula';
+  const size = Math.random() * 6 + 2;
+  const color = colores[Math.floor(Math.random() * colores.length)];
+  p.style.cssText = `
+    width: ${size}px; height: ${size}px;
+    left: ${Math.random() * 100}%;
+    bottom: ${Math.random() * 30}%;
+    background: ${color}0.8)`;
+  p.style.animationDuration = (Math.random() * 6 + 4) + 's';
+  p.style.animationDelay = (Math.random() * 3) + 's';
+  particulasEl.appendChild(p);
+  setTimeout(() => p.remove(), 10000);
+}
+setInterval(crearParticula, 400);
+for (let i = 0; i < 15; i++) setTimeout(crearParticula, i * 200);
+
+// ===== NAV SCROLL =====
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ===== CURSOR GLOW =====
+const cursorGlow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', (e) => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top = e.clientY + 'px';
+});
+
+// ===== REVEAL ON SCROLL =====
+const revealEls = document.querySelectorAll('.reveal, .paso');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// ===== CONTADOR STATS =====
+const statNums = document.querySelectorAll('.stat-num[data-target]');
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current);
+        if (current >= target) clearInterval(timer);
+      }, 25);
+      statObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+statNums.forEach(el => statObserver.observe(el));
+
+// ===== FORM SUBMIT =====
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.textContent = '✓ Solicitud enviada con éxito';
+  btn.style.background = 'linear-gradient(135deg, #00FF88, #00E5CC)';
+  setTimeout(() => {
+    btn.textContent = 'Enviar Solicitud ✦';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+// ===== SMOOTH NAV HIGHLIGHT =====
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 200) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--turquesa)' : '';
+  });
+});
+</script>
+</body>
+</html>
