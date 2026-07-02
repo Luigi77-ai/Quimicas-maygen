@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contáctanos — Maygen</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--azul:#0066FF;--azul-claro:#00AAFF;--turquesa:#00E5CC;--verde:#00FF88;--gris-oscuro:#0A0F1E;--gris-medio:#1A2035;--gradiente:linear-gradient(135deg,#0066FF 0%,#00AAFF 50%,#00E5CC 100%)}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--gris-oscuro);color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--azul-claro);border-radius:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
+nav.scrolled{background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(0,170,255,0.2);box-shadow:0 4px 30px rgba(0,102,255,0.15)}
+.logo{font-size:28px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gradiente);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.activo{color:var(--turquesa)}
+.nav-links a:hover::after,.nav-links a.activo::after{width:100%}
+.nav-cta{background:var(--gradiente)!important;color:white!important;padding:10px 24px;border-radius:25px;font-weight:700!important;box-shadow:0 4px 20px rgba(0,102,255,0.4)}
+/* HERO */
+.hero-pag{min-height:55vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,rgba(0,102,255,0.2),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,229,204,0.12),transparent 50%);padding-top:100px}
+.hero-pag-content{text-align:center;z-index:2;padding:60px 20px}
+.etiqueta{display:inline-block;color:var(--turquesa);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px}
+.hero-pag h1{font-size:clamp(40px,6vw,80px);font-weight:900;line-height:1;margin-bottom:20px}
+.hero-pag h1 span{display:block;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-pag p{color:rgba(255,255,255,0.65);font-size:18px;max-width:600px;margin:0 auto}
+.olas{position:absolute;bottom:-2px;left:0;width:100%}
+/* CONTACTO GRID */
+.contacto-seccion{padding:80px 60px 120px;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:start}
+/* INFO CONTACTO */
+.info-col{}
+.info-titulo{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--turquesa);margin-bottom:15px}
+.info-col h2{font-size:32px;font-weight:800;margin-bottom:20px;line-height:1.2}
+.info-col h2 span{background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.info-col>p{color:rgba(255,255,255,0.65);font-size:15px;line-height:1.8;margin-bottom:40px}
+.info-item{display:flex;align-items:flex-start;gap:18px;margin-bottom:25px;padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;transition:all 0.3s}
+.info-item:hover{border-color:rgba(0,170,255,0.3);background:rgba(0,170,255,0.07);transform:translateX(5px)}
+.info-icono{width:48px;height:48px;background:rgba(0,170,255,0.15);border:1px solid rgba(0,170,255,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.info-detalle h3{font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--azul-claro);margin-bottom:5px}
+.info-detalle p,.info-detalle a{color:rgba(255,255,255,0.75);font-size:15px;text-decoration:none;transition:color 0.3s;display:block;line-height:1.5}
+.info-detalle a:hover{color:var(--turquesa)}
+.redes-section{margin-top:35px}
+.redes-titulo{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:15px}
+.redes-icons{display:flex;gap:12px}
+.red-btn{width:44px;height:44px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;text-decoration:none;transition:all 0.3s;cursor:pointer}
+.red-btn:hover{background:var(--gradiente);border-color:transparent;transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,102,255,0.4)}
+/* FORMULARIO */
+.form-col{}
+.form-container{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:28px;padding:50px}
+.form-titulo{font-size:22px;font-weight:800;margin-bottom:8px}
+.form-subtitulo{color:rgba(255,255,255,0.55);font-size:14px;margin-bottom:35px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--azul-claro)}
+.form-group input,.form-group textarea,.form-group select{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 18px;color:white;font-family:'Montserrat',sans-serif;font-size:14px;outline:none;transition:all 0.3s;-webkit-appearance:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--azul-claro);background:rgba(0,170,255,0.08);box-shadow:0 0 20px rgba(0,170,255,0.12)}
+.form-group select option{background:var(--gris-oscuro);color:white}
+.form-group textarea{min-height:130px;resize:vertical}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.3)}
+.tipo-contacto{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:5px}
+.tipo-btn{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);padding:8px 18px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.3s}
+.tipo-btn:hover,.tipo-btn.activo{background:rgba(0,170,255,0.2);border-color:var(--azul-claro);color:white}
+.btn-submit{width:100%;background:var(--gradiente);color:white;border:none;padding:18px;border-radius:50px;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;box-shadow:0 8px 30px rgba(0,102,255,0.35);font-family:'Montserrat',sans-serif;margin-top:10px;position:relative;overflow:hidden}
+.btn-submit::after{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,0.2);border-radius:50%;transform:translate(-50%,-50%);transition:width 0.4s,height 0.4s}
+.btn-submit:hover::after{width:300px;height:300px}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 15px 40px rgba(0,102,255,0.55)}
+/* MAPA / UBICACION */
+.ubicacion-seccion{padding:0 60px 100px;max-width:1300px;margin:0 auto}
+.ubicacion-titulo{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--turquesa);margin-bottom:10px;text-align:center}
+.ubicacion-h2{font-size:clamp(26px,4vw,40px);font-weight:800;text-align:center;margin-bottom:40px}
+.ubicacion-h2 span{background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.mapa-placeholder{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:24px;height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.mapa-placeholder::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(0,102,255,0.08),rgba(0,229,204,0.04));background-image:repeating-linear-gradient(0deg,rgba(0,170,255,0.05) 0px,rgba(0,170,255,0.05) 1px,transparent 1px,transparent 50px),repeating-linear-gradient(90deg,rgba(0,170,255,0.05) 0px,rgba(0,170,255,0.05) 1px,transparent 1px,transparent 50px)}
+.mapa-pin{font-size:60px;margin-bottom:15px;filter:drop-shadow(0 0 20px rgba(0,170,255,0.5));animation:pulsePin 2s ease-in-out infinite;position:relative;z-index:1}
+@keyframes pulsePin{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.1)}}
+.mapa-texto{text-align:center;position:relative;z-index:1}
+.mapa-texto h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.mapa-texto p{color:rgba(255,255,255,0.6);font-size:14px}
+/* HORARIO */
+.horario-seccion{padding:60px;background:linear-gradient(135deg,rgba(0,102,255,0.1),rgba(0,229,204,0.05));border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);position:relative;z-index:2}
+.horario-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto;text-align:center}
+.horario-item{padding:30px 20px}
+.horario-icono{font-size:36px;margin-bottom:12px;display:block;filter:drop-shadow(0 0 15px rgba(0,229,204,0.4))}
+.horario-item h3{font-size:15px;font-weight:700;margin-bottom:8px}
+.horario-item p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.5}
+.horario-item .hora{font-size:22px;font-weight:800;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-top:5px}
+/* SUCCES */
+.success-msg{display:none;text-align:center;padding:40px 20px;animation:fadeIn 0.5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.success-icon{font-size:60px;margin-bottom:15px;filter:drop-shadow(0 0 20px rgba(0,255,136,0.5))}
+.success-msg h3{font-size:22px;font-weight:700;margin-bottom:10px;color:var(--verde)}
+.success-msg p{color:rgba(255,255,255,0.65);font-size:14px}
+/* FOOTER */
+footer{background:rgba(0,0,0,0.5);border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;text-align:center}
+.footer-logo{font-size:24px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:20px}
+.footer-nav{display:flex;gap:30px;justify-content:center;list-style:none;margin-bottom:20px;flex-wrap:wrap}
+.footer-nav a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;transition:color 0.3s}
+.footer-nav a:hover{color:var(--turquesa)}
+.footer-bottom{color:rgba(255,255,255,0.35);font-size:13px}
+/* BURBUJAS */
+.burbujas-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.burbuja{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(0,170,255,0.25),rgba(0,229,204,0.04));border:1px solid rgba(0,170,255,0.15);animation:flotar linear infinite}
+@keyframes flotar{0%{transform:translateY(110vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:0.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){nav{padding:15px 25px}.nav-links{display:none}.contacto-seccion{grid-template-columns:1fr;padding:60px 20px}.ubicacion-seccion,.horario-seccion{padding-left:20px;padding-right:20px}.horario-grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}.form-group.full{grid-column:1}.form-container{padding:30px 20px}}
+</style>
+</head>
+<body>
+<div class="burbujas-bg" id="burbujasBg"></div>
+<nav id="mainNav">
+  <a href="index.html" class="logo">MAYGEN</a>
+  <ul class="nav-links">
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="productos.html">Productos</a></li>
+    <li><a href="membresias.html">Membresías</a></li>
+    <li><a href="contacto.html" class="nav-cta activo">Contáctanos</a></li>
+  </ul>
+</nav>
+
+<section class="hero-pag">
+  <div class="hero-pag-content">
+    <span class="etiqueta">✶ Estamos para servirte ✶</span>
+    <h1>Contáctanos</h1>
+    <h1><span>Hablemos</span></h1>
+    <p>Cuéntanos lo que necesitas. Nuestro equipo responde en menos de 24 horas con la solución perfecta para ti.</p>
+  </div>
+  <svg class="olas" viewBox="0 0 1440 60" fill="none"><path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" fill="rgba(10,15,30,0.9)"/></svg>
+</section>
+
+<div class="contacto-seccion">
+  <!-- INFO -->
+  <div class="info-col reveal">
+    <div class="info-titulo">Información de contacto</div>
+    <h2>Estamos cerca de <span>ti</span></h2>
+    <p>Nuestro equipo de especialistas está listo para atenderte de forma rápida, humana y confiable. Elige el canal que prefieras.</p>
+
+    <div class="info-item">
+      <div class="info-icono">📱</div>
+      <div class="info-detalle">
+        <h3>WhatsApp y Teléfono</h3>
+        <a href="tel:+525500000000">+52 55 0000 0000</a>
+        <a href="https://wa.me/525500000000" target="_blank">Escribir por WhatsApp →</a>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icono">✉️</div>
+      <div class="info-detalle">
+        <h3>Correo Electrónico</h3>
+        <a href="mailto:info@maygen.mx">info@maygen.mx</a>
+        <a href="mailto:ventas@maygen.mx">ventas@maygen.mx</a>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icono">📍</div>
+      <div class="info-detalle">
+        <h3>Dirección</h3>
+        <p>Ciudad de México, México</p>
+        <p>Atención a nivel nacional</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icono">🕐</div>
+      <div class="info-detalle">
+        <h3>Horario de Atención</h3>
+        <p>Lunes a Viernes: 9:00 — 18:00 hrs</p>
+        <p>Sábado: 9:00 — 14:00 hrs</p>
+      </div>
+    </div>
+
+    <div class="redes-section">
+      <div class="redes-titulo">Síguenos en redes</div>
+      <div class="redes-icons">
+        <a href="#" class="red-btn">📘</a>
+        <a href="#" class="red-btn">📷</a>
+        <a href="#" class="red-btn">💼</a>
+        <a href="#" class="red-btn">🐦</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div class="form-col reveal">
+    <div class="form-container">
+      <div class="form-titulo">Envíanos un mensaje</div>
+      <div class="form-subtitulo">Te contactamos en menos de 24 horas hábiles.</div>
+
+      <div id="formWrap">
+        <div class="tipo-contacto">
+          <button class="tipo-btn activo" onclick="setTipo(this,'Cotización')">Cotización</button>
+          <button class="tipo-btn" onclick="setTipo(this,'Información')">Información</button>
+          <button class="tipo-btn" onclick="setTipo(this,'Membresía')">Membresía</button>
+          <button class="tipo-btn" onclick="setTipo(this,'Soporte')">Soporte Técnico</button>
+        </div>
+        <input type="hidden" id="tipoConsulta" value="Cotización">
+
+        <form class="form-grid" id="contactForm" onsubmit="handleSubmit(event)" style="margin-top:20px">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nombre de tu empresa">
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+52 55 0000 0000">
+          </div>
+          <div class="form-group full">
+            <label>Línea de Producto de Interés</label>
+            <select>
+              <option>Selecciona una línea...</option>
+              <option>Línea Industrial</option>
+              <option>Línea Hogar</option>
+              <option>Línea Eco</option>
+              <option>Línea Sanitización</option>
+              <option>Línea Alimentos</option>
+              <option>Plan de Membresía</option>
+              <option>Formulación Personalizada</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Tamaño de tu empresa</label>
+            <select>
+              <option>Selecciona...</option>
+              <option>Persona física / Hogar</option>
+              <option>Micro empresa (1-10 personas)</option>
+              <option>Pequeña empresa (11-50 personas)</option>
+              <option>Mediana empresa (51-250 personas)</option>
+              <option>Grande empresa (250+ personas)</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Tu mensaje *</label>
+            <textarea placeholder="Cuéntanos sobre tus necesidades de limpieza e higiene. ¿Cuál es tu principal reto o requerimiento?" required></textarea>
+          </div>
+          <div class="form-group full">
+            <button type="submit" class="btn-submit">Enviar Mensaje ✶</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">✅</div>
+        <h3>¡Mensaje recibido!</h3>
+        <p>Gracias por contactar a Maygen. Nuestro equipo se pondrá en contacto contigo en menos de 24 horas hábiles.</p>
+        <p style="margin-top:10px;color:var(--turquesa);font-weight:600">✶ Creamos confianza en cada interacción ✶</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HORARIO -->
+<div class="horario-seccion">
+  <div class="horario-grid">
+    <div class="horario-item reveal">
+      <span class="horario-icono">📱</span>
+      <h3>WhatsApp</h3>
+      <p>Respuesta rápida</p>
+      <span class="hora">Lun – Sab</span>
+    </div>
+    <div class="horario-item reveal">
+      <span class="horario-icono">🖥️</span>
+      <h3>Soporte Online</h3>
+      <p>Atención personalizada</p>
+      <span class="hora">9:00 – 18:00</span>
+    </div>
+    <div class="horario-item reveal">
+      <span class="horario-icono">🚚</span>
+      <h3>Entregas</h3>
+      <p>Ciudad de México y zona metropolitana</p>
+      <span class="hora">24 – 48 hrs</span>
+    </div>
+    <div class="horario-item reveal">
+      <span class="horario-icono">✈️</span>
+      <h3>Envíos Nacionales</h3>
+      <p>A todo México con carriers certificados</p>
+      <span class="hora">3 – 5 días</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAPA -->
+<div class="ubicacion-seccion">
+  <div class="ubicacion-titulo reveal">Nuéstra ubicación</div>
+  <h2 class="ubicacion-h2 reveal">Encúntranos en <span>Ciudad de México</span></h2>
+  <div class="mapa-placeholder reveal">
+    <span class="mapa-pin">📍</span>
+    <div class="mapa-texto">
+      <h3>Químicas Maygen</h3>
+      <p>Ciudad de México, México</p>
+      <p style="margin-top:8px;color:var(--azul-claro);font-size:13px;cursor:pointer" onclick="window.open('https://maps.google.com','_blank')">Ver en Google Maps →</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">MAYGEN</span>
+  <ul class="footer-nav">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="productos.html">Productos</a></li>
+    <li><a href="membresias.html">Membresías</a></li>
+    <li><a href="contacto.html">Contáctanos</a></li>
+  </ul>
+  <div class="footer-bottom">© 2026 Maygen — Todos los derechos reservados ✶</div>
+</footer>
+
+<script>
+const burbujasBg=document.getElementById('burbujasBg');
+function crearBurbuja(){const b=document.createElement('div');b.className='burbuja';const s=Math.random()*60+15;b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*5}s`;burbujasBg.appendChild(b);setTimeout(()=>b.remove(),25000)}
+setInterval(crearBurbuja,2000);for(let i=0;i<5;i++)setTimeout(crearBurbuja,i*400);
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50));
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*100)})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+function setTipo(btn,tipo){
+  document.querySelectorAll('.tipo-btn').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.getElementById('tipoConsulta').value=tipo;
+}
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('formWrap').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
+</script>
+</body>
+</html>
