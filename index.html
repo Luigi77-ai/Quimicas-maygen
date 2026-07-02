@@ -1,1612 +1,1693 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maygen — Efervescencia Natural</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Maygen — Soluciones químicas profesionales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Soluciones químicas profesionales para hoteles, hospitales, negocios y hogares en Honduras." />
+  <link rel="icon" type="image/png" href="images/Logo Maygen Nuevo-01.png" />
+  <link rel="apple-touch-icon" href="images/Logo Maygen Nuevo-01.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --azul: #0066FF;
-      --azul-claro: #00AAFF;
-      --turquesa: #00E5CC;
-      --verde: #00FF88;
-      --blanco: #FFFFFF;
-      --gris-oscuro: #0A0F1E;
-      --gris-medio: #1A2035;
-      --gris-claro: #F0F4FF;
-      --texto-oscuro: #0d1726;
-      --texto-medio: rgba(13, 23, 38, 0.68);
-      --borde-suave: rgba(10, 15, 30, 0.08);
-      --sombra-suave: 0 18px 40px rgba(10, 15, 30, 0.06);
-      --sombra-media: 0 24px 50px rgba(10, 15, 30, 0.10);
-      --gradiente: linear-gradient(135deg, #0066FF 0%, #00AAFF 50%, #00E5CC 100%);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--gris-oscuro);
-      color: var(--blanco);
-      overflow-x: hidden;
-    }
-
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--gris-oscuro); }
-    ::-webkit-scrollbar-thumb { background: var(--azul-claro); border-radius: 3px; }
-
-    .burbujas-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .burbuja {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(0,170,255,0.3), rgba(0,229,204,0.05));
-      border: 1px solid rgba(0,170,255,0.2);
-      animation: flotar linear infinite;
-    }
-
-    @keyframes flotar {
-      0% { transform: translateY(110vh) scale(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 0.6; }
-      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-    }
-
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 20px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all 0.4s ease;
-    }
-
-    nav.scrolled {
-      background: rgba(10,15,30,0.95);
-      backdrop-filter: blur(20px);
-      padding: 14px 60px;
-      border-bottom: 1px solid rgba(0,170,255,0.2);
-      box-shadow: 0 4px 30px rgba(0,102,255,0.15);
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      background: var(--gradiente);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 35px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradiente);
-      transition: width 0.3s;
-    }
-
-    .nav-links a:hover { color: var(--turquesa); }
-    .nav-links a:hover::after { width: 100%; }
-
-    .nav-cta {
-      background: var(--gradiente);
-      color: white !important;
-      padding: 10px 24px;
-      border-radius: 25px;
-      font-weight: 700 !important;
-      box-shadow: 0 4px 20px rgba(0,102,255,0.4);
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,102,255,0.6) !important;
-    }
-
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(0,102,255,0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(0,229,204,0.1) 0%, transparent 50%);
-    }
-
-    .hero-content {
-      text-align: center;
-      z-index: 2;
-      position: relative;
-      padding: 0 20px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(0,170,255,0.15);
-      border: 1px solid rgba(0,170,255,0.4);
-      color: var(--azul-claro);
-      padding: 8px 20px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 30px;
-      animation: fadeDown 0.8s ease forwards;
-    }
-
-    .hero-title {
-      font-size: clamp(52px, 8vw, 100px);
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 20px;
-      animation: fadeUp 1s ease 0.2s both;
-    }
-
-    .hero-title span {
-      display: block;
-      background: var(--gradiente);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-subtitle {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: clamp(18px, 3vw, 28px);
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 50px;
-      animation: fadeUp 1s ease 0.4s both;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 1s ease 0.6s both;
-    }
-
-    .btn-primario {
-      background: var(--gradiente);
-      color: white;
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 8px 30px rgba(0,102,255,0.4);
-    }
-
-    .btn-primario:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(0,102,255,0.6);
-    }
-
-    .btn-secundario {
-      border: 2px solid rgba(0,229,204,0.6);
-      color: var(--turquesa);
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-secundario:hover {
-      background: rgba(0,229,204,0.1);
-      border-color: var(--turquesa);
-      transform: translateY(-3px);
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-    }
-
-    .hero-scroll span {
-      display: block;
-      width: 24px;
-      height: 24px;
-      border-right: 2px solid var(--azul-claro);
-      border-bottom: 2px solid var(--azul-claro);
-      transform: rotate(45deg);
-      margin: -8px auto;
-      opacity: 0.7;
-    }
-
-    @keyframes bounce {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
-    }
-
-    .hero-olas {
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-    }
-
-    .particulas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 1;
-    }
-
-    .particula {
-      position: absolute;
-      border-radius: 50%;
-      animation: particula-float linear infinite;
-    }
-
-    @keyframes particula-float {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-600px) rotate(720deg); opacity: 0; }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    section { position: relative; z-index: 2; }
-
-    .seccion-titulo {
-      text-align: center;
-      margin-bottom: 70px;
-    }
-
-    .seccion-titulo .etiqueta {
-      display: inline-block;
-      color: var(--turquesa);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .seccion-titulo h2 {
-      font-size: clamp(32px, 5vw, 56px);
-      font-weight: 800;
-      line-height: 1.1;
+    :root{
+      --navy:#2A399C;
+      --blue:#007CCA;
+      --sky:#33A9E0;
+      --wine:#C50C0C;
+      --wine-dark:#9E0909;
+      --lime:#CFD735;
+      --lime-dark:#9CA30E;
+      --ink:#0E1B3D;
+      --muted:#5B6584;
+      --bg:#F3FAFF;
+      --card:#FFFFFF;
+      --line:#DCEBF7;
+      --shadow-soft:0 12px 28px rgba(16,24,40,0.08);
+      --shadow-medium:0 18px 40px rgba(16,24,40,0.12);
+      --gradient-main:linear-gradient(120deg, var(--navy), var(--blue) 55%, var(--sky));
+      --gradient-accent:linear-gradient(120deg, var(--wine), var(--wine-dark));
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.5;
+      overflow-x:hidden;
     }
 
-    .seccion-titulo h2 span {
-      background: var(--gradiente);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .seccion-titulo p {
-      color: rgba(255,255,255,0.6);
-      font-size: 17px;
-      margin-top: 15px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #nosotros { padding: 120px 60px; }
-
-    .nosotros-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nosotros-visual { position: relative; }
-
-    .nosotros-img-wrap {
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 30px;
-      background: radial-gradient(circle at 40% 40%, rgba(0,102,255,0.3), rgba(0,229,204,0.1));
-      border: 1px solid rgba(0,170,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .molecula-svg {
-      width: 70%;
-      animation: rotar 20s linear infinite;
-    }
-
-    .nosotros-badge {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: var(--gradiente);
-      padding: 20px 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,102,255,0.4);
-    }
-
-    .nosotros-badge .num {
-      font-size: 40px;
-      font-weight: 900;
-      display: block;
-    }
+    h1,h2,h3,.display,.wordmark{font-family:'Baloo 2',sans-serif;}
+    a{text-decoration:none; color:inherit;}
+    ul{list-style:none;}
+    img{max-width:100%; display:block;}
+
+    .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+    .cursor-glow{
+      position:fixed;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(51,169,224,0.16) 0%, rgba(0,124,202,0.08) 28%, transparent 72%);
+      pointer-events:none;
+      z-index:9999;
+      transform:translate(-50%,-50%);
+      transition:left .08s linear, top .08s linear;
+      mix-blend-mode:multiply;
+    }
+
+    .ambient-bubbles{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+
+    .ambient-bubble{
+      position:absolute;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(51,169,224,0.24) 45%, rgba(51,169,224,0.02) 75%);
+      border:1px solid rgba(51,169,224,0.12);
+      animation:rise linear infinite;
+      filter:blur(.2px);
+    }
+
+    @keyframes rise{
+      0%{transform:translateY(110vh) scale(.85); opacity:0;}
+      10%{opacity:.9;}
+      100%{transform:translateY(-20vh) scale(1.25); opacity:0;}
+    }
+
+    @keyframes blobMove{
+      0%,100%{border-radius:42% 58% 65% 35% / 45% 40% 60% 55%;}
+      50%{border-radius:58% 42% 35% 65% / 55% 60% 40% 45%;}
+    }
+
+    @keyframes wobble{
+      0%,100%{transform:rotate(-2deg) translateY(0);}
+      50%{transform:rotate(2deg) translateY(-10px);}
+    }
+
+    @keyframes shimmerText{
+      0%{background-position:0% 50%;}
+      100%{background-position:200% 50%;}
+    }
+
+    @keyframes marquee2{
+      from{transform:translateX(0);}
+      to{transform:translateX(-50%);}
+    }
+
+    @keyframes floatSoft{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-8px);}
+    }
+
+    @keyframes pulseLine{
+      0%,100%{opacity:.4;}
+      50%{opacity:1;}
+    }
 
-    .nosotros-badge .txt {
-      font-size: 12px;
-      letter-spacing: 2px;
-      opacity: 0.9;
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,0.88);
+      backdrop-filter:blur(12px);
+      border-bottom:2px solid var(--line);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+    }
+
+    .logo-link{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:max-content;
     }
-
-    .nosotros-texto h3 {
-      font-size: 36px;
-      font-weight: 800;
-      margin-bottom: 20px;
+
+    .logo-img{
+      width:54px;
+      height:54px;
+      object-fit:contain;
+      border-radius:14px;
+      background:#fff;
+      padding:4px;
+      box-shadow:0 8px 20px rgba(42,57,156,0.10);
+      border:1px solid rgba(42,57,156,0.08);
+    }
+
+    .logo-mark{
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+
+    .logo-mark .mini{
+      color:var(--wine);
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:800;
+      margin-bottom:2px;
+    }
+
+    .logo-mark .wordmark{
+      font-weight:800;
+      font-size:24px;
+      color:var(--navy);
+    }
+
+    .nav-pills{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      background:#EAF6FF;
+      border:2px solid var(--line);
+      border-radius:999px;
+      padding:5px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .nav-pills a{
+      font-weight:700;
+      font-size:13.5px;
+      color:var(--navy);
+      padding:9px 17px;
+      border-radius:999px;
+      transition:.2s;
+    }
+
+    .nav-pills a.active,
+    .nav-pills a:hover{
+      background:var(--blue);
+      color:#fff;
+    }
+
+    .btn-buy{
+      background:linear-gradient(120deg, var(--wine), var(--wine-dark));
+      color:#fff;
+      padding:12px 26px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:14px;
+      box-shadow:0 8px 20px rgba(197,12,12,0.25);
+      transition:.2s;
+      white-space:nowrap;
+    }
+
+    .btn-buy:hover{transform:translateY(-2px) scale(1.03);}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:76px 0 40px;
+      z-index:1;
+    }
+
+    .blob-bg{
+      position:absolute;
+      z-index:-2;
+      border-radius:60% 40% 55% 45%/50% 60% 40% 50%;
+      animation:blobMove 9s ease-in-out infinite;
+      filter:blur(1px);
+    }
+
+    .blob1{
+      width:520px;
+      height:520px;
+      background:radial-gradient(circle at 35% 30%, rgba(51,169,224,0.48), rgba(0,124,202,0.10) 70%);
+      right:-160px;
+      top:-140px;
+    }
+
+    .blob2{
+      width:340px;
+      height:340px;
+      background:radial-gradient(circle at 35% 30%, rgba(207,215,53,0.36), rgba(207,215,53,0.04) 70%);
+      left:-120px;
+      bottom:-100px;
+      animation-duration:11s;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12.5px;
+      font-weight:800;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:#fff;
+      background:linear-gradient(120deg,var(--wine),var(--wine-dark));
+      padding:8px 16px;
+      border-radius:999px;
+      margin-bottom:20px;
+      box-shadow:0 8px 18px rgba(197,12,12,0.22);
+    }
+
+    .hero h1{
+      font-size:54px;
+      font-weight:800;
+      line-height:1.05;
+      letter-spacing:-0.01em;
+      color:var(--navy);
+      margin-bottom:20px;
+    }
+
+    .hero h1 em{
+      font-style:normal;
+      background:linear-gradient(90deg, var(--blue), var(--sky), var(--lime), var(--sky), var(--blue));
+      background-size:250% auto;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      animation:shimmerText 5s linear infinite;
+    }
+
+    .hero p.lede{
+      font-size:18px;
+      color:var(--muted);
+      max-width:520px;
+      margin-bottom:30px;
+      font-weight:500;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      background:var(--navy);
+      color:#fff;
+      padding:16px 30px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:15.5px;
+      box-shadow:0 12px 26px rgba(42,57,156,0.22);
+      transition:.2s;
+    }
+
+    .btn-primary:hover{transform:translateY(-3px);}
+
+    .btn-ghost{
+      padding:16px 26px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:15.5px;
+      color:var(--navy);
+      border:2.5px solid var(--sky);
+      transition:.2s;
+      background:rgba(255,255,255,0.45);
+    }
+
+    .btn-ghost:hover{
+      background:var(--sky);
+      color:#fff;
+    }
+
+    .hero-stats{
+      display:flex;
+      gap:18px;
+      margin-top:40px;
+      flex-wrap:wrap;
+    }
+
+    .hero-stats div{
+      background:#fff;
+      border:2px solid var(--line);
+      border-radius:18px;
+      padding:14px 18px;
+      min-width:130px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-stats div b{
+      display:block;
+      font-family:'Baloo 2',sans-serif;
+      font-size:24px;
+      color:var(--wine);
+    }
+
+    .hero-stats div span{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .hero-visual{
+      position:relative;
+      height:460px;
+    }
+
+    .splash-frame{
+      position:absolute;
+      inset:0;
+      margin:auto;
+      width:350px;
+      height:350px;
+      background:conic-gradient(from 200deg, var(--blue), var(--sky), var(--lime), var(--wine), var(--blue));
+      animation:blobMove 8s ease-in-out infinite, wobble 7s ease-in-out infinite;
+      box-shadow:0 30px 60px rgba(42,57,156,0.20);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:58% 42% 55% 45% / 52% 50% 50% 48%;
+    }
+
+    .splash-frame .core{
+      width:88%;
+      height:88%;
+      border-radius:50%;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      box-shadow:inset 0 0 0 1px rgba(42,57,156,0.06);
+    }
+
+    .hero-logo{
+      width:72%;
+      max-width:210px;
+      object-fit:contain;
+      animation:floatSoft 5s ease-in-out infinite;
+    }
+
+    .float-badge{
+      position:absolute;
+      background:#fff;
+      border:2px solid var(--line);
+      border-radius:16px;
+      padding:14px 18px;
+      box-shadow:0 16px 32px rgba(16,24,40,0.10);
+      animation:wobble 5s ease-in-out infinite;
+    }
+
+    .fb1{top:6%; left:0; animation-delay:.2s;}
+    .fb2{bottom:8%; right:0; animation-delay:1s;}
+
+    .float-badge .row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .float-badge .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      animation:pulseLine 2.4s ease-in-out infinite;
+    }
+
+    .float-badge p{
+      font-size:12.5px;
+      font-weight:800;
+      color:var(--navy);
+    }
+
+    .wave{
+      display:block;
+      width:100%;
+      height:70px;
+      margin-top:-2px;
+    }
+
+    .bestsellers{
+      padding:20px 0 70px;
+      background:linear-gradient(180deg, var(--navy), #1c2670);
+    }
+
+    .bs-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      margin-bottom:30px;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .bs-head .tag{
+      font-size:12.5px;
+      font-weight:800;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:var(--lime);
+      margin-bottom:6px;
+      display:block;
+    }
+
+    .bs-head h2{
+      font-size:30px;
+      color:#fff;
+      font-weight:800;
+    }
+
+    .bs-link{
+      font-weight:800;
+      font-size:14px;
+      color:var(--lime);
+    }
+
+    .bs-track-wrap{overflow:hidden; position:relative;}
+    .bs-track{
+      display:flex;
+      gap:18px;
+      width:max-content;
+      animation:marquee2 24s linear infinite;
+    }
+
+    .bs-track:hover{animation-play-state:paused;}
+
+    .bs-card{
+      width:230px;
+      flex-shrink:0;
+      background:#fff;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 14px 30px rgba(0,0,0,0.22);
+      transition:.25s;
+    }
+
+    .bs-card:hover{transform:translateY(-8px) rotate(-1deg);}
+
+    .bs-media{
+      height:130px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, var(--blue), var(--sky) 60%, var(--lime));
+    }
+
+    .product-shape{
+      width:54px;
+      height:86px;
+      background:rgba(255,255,255,0.95);
+      border-radius:10px 10px 5px 5px;
+      position:relative;
+      box-shadow:0 10px 18px rgba(0,0,0,0.18);
+    }
+
+    .product-shape::before{
+      content:'';
+      position:absolute;
+      top:-10px;
+      left:50%;
+      transform:translateX(-50%);
+      width:22px;
+      height:12px;
+      background:#f3f7fb;
+      border-radius:4px 4px 0 0;
+    }
+
+    .bs-badge{
+      position:absolute;
+      top:10px;
+      left:10px;
+      background:var(--wine);
+      color:#fff;
+      font-size:10px;
+      font-weight:800;
+      text-transform:uppercase;
+      padding:5px 10px;
+      border-radius:999px;
+    }
+
+    .bs-body{padding:16px 18px;}
+    .bs-body .cat{
+      font-size:10.5px;
+      font-weight:800;
+      text-transform:uppercase;
+      color:var(--wine);
+    }
+
+    .bs-body h3{
+      font-size:15px;
+      color:var(--navy);
+      margin:5px 0 10px;
+      font-weight:800;
+    }
+
+    .bs-foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .bs-foot .price{
+      font-family:'Baloo 2';
+      font-weight:800;
+      color:var(--navy);
+    }
+
+    .bs-foot .stars{
+      font-size:11px;
+      color:var(--lime-dark);
+      font-weight:800;
+    }
+
+    .industries{
+      padding:70px 0 80px;
+      position:relative;
+      z-index:1;
+    }
+
+    .section-head{
+      max-width:640px;
+      margin-bottom:44px;
+      text-align:center;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .section-head .tag{
+      font-size:12.5px;
+      font-weight:800;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:var(--blue);
+      margin-bottom:8px;
+      display:inline-block;
+      background:#EAF6FF;
+      padding:6px 14px;
+      border-radius:999px;
+    }
+
+    .section-head h2{
+      font-size:34px;
+      color:var(--navy);
+      font-weight:800;
+    }
+
+    .section-head p{
+      color:var(--muted);
+      margin-top:10px;
+      font-size:15.5px;
+    }
+
+    .ind-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
     }
-
-    .nosotros-texto p {
-      color: rgba(255,255,255,0.7);
-      font-size: 16px;
-      line-height: 1.8;
-      margin-bottom: 20px;
+
+    .ind-card{
+      border-radius:42px;
+      padding:36px 26px 26px;
+      text-align:center;
+      transition:.25s;
+      position:relative;
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(42,57,156,0.04);
     }
 
-    .valores-lista {
-      list-style: none;
-      margin-top: 30px;
-    }
+    .ind-card:nth-child(1){background:linear-gradient(160deg,#E5F5FF,#fff);}
+    .ind-card:nth-child(2){background:linear-gradient(160deg,#FCEAEA,#fff);}
+    .ind-card:nth-child(3){background:linear-gradient(160deg,#F8FAE3,#fff);}
+    .ind-card:nth-child(4){background:linear-gradient(160deg,#E5F5FF,#fff);}
+    .ind-card:hover{transform:translateY(-8px) scale(1.03);}
 
-    .valores-lista li {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.8);
-      font-size: 15px;
+    .ind-card .icon{
+      width:64px;
+      height:64px;
+      margin:0 auto 16px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg, var(--blue), var(--sky));
+      color:#fff;
+      box-shadow:0 10px 20px rgba(0,124,202,0.22);
     }
 
-    .valores-lista li::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--turquesa);
-      border-radius: 50%;
-      flex-shrink: 0;
-      box-shadow: 0 0 10px var(--turquesa);
+    .ind-card .icon svg{
+      width:28px;
+      height:28px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
     }
 
-    @keyframes rotar {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .ind-card h3{
+      font-size:17px;
+      color:var(--navy);
+      margin-bottom:8px;
+      font-weight:800;
     }
 
-    #productos {
-      padding: 120px 60px;
-      background: #f7f9fc;
+    .ind-card p{
+      font-size:13px;
+      color:var(--muted);
     }
 
-    #beneficios {
-      padding: 120px 60px;
-      background: #ffffff;
+    .products{
+      padding:10px 0 80px;
     }
 
-    #testimonios {
-      padding: 120px 60px;
-      background: #f7f9fc;
+    .prod-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:44px;
     }
 
-    #productos .seccion-titulo p,
-    #beneficios .seccion-titulo p,
-    #testimonios .seccion-titulo p {
-      color: rgba(10,15,30,0.62);
+    .prod-card{
+      background:var(--card);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:0 10px 26px rgba(16,24,40,0.08);
+      transition:.25s;
     }
 
-    #productos .seccion-titulo h2,
-    #beneficios .seccion-titulo h2,
-    #testimonios .seccion-titulo h2 {
-      color: #0a0f1e;
-    }
+    .prod-card:hover{transform:translateY(-6px);}
 
-    .productos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
+    .prod-media{
+      height:170px;
+      background:linear-gradient(135deg, var(--navy), var(--blue) 55%, var(--lime));
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .producto-card {
-      background: #ffffff;
-      border: 1px solid rgba(10,15,30,0.08);
-      border-radius: 24px;
-      padding: 40px;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 18px 40px rgba(10,15,30,0.06);
-    }
+    .prod-body{padding:22px;}
 
-    .producto-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--gradiente);
-      transform: scaleX(0);
-      transition: transform 0.4s;
+    .prod-body .cat{
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      color:var(--wine);
     }
 
-    .producto-card:hover {
-      transform: translateY(-10px);
-      background: #ffffff;
-      border-color: rgba(0,102,255,0.18);
-      box-shadow: 0 28px 55px rgba(10,15,30,0.12);
+    .prod-body h3{
+      font-size:18px;
+      color:var(--navy);
+      margin:8px 0 6px;
+      font-weight:800;
     }
-
-    .producto-card:hover::before { transform: scaleX(1); }
 
-    .producto-icono,
-    .beneficio-icono,
-    .red-icon svg {
-      width: 56px;
-      height: 56px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--azul);
-      flex-shrink: 0;
+    .prod-body p{
+      font-size:13.5px;
+      color:var(--muted);
+      margin-bottom:16px;
     }
 
-    .producto-icono {
-      border-radius: 16px;
-      margin-bottom: 22px;
-      background: #ffffff;
-      border: 1px solid rgba(10, 15, 30, 0.08);
-      box-shadow: 0 12px 28px rgba(10, 15, 30, 0.08);
+    .prod-foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
-    .icono-azul,
-    .icono-turquesa,
-    .icono-verde {
-      background: #ffffff;
-      border: 1px solid rgba(10, 15, 30, 0.08);
-    }
+    .price{
+      font-family:'Baloo 2';
+      font-weight:800;
+      color:var(--navy);
+      font-size:17px;
+    }
+
+    .mini-buy{
+      font-size:13px;
+      font-weight:800;
+      color:var(--blue);
+    }
 
-    .beneficio-icono {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 18px;
-      border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid rgba(10, 15, 30, 0.08);
-      box-shadow: 0 10px 24px rgba(10, 15, 30, 0.08);
+    .membership{
+      padding:80px 0;
+      background:radial-gradient(1000px 500px at 20% 0%, #E5F5FF, var(--bg));
     }
 
-    .producto-icono svg,
-    .beneficio-icono svg,
-    .red-icon svg {
-      width: 26px;
-      height: 26px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .mem-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:44px;
     }
 
-    .producto-card h3 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #0a0f1e;
+    .mem-card{
+      background:#fff;
+      border:2.5px solid var(--line);
+      border-radius:26px;
+      padding:32px 26px;
+      transition:.25s;
+      position:relative;
     }
 
-    .producto-card p {
-      color: rgba(10,15,30,0.62);
-      font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 25px;
+    .mem-card:hover{transform:translateY(-6px);}
+    .mem-card.featured{
+      border-color:var(--lime);
+      background:linear-gradient(160deg,#FBFDE8,#fff);
     }
-
-    .producto-tag {
-      display: inline-block;
-      background: rgba(0,170,255,0.10);
-      border: 1px solid rgba(0,170,255,0.18);
-      color: var(--azul);
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
+
+    .mem-card .badge{
+      position:absolute;
+      top:-14px;
+      left:50%;
+      transform:translateX(-50%);
+      background:var(--lime-dark);
+      color:#fff;
+      font-size:10.5px;
+      font-weight:800;
+      text-transform:uppercase;
+      padding:6px 16px;
+      border-radius:999px;
     }
 
-    #proceso { padding: 120px 60px; }
-
-    .proceso-wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
+    .mem-card .plan{
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:var(--blue);
+      margin-bottom:12px;
     }
-
-    .proceso-steps { position: relative; }
 
-    .proceso-linea {
-      position: absolute;
-      left: 39px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--azul), var(--turquesa), var(--verde));
+    .mem-card h3{
+      font-size:26px;
+      font-weight:800;
+      color:var(--navy);
+      margin-bottom:4px;
     }
 
-    .paso {
-      display: flex;
-      gap: 40px;
-      margin-bottom: 60px;
-      position: relative;
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: all 0.6s ease;
+    .mem-card .per{
+      font-size:12.5px;
+      color:var(--muted);
+      margin-bottom:20px;
     }
 
-    .paso.visible {
-      opacity: 1;
-      transform: translateX(0);
+    .mem-card ul li{
+      font-size:13.5px;
+      padding:8px 0;
+      border-top:1px solid var(--line);
+      display:flex;
+      gap:8px;
+      color:var(--ink);
     }
 
-    .paso-num {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--gris-medio);
-      border: 2px solid var(--azul-claro);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 900;
-      color: var(--azul-claro);
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-      transition: all 0.3s;
-      box-shadow: 0 0 20px rgba(0,170,255,0.2);
+    .mem-card ul li:first-child{border-top:none;}
+    .mem-card ul li::before{
+      content:'';
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--lime-dark);
+      margin-top:6px;
+      flex-shrink:0;
     }
 
-    .paso:hover .paso-num {
-      background: var(--azul-claro);
-      color: white;
-      box-shadow: 0 0 40px rgba(0,170,255,0.6);
-      transform: scale(1.1);
+    .mem-btn{
+      display:block;
+      text-align:center;
+      padding:13px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:14px;
+      margin-top:22px;
+      background:var(--navy);
+      color:#fff;
+      transition:.2s;
     }
 
-    .paso-contenido { padding-top: 15px; }
+    .mem-card.featured .mem-btn{background:var(--wine);}
+    .mem-btn:hover{transform:scale(1.03);}
 
-    .paso-contenido h3 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 10px;
+    .about{
+      padding:80px 0;
     }
 
-    .paso-contenido p {
-      color: rgba(255,255,255,0.6);
-      font-size: 15px;
-      line-height: 1.7;
+    .about-grid{
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:56px;
+      align-items:center;
     }
 
-    #stats {
-      padding: 80px 60px;
-      background: var(--gradiente);
-      position: relative;
-      overflow: hidden;
+    .about-visual{
+      height:380px;
+      position:relative;
     }
 
-    #stats::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -10%;
-      right: -10%;
-      bottom: -50%;
-      background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 60%);
-      animation: pulso 4s ease-in-out infinite;
+    .about-visual .blob{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(140deg, var(--blue), var(--sky) 55%, var(--lime));
+      animation:blobMove 8s ease-in-out infinite;
+      box-shadow:0 30px 60px rgba(0,124,202,0.22);
+      border-radius:56% 44% 42% 58% / 58% 52% 48% 42%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
 
-    @keyframes pulso {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .about-logo{
+      width:56%;
+      max-width:200px;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 24px rgba(255,255,255,0.18));
     }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
+    .about-visual .stat-chip{
+      position:absolute;
+      left:20px;
+      bottom:20px;
+      background:#fff;
+      border-radius:18px;
+      padding:18px 22px;
+      box-shadow:0 16px 32px rgba(16,24,40,0.12);
     }
 
-    .stat-item { text-align: center; }
-
-    .stat-num {
-      font-size: clamp(40px, 6vw, 70px);
-      font-weight: 900;
-      display: block;
+    .about-visual .stat-chip b{
+      display:block;
+      font-family:'Baloo 2';
+      font-size:28px;
+      color:var(--wine);
     }
 
-    .stat-label {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.85;
-      margin-top: 8px;
+    .about-visual .stat-chip span{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
     }
 
-    .stat-sep {
-      width: 40px;
-      height: 2px;
-      background: rgba(255,255,255,0.4);
-      margin: 12px auto 0;
+    .about h2{
+      font-size:32px;
+      color:var(--navy);
+      font-weight:800;
+      margin-bottom:16px;
     }
 
-    .beneficios-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      max-width: 1200px;
-      margin: 0 auto;
+    .about p{
+      color:var(--muted);
+      font-size:15.5px;
+      margin-bottom:14px;
     }
 
-    .beneficio-item {
-      text-align: center;
-      padding: 40px 30px;
-      border-radius: 20px;
-      background: #ffffff;
-      border: 1px solid rgba(10,15,30,0.08);
-      transition: all 0.4s;
-      box-shadow: 0 16px 34px rgba(10,15,30,0.05);
+    .about-values{
+      display:flex;
+      gap:24px;
+      margin-top:24px;
+      flex-wrap:wrap;
     }
 
-    .beneficio-item:hover {
-      background: #ffffff;
-      border-color: rgba(0,102,255,0.18);
-      transform: translateY(-5px);
-      box-shadow: 0 24px 40px rgba(10,15,30,0.10);
+    .about-values div{
+      flex:1;
+      min-width:160px;
+      background:#fff;
+      border:2px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      box-shadow:var(--shadow-soft);
     }
 
-    .beneficio-item h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #0a0f1e;
+    .about-values b{
+      display:block;
+      color:var(--navy);
+      font-size:14.5px;
+      margin-bottom:4px;
     }
 
-    .beneficio-item p {
-      color: rgba(10,15,30,0.62);
-      font-size: 14px;
-      line-height: 1.6;
+    .about-values span{
+      font-size:12.5px;
+      color:var(--muted);
     }
 
-    .testimonios-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      max-width: 1200px;
-      margin: 0 auto;
+    .benefits{
+      padding:10px 0 80px;
     }
 
-    .testimonio-card {
-      background: #ffffff;
-      border: 1px solid rgba(10,15,30,0.08);
-      border-radius: 24px;
-      padding: 35px;
-      transition: all 0.3s;
-      position: relative;
-      box-shadow: 0 18px 36px rgba(10,15,30,0.06);
+    .benefit-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
     }
 
-    .testimonio-card::before {
-      content: '"';
-      font-size: 100px;
-      line-height: 0.8;
-      color: rgba(0,170,255,0.10);
-      position: absolute;
-      top: 20px;
-      left: 25px;
-      font-family: 'Playfair Display', serif;
+    .benefit-card{
+      background:#fff;
+      border:1.5px solid var(--line);
+      border-radius:24px;
+      padding:28px 24px;
+      box-shadow:var(--shadow-soft);
+      transition:.25s;
     }
 
-    .testimonio-card:hover {
-      border-color: rgba(0,102,255,0.18);
-      transform: translateY(-5px);
-      box-shadow: 0 24px 46px rgba(10,15,30,0.12);
-    }
+    .benefit-card:hover{transform:translateY(-5px);}
 
-    .estrellas {
-      color: #FFD700;
-      font-size: 16px;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-      position: relative;
-      z-index: 1;
+    .benefit-icon{
+      width:56px;
+      height:56px;
+      border-radius:16px;
+      background:linear-gradient(135deg, rgba(0,124,202,0.12), rgba(51,169,224,0.20));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:18px;
+      color:var(--blue);
     }
 
-    .testimonio-card p,
-    .autor-empresa {
-      color: rgba(10,15,30,0.65);
+    .benefit-icon svg{
+      width:26px;
+      height:26px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
     }
 
-    .testimonio-card p {
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 25px;
-      font-style: italic;
-      position: relative;
-      z-index: 1;
+    .benefit-card h3{
+      font-size:18px;
+      color:var(--navy);
+      margin-bottom:8px;
+      font-weight:800;
     }
 
-    .testimonio-autor {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .benefit-card p{
+      font-size:14px;
+      color:var(--muted);
     }
 
-    .autor-avatar {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: var(--gradiente);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 16px;
-      color: white;
+    .contact{
+      padding:80px 0;
+      background:var(--navy);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
     }
 
-    .autor-nombre {
-      font-weight: 700;
-      font-size: 14px;
-      color: #0a0f1e;
+    .contact::before{
+      content:'';
+      position:absolute;
+      inset:auto -120px -140px auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(51,169,224,0.26), transparent 70%);
+      pointer-events:none;
     }
 
-    .autor-empresa {
-      font-size: 12px;
-      margin-top: 2px;
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:56px;
+      position:relative;
+      z-index:1;
     }
 
-    #contacto { padding: 120px 60px; }
-
-    #contacto .seccion-titulo p {
-      color: rgba(255,255,255,0.68);
+    .contact-info h2{
+      font-size:32px;
+      font-weight:800;
+      margin-bottom:16px;
     }
 
-    .contacto-wrap {
-      max-width: 800px;
-      margin: 0 auto;
-      background: #ffffff;
-      border: 1px solid rgba(10,15,30,0.08);
-      border-radius: 30px;
-      padding: 60px;
-      box-shadow: 0 20px 50px rgba(10,15,30,0.08);
+    .contact-info p{
+      color:rgba(255,255,255,0.75);
+      font-size:15.5px;
+      margin-bottom:26px;
     }
 
-    .contacto-form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+    .contact-row{
+      display:flex;
+      gap:14px;
+      margin-bottom:18px;
+      align-items:flex-start;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .contact-row .ic{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.12);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
     }
-
-    .form-group.full { grid-column: 1/-1; }
 
-    .form-group label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--azul);
+    .contact-row .ic svg{
+      width:20px;
+      height:20px;
+      stroke:#fff;
+      fill:none;
+      stroke-width:1.9;
+      stroke-linecap:round;
+      stroke-linejoin:round;
     }
 
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: #ffffff;
-      border: 1px solid rgba(10,15,30,0.12);
-      border-radius: 12px;
-      padding: 14px 18px;
-      color: #0a0f1e;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      outline: none;
-      transition: all 0.3s;
+    .contact-row b{
+      display:block;
+      font-size:14px;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--azul-claro);
-      background: rgba(0,170,255,0.03);
-      box-shadow: 0 0 20px rgba(0,170,255,0.10);
+    .contact-row span{
+      font-size:13px;
+      color:rgba(255,255,255,0.72);
     }
 
-    .form-group select option { background: #ffffff; }
-    .form-group textarea { min-height: 130px; resize: vertical; }
-
-    .btn-submit {
-      grid-column: 1/-1;
-      background: var(--gradiente);
-      color: white;
-      border: none;
-      padding: 18px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 8px 30px rgba(0,102,255,0.4);
+    .form-card{
+      background:rgba(255,255,255,0.06);
+      border:2px solid rgba(255,255,255,0.15);
+      border-radius:24px;
+      padding:30px;
+      backdrop-filter:blur(12px);
     }
 
-    .btn-submit:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0,102,255,0.6);
+    .form-card .f-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-bottom:12px;
     }
 
-    footer {
-      background: rgba(0,0,0,0.5);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 60px;
+    .form-card input,
+    .form-card select,
+    .form-card textarea{
+      width:100%;
+      padding:13px 14px;
+      border-radius:12px;
+      border:none;
+      font-size:14px;
+      background:rgba(255,255,255,0.94);
+      color:var(--ink);
+      font-family:'Inter',sans-serif;
+      outline:none;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 50px;
-      max-width: 1200px;
-      margin: 0 auto 50px;
+    .form-card textarea{
+      grid-column:1/-1;
+      min-height:90px;
+      resize:vertical;
     }
 
-    .footer-brand .logo-footer {
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: 3px;
-      background: var(--gradiente);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: block;
-      margin-bottom: 15px;
+    .form-submit{
+      width:100%;
+      padding:15px;
+      background:var(--wine);
+      color:#fff;
+      border-radius:999px;
+      font-weight:800;
+      font-size:15px;
+      margin-top:6px;
+      border:none;
+      cursor:pointer;
+      transition:.2s;
     }
 
-    .footer-brand p {
-      color: rgba(255,255,255,0.5);
-      font-size: 14px;
-      line-height: 1.7;
-    }
+    .form-submit:hover{transform:translateY(-2px);}
 
-    .footer-col h4 {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--azul-claro);
-      margin-bottom: 20px;
+    footer{
+      background:#1c2670;
+      color:rgba(255,255,255,0.75);
+      padding:44px 0 22px;
     }
 
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-
-    .footer-col ul li a {
-      color: rgba(255,255,255,0.55);
-      font-size: 14px;
-      text-decoration: none;
-      transition: color 0.3s;
+    .foot-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:36px;
+      margin-bottom:30px;
     }
 
-    .footer-col ul li a:hover { color: var(--turquesa); }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.4);
-      font-size: 13px;
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
     }
 
-    .redes {
-      display: flex;
-      gap: 12px;
-      margin-top: 20px;
+    .footer-logo{
+      width:52px;
+      height:52px;
+      object-fit:contain;
+      background:#fff;
+      border-radius:14px;
+      padding:4px;
     }
 
-    .red-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s;
+    footer h4{
+      color:#fff;
+      font-size:14px;
+      margin-bottom:14px;
     }
 
-    .red-icon:hover {
-      background: var(--gradiente);
-      border-color: transparent;
-      transform: translateY(-3px);
+    footer ul li{
+      margin-bottom:9px;
+      font-size:13.5px;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
+    .foot-bottom{
+      border-top:1px solid rgba(255,255,255,0.15);
+      padding-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      font-size:12px;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .7s ease, transform .7s ease;
     }
 
-    .cursor-glow {
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,170,255,0.06) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: left 0.1s, top 0.1s;
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
     }
-
-    @media (max-width: 900px) {
-      nav { padding: 15px 25px; }
-      nav.scrolled { padding: 12px 25px; }
-      .nav-links { display: none; }
 
-      #nosotros, #productos, #proceso, #stats, #beneficios, #testimonios, #contacto {
-        padding: 80px 25px;
+    @media(max-width:1100px){
+      .nav{
+        flex-wrap:wrap;
+        justify-content:center;
       }
+    }
 
-      .nosotros-grid { grid-template-columns: 1fr; gap: 50px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .beneficios-grid { grid-template-columns: 1fr; }
-      .testimonios-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .contacto-form { grid-template-columns: 1fr; }
-      .form-group.full { grid-column: 1; }
+    @media(max-width:980px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+      .ind-grid,.prod-grid,.mem-grid,.foot-grid,.benefit-grid{grid-template-columns:repeat(2,1fr);}
+      .hero h1{font-size:38px;}
+      .hero-visual{height:380px;}
+      .nav-pills{order:3; width:100%;}
+    }
+
+    @media(max-width:640px){
+      .wrap{padding:0 18px;}
+      .ind-grid,.prod-grid,.mem-grid,.foot-grid,.benefit-grid{grid-template-columns:1fr;}
+      .form-card .f-row{grid-template-columns:1fr;}
+      .hero-stats{gap:12px;}
+      .hero-stats div{width:100%;}
+      .hero-actions{flex-direction:column;}
+      .btn-primary,.btn-ghost,.btn-buy{width:100%; text-align:center;}
+      .logo-img{width:48px;height:48px;}
+      .logo-mark .wordmark{font-size:22px;}
+      .splash-frame{width:280px;height:280px;}
+      .float-badge{position:relative; margin-top:12px;}
+      .fb1,.fb2{top:auto;left:auto;right:auto;bottom:auto;}
+      .hero-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;height:auto;gap:16px;}
     }
   </style>
 </head>
 <body>
-
   <div class="cursor-glow" id="cursorGlow"></div>
-  <div class="burbujas-bg" id="burbujasBg"></div>
+  <div class="ambient-bubbles" id="ambientBubbles"></div>
 
-  <nav id="mainNav">
-    <a href="#" class="logo">MAYGEN</a>
-    <ul class="nav-links">
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#productos">Productos</a></li>
-      <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#beneficios">Beneficios</a></li>
-      <li><a href="#testimonios">Testimonios</a></li>
-      <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
-    </ul>
-  </nav>
+  <header>
+    <div class="wrap nav">
+      <a href="index.html" class="logo-link">
+        <img src="images/Logo Maygen Nuevo-01.png" alt="Logo de Maygen" class="logo-img" />
+        <div class="logo-mark">
+          <span class="mini">Químicas</span>
+          <span class="wordmark">Maygen</span>
+        </div>
+      </a>
 
-  <section id="hero">
-    <div class="particulas" id="particulas"></div>
-
-    <div class="hero-content">
-      <div class="hero-badge">Soluciones químicas de alto desempeño</div>
-      <h1 class="hero-title">
-        MAYGEN
-        <span>Efervescencia</span>
-      </h1>
-      <p class="hero-subtitle">Soluciones químicas que purifican, protegen y renuevan</p>
-
-      <div class="hero-btns">
-        <a href="#productos" class="btn-primario">Ver Productos</a>
-        <a href="#contacto" class="btn-secundario">Solicitar Cotización</a>
+      <div class="nav-pills">
+        <a href="#inicio" class="active">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#membresias">Membresías</a>
+        <a href="#nosotros">Sobre nosotros</a>
+        <a href="#contacto">Contáctanos</a>
       </div>
+
+      <a class="btn-buy" href="#productos">Comprar ahora</a>
     </div>
+  </header>
 
-    <div class="hero-scroll">
-      <span></span><span></span><span></span>
-    </div>
+  <section class="hero" id="inicio">
+    <div class="blob-bg blob1"></div>
+    <div class="blob-bg blob2"></div>
 
-    <svg class="hero-olas" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" fill="rgba(10,15,30,0.8)"/>
-    </svg>
-  </section>
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Soluciones químicas profesionales</span>
+        <h1>Limpieza con <em>energía</em> para tu industria</h1>
+        <p class="lede">Fórmulas vivas y efectivas para hoteles, hospitales, negocios y hogares. Un solo proveedor, resultados que se notan.</p>
 
-  <section id="nosotros">
-    <div class="nosotros-grid">
-      <div class="nosotros-visual reveal">
-        <div class="nosotros-img-wrap">
-          <svg class="molecula-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="100" r="15" fill="rgba(0,170,255,0.8)"/>
-            <circle cx="55" cy="65" r="10" fill="rgba(0,229,204,0.7)"/>
-            <circle cx="145" cy="65" r="10" fill="rgba(0,255,136,0.7)"/>
-            <circle cx="55" cy="135" r="10" fill="rgba(0,102,255,0.7)"/>
-            <circle cx="145" cy="135" r="10" fill="rgba(0,229,204,0.7)"/>
-            <circle cx="100" cy="30" r="8" fill="rgba(0,255,136,0.5)"/>
-            <circle cx="100" cy="170" r="8" fill="rgba(0,102,255,0.5)"/>
-            <line x1="100" y1="100" x2="55" y2="65" stroke="rgba(0,170,255,0.4)" stroke-width="2"/>
-            <line x1="100" y1="100" x2="145" y2="65" stroke="rgba(0,229,204,0.4)" stroke-width="2"/>
-            <line x1="100" y1="100" x2="55" y2="135" stroke="rgba(0,102,255,0.4)" stroke-width="2"/>
-            <line x1="100" y1="100" x2="145" y2="135" stroke="rgba(0,229,204,0.4)" stroke-width="2"/>
-            <line x1="100" y1="100" x2="100" y2="30" stroke="rgba(0,255,136,0.4)" stroke-width="2"/>
-            <line x1="100" y1="100" x2="100" y2="170" stroke="rgba(0,102,255,0.4)" stroke-width="2"/>
-            <circle cx="100" cy="100" r="40" stroke="rgba(0,170,255,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
-            <circle cx="100" cy="100" r="70" stroke="rgba(0,229,204,0.08)" stroke-width="1" stroke-dasharray="2 6"/>
-          </svg>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#productos">Ver productos</a>
+          <a class="btn-ghost" href="#contacto">Solicitar cotización</a>
+        </div>
 
-          <div class="nosotros-badge">
-            <span class="num">+15</span>
-            <span class="txt">AÑOS DE EXPERIENCIA</span>
-          </div>
+        <div class="hero-stats">
+          <div><b>4</b><span>Industrias</span></div>
+          <div><b>+120</b><span>Clientes activos</span></div>
+          <div><b>100%</b><span>Certificado</span></div>
         </div>
       </div>
 
-      <div class="nosotros-texto reveal">
-        <div class="seccion-titulo" style="text-align:left;margin-bottom:30px;">
-          <span class="etiqueta">Quiénes somos</span>
-          <h2>Ciencia al servicio de la <span>limpieza</span></h2>
-        </div>
-
-        <p>En Maygen desarrollamos productos de limpieza e higiene industrial y doméstica con formulaciones avanzadas que garantizan resultados superiores, respetando el medio ambiente.</p>
-        <p>Nuestra filosofía de efervescencia representa la energía, la vitalidad y el poder de transformación que cada uno de nuestros productos lleva consigo.</p>
-
-        <ul class="valores-lista">
-          <li>Innovación química continua</li>
-          <li>Certificaciones de calidad y seguridad</li>
-          <li>Compromiso ambiental responsable</li>
-          <li>Soporte técnico especializado</li>
-          <li>Entregas a nivel nacional</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="productos">
-    <div class="seccion-titulo reveal">
-      <span class="etiqueta">Catálogo</span>
-      <h2>Nuestros <span>Productos</span></h2>
-      <p>Líneas especializadas para cada necesidad de limpieza e higiene</p>
-    </div>
-
-    <div class="productos-grid">
-      <div class="producto-card reveal">
-        <div class="producto-icono icono-azul">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3v6.2l-4.8 7.8A3 3 0 0 0 7.8 21h8.4a3 3 0 0 0 2.6-4l-4.8-7.8V3"/><path d="M8 13h8"/></svg>
-        </div>
-        <h3>Línea Industrial</h3>
-        <p>Desengrasantes, removedores y limpiadores de alta potencia para entornos industriales exigentes. Fórmulas concentradas de máximo rendimiento.</p>
-        <span class="producto-tag">Alta Concentración</span>
-      </div>
-
-      <div class="producto-card reveal">
-        <div class="producto-icono icono-turquesa">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 3.4 5 5.7 5 8.3A5 5 0 1 1 7 11.3C7 8.7 9 6.4 12 3Z"/><path d="M9.5 14.5c.7.8 1.5 1.2 2.5 1.2 1 0 1.8-.4 2.5-1.2"/></svg>
-        </div>
-        <h3>Línea Hogar</h3>
-        <p>Productos de limpieza doméstica con fragancias agradables y fórmulas suaves pero efectivas. Seguros para toda la familia.</p>
-        <span class="producto-tag">Uso Doméstico</span>
-      </div>
-
-      <div class="producto-card reveal">
-        <div class="producto-icono icono-verde">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c7 0 12-5 14-14 0 0-10 2-14 9 0 0-1 2 0 5Z"/><path d="M9 15c1.5-1.5 3.5-3 6-4.5"/></svg>
-        </div>
-        <h3>Línea Eco</h3>
-        <p>Formulaciones biodegradables con ingredientes naturales. La misma efectividad con menor impacto ambiental. Certificados ecológicos.</p>
-        <span class="producto-tag">Biodegradable</span>
-      </div>
-
-      <div class="producto-card reveal">
-        <div class="producto-icono icono-azul">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16"/><path d="M12 4v16"/><rect x="5" y="5" width="14" height="14" rx="3"/></svg>
-        </div>
-        <h3>Línea Sanitización</h3>
-        <p>Desinfectantes hospitalarios y comerciales con acción antimicrobiana comprobada. Cumplen con normativas sanitarias internacionales.</p>
-        <span class="producto-tag">Grado Médico</span>
-      </div>
-
-      <div class="producto-card reveal">
-        <div class="producto-icono icono-turquesa">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16"/><path d="M7 8v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V8"/><path d="M9 12h6"/></svg>
-        </div>
-        <h3>Línea Alimentos</h3>
-        <p>Productos especializados para industria alimentaria. Limpiadores y desinfectantes aptos para superficies en contacto con alimentos.</p>
-        <span class="producto-tag">Food Grade</span>
-      </div>
-
-      <div class="producto-card reveal">
-        <div class="producto-icono icono-verde">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h12"/><path d="M8 17V9l4-3 4 3v8"/><path d="M10 13h4"/></svg>
-        </div>
-        <h3>Línea Premium</h3>
-        <p>Nuestra selección élite con tecnología de vanguardia. Resultados excepcionales para clientes que exigen lo mejor en limpieza.</p>
-        <span class="producto-tag">Top Premium</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="stats">
-    <div class="stats-grid">
-      <div class="stat-item reveal">
-        <span class="stat-num" data-target="500">0</span>+
-        <div class="stat-sep"></div>
-        <span class="stat-label">Clientes Activos</span>
-      </div>
-
-      <div class="stat-item reveal">
-        <span class="stat-num" data-target="50">0</span>+
-        <div class="stat-sep"></div>
-        <span class="stat-label">Productos en Catálogo</span>
-      </div>
-
-      <div class="stat-item reveal">
-        <span class="stat-num" data-target="15">0</span>+
-        <div class="stat-sep"></div>
-        <span class="stat-label">Años de Experiencia</span>
-      </div>
-
-      <div class="stat-item reveal">
-        <span class="stat-num" data-target="98">0</span>%
-        <div class="stat-sep"></div>
-        <span class="stat-label">Clientes Satisfechos</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="proceso">
-    <div class="seccion-titulo reveal">
-      <span class="etiqueta">Cómo trabajamos</span>
-      <h2>Proceso de <span>Efervescencia</span></h2>
-      <p>De la fórmula a tus manos, un proceso riguroso de calidad</p>
-    </div>
-
-    <div class="proceso-wrapper">
-      <div class="proceso-steps">
-        <div class="proceso-linea"></div>
-
-        <div class="paso">
-          <div class="paso-num">01</div>
-          <div class="paso-contenido">
-            <h3>Consulta y Diagnóstico</h3>
-            <p>Analizamos tus necesidades específicas de limpieza e higiene. Nuestro equipo técnico evalúa las superficies, contaminantes y condiciones de uso para recomendar la solución ideal.</p>
+      <div class="hero-visual reveal">
+        <div class="splash-frame">
+          <div class="core">
+            <img src="images/Logo Maygen Nuevo-01.png" alt="Maygen" class="hero-logo" />
           </div>
         </div>
 
-        <div class="paso">
-          <div class="paso-num">02</div>
-          <div class="paso-contenido">
-            <h3>Formulación Especializada</h3>
-            <p>Nuestros químicos desarrollan o seleccionan la fórmula perfecta para tu caso. Empleamos tecnología de última generación para garantizar la máxima eficacia y seguridad.</p>
+        <div class="float-badge fb1">
+          <div class="row">
+            <span class="dot" style="background:var(--lime)"></span>
+            <p>Desinfección hospitalaria</p>
           </div>
         </div>
 
-        <div class="paso">
-          <div class="paso-num">03</div>
-          <div class="paso-contenido">
-            <h3>Control de Calidad</h3>
-            <p>Cada lote pasa por rigurosas pruebas de calidad antes de salir de nuestra planta. Verificamos eficacia, estabilidad y cumplimiento de normativas vigentes.</p>
-          </div>
-        </div>
-
-        <div class="paso">
-          <div class="paso-num">04</div>
-          <div class="paso-contenido">
-            <h3>Entrega y Capacitación</h3>
-            <p>Entregamos tu pedido y capacitamos a tu personal en el uso correcto de los productos. Te acompañamos con soporte técnico continuo para maximizar resultados.</p>
+        <div class="float-badge fb2">
+          <div class="row">
+            <span class="dot" style="background:var(--wine)"></span>
+            <p>Limpieza industrial</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="beneficios">
-    <div class="seccion-titulo reveal">
-      <span class="etiqueta">Por qué elegirnos</span>
-      <h2>Beneficios <span>Maygen</span></h2>
-      <p>Más que productos, una alianza estratégica para tu empresa</p>
-    </div>
+  <svg class="wave" viewBox="0 0 1440 74" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,32 C240,80 480,0 720,24 C960,48 1200,88 1440,40 L1440,74 L0,74 Z" fill="#2A399C"></path>
+  </svg>
 
-    <div class="beneficios-grid">
-      <div class="beneficio-item reveal">
-        <span class="beneficio-icono">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
-        </span>
-        <h3>Acción Efervescente</h3>
-        <p>Nuestras fórmulas actúan con energía y rapidez, logrando resultados visibles desde el primer uso.</p>
-      </div>
-
-      <div class="beneficio-item reveal">
-        <span class="beneficio-icono">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c2.5-2.5 5-3.8 7.5-3.8S15.5 9.5 18 12"/><path d="M5 16c2-1.6 4-2.4 6-2.4s4 .8 6 2.4"/><path d="M9 20c1-.6 2-.9 3-.9s2 .3 3 .9"/></svg>
-        </span>
-        <h3>Formulación Avanzada</h3>
-        <p>Tecnología química de vanguardia que potencia la limpieza con menor cantidad de producto.</p>
-      </div>
-
-      <div class="beneficio-item reveal">
-        <span class="beneficio-icono">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 6 5.5V11c0 4 2.7 7.7 6 9 3.3-1.3 6-5 6-9V5.5L12 3Z"/></svg>
-        </span>
-        <h3>Seguridad Certificada</h3>
-        <p>Todos nuestros productos cuentan con certificaciones de seguridad y hojas de datos de seguridad (SDS).</p>
-      </div>
-
-      <div class="beneficio-item reveal">
-        <span class="beneficio-icono">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c7 0 12-5 14-14 0 0-10 2-14 9 0 0-1 2 0 5Z"/><path d="M9 15c1.5-1.5 3.5-3 6-4.5"/></svg>
-        </span>
-        <h3>Eco-Responsable</h3>
-        <p>Comprometidos con el medio ambiente, desarrollamos fórmulas con menor huella ecológica.</p>
-      </div>
-
-      <div class="beneficio-item reveal">
-        <span class="beneficio-icono">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M8 14a5 5 0 1 1 8 0c-.8.7-1.4 1.5-1.7 2.5h-4.6C9.4 15.5 8.8 14.7 8 14Z"/></svg>
-        </span>
-        <h3>Asesoría Técnica</h3>
-        <p>Equipo de químicos expertos disponibles para orientarte en la solución más eficiente para tu necesidad.</p>
-      </div>
-
-      <div class="beneficio-item reveal">
-        <span class="beneficio-icono">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19h14"/><path d="M7 16 17 6"/><path d="M11 6h6v6"/></svg>
-        </span>
-        <h3>Entrega Express</h3>
-        <p>Logística eficiente que garantiza la entrega de tu pedido en tiempo y forma, a nivel nacional.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="testimonios">
-    <div class="seccion-titulo reveal">
-      <span class="etiqueta">Lo que dicen</span>
-      <h2>Clientes que <span>confían</span></h2>
-    </div>
-
-    <div class="testimonios-grid">
-      <div class="testimonio-card reveal">
-        <div class="estrellas">★★★★★</div>
-        <p>Los productos de Maygen transformaron nuestro proceso de limpieza industrial. La eficacia es impresionante y el soporte técnico es excelente.</p>
-        <div class="testimonio-autor">
-          <div class="autor-avatar">RC</div>
-          <div>
-            <div class="autor-nombre">Roberto Castillo</div>
-            <div class="autor-empresa">Director de Operaciones, MetalTec SA</div>
-          </div>
+  <section class="bestsellers reveal">
+    <div class="wrap">
+      <div class="bs-head">
+        <div>
+          <span class="tag">Lo más pedido</span>
+          <h2>Productos más vendidos</h2>
         </div>
+        <a class="bs-link" href="#productos">Ver todo el catálogo →</a>
       </div>
+    </div>
 
-      <div class="testimonio-card reveal">
-        <div class="estrellas">★★★★★</div>
-        <p>Llevamos 3 años trabajando con Maygen para nuestra cadena de restaurantes. Sus productos de línea alimentaria son confiables y efectivos.</p>
-        <div class="testimonio-autor">
-          <div class="autor-avatar">ML</div>
-          <div>
-            <div class="autor-nombre">María López</div>
-            <div class="autor-empresa">Gerente General, Grupo Gastro</div>
-          </div>
+    <div class="wrap bs-track-wrap">
+      <div class="bs-track">
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">#1 en ventas</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Desinfección</span><h3>Limpiador de Gota</h3><div class="bs-foot"><span class="price">L. 185.00</span><span class="stars">★ 4.9</span></div></div>
         </div>
-      </div>
-
-      <div class="testimonio-card reveal">
-        <div class="estrellas">★★★★★</div>
-        <p>La línea Eco de Maygen nos permitió cumplir con nuestros objetivos de sustentabilidad sin sacrificar la calidad de limpieza. Totalmente recomendado.</p>
-        <div class="testimonio-autor">
-          <div class="autor-avatar">JP</div>
-          <div>
-            <div class="autor-nombre">Jorge Pacheco</div>
-            <div class="autor-empresa">Coordinador EHS, Empresa Verde</div>
-          </div>
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">Top hospitales</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Hospitalario</span><h3>Antiséptico Clínico</h3><div class="bs-foot"><span class="price">L. 240.00</span><span class="stars">★ 4.8</span></div></div>
+        </div>
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">Favorito hoteles</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Hotelería</span><h3>Amenities Kit Pro</h3><div class="bs-foot"><span class="price">L. 310.00</span><span class="stars">★ 4.9</span></div></div>
+        </div>
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">Uso diario</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Hogar</span><h3>Multiusos Citrus</h3><div class="bs-foot"><span class="price">L. 95.00</span><span class="stars">★ 4.7</span></div></div>
+        </div>
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">Alta rotación</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Negocios</span><h3>Desengrasante Industrial</h3><div class="bs-foot"><span class="price">L. 220.00</span><span class="stars">★ 4.8</span></div></div>
+        </div>
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">#1 en ventas</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Desinfección</span><h3>Limpiador de Gota</h3><div class="bs-foot"><span class="price">L. 185.00</span><span class="stars">★ 4.9</span></div></div>
+        </div>
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">Top hospitales</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Hospitalario</span><h3>Antiséptico Clínico</h3><div class="bs-foot"><span class="price">L. 240.00</span><span class="stars">★ 4.8</span></div></div>
+        </div>
+        <div class="bs-card">
+          <div class="bs-media"><span class="bs-badge">Favorito hoteles</span><div class="product-shape"></div></div>
+          <div class="bs-body"><span class="cat">Hotelería</span><h3>Amenities Kit Pro</h3><div class="bs-foot"><span class="price">L. 310.00</span><span class="stars">★ 4.9</span></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contacto">
-    <div class="seccion-titulo reveal">
-      <span class="etiqueta">Hablemos</span>
-      <h2>Solicita tu <span>Cotización</span></h2>
-      <p>Cuéntanos tu necesidad y te enviamos una propuesta personalizada</p>
+  <section class="industries" id="industrias">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">Industrias</span>
+        <h2>Una fórmula para cada realidad</h2>
+        <p>Adaptamos nuestras líneas de producto a las necesidades específicas de cada sector.</p>
+      </div>
+
+      <div class="ind-grid">
+        <div class="ind-card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20V9l6-4 6 4v11"/><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M9 16h.01"/><path d="M15 16h.01"/></svg>
+          </div>
+          <h3>Hotelería</h3>
+          <p>Amenities, lavandería y áreas comunes.</p>
+        </div>
+
+        <div class="ind-card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16"/><path d="M4 12h16"/><rect x="5" y="5" width="14" height="14" rx="3"/></svg>
+          </div>
+          <h3>Hospitales</h3>
+          <p>Grado clínico, protocolos sanitarios.</p>
+        </div>
+
+        <div class="ind-card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M7 20V8h10v12"/><path d="M10 11h.01"/><path d="M14 11h.01"/><path d="M10 15h.01"/><path d="M14 15h.01"/></svg>
+          </div>
+          <h3>Negocios</h3>
+          <p>Oficinas, comercios y plantas.</p>
+        </div>
+
+        <div class="ind-card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20V10l6-5 6 5v10"/><path d="M10 20v-5h4v5"/></svg>
+          </div>
+          <h3>Casas</h3>
+          <p>Seguro y efectivo para el hogar.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="contacto-wrap reveal">
-      <form class="contacto-form" onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label>Nombre *</label>
-          <input type="text" placeholder="Tu nombre completo" required>
+  <section class="products" id="productos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">Catálogo</span>
+        <h2>Productos destacados</h2>
+        <p>Una muestra de nuestra línea profesional. Consulta el catálogo completo por industria.</p>
+      </div>
+
+      <div class="prod-grid">
+        <div class="prod-card reveal">
+          <div class="prod-media"><div class="product-shape"></div></div>
+          <div class="prod-body">
+            <span class="cat">Desinfección</span>
+            <h3>Limpiador de Gota</h3>
+            <p>Desengrasante multiusos de acción rápida.</p>
+            <div class="prod-foot"><span class="price">L. 185.00</span><a class="mini-buy" href="productos.html">Comprar →</a></div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Empresa</label>
-          <input type="text" placeholder="Nombre de tu empresa">
+        <div class="prod-card reveal">
+          <div class="prod-media"><div class="product-shape"></div></div>
+          <div class="prod-body">
+            <span class="cat">Hospitalario</span>
+            <h3>Antiséptico Clínico</h3>
+            <p>Amplio espectro para superficies médicas.</p>
+            <div class="prod-foot"><span class="price">L. 240.00</span><a class="mini-buy" href="productos.html">Comprar →</a></div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" placeholder="tu@email.com" required>
+        <div class="prod-card reveal">
+          <div class="prod-media"><div class="product-shape"></div></div>
+          <div class="prod-body">
+            <span class="cat">Hotelería</span>
+            <h3>Amenities Kit Pro</h3>
+            <p>Shampoo, jabón y loción premium.</p>
+            <div class="prod-foot"><span class="price">L. 310.00</span><a class="mini-buy" href="productos.html">Comprar →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="membership" id="membresias">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">Membresías</span>
+        <h2>Planes para cada operación</h2>
+        <p>Beneficios recurrentes, precios preferenciales y soporte prioritario.</p>
+      </div>
+
+      <div class="mem-grid">
+        <div class="mem-card reveal">
+          <div class="plan">Básica</div>
+          <h3>Esencial</h3>
+          <div class="per">Casas y pequeños negocios</div>
+          <ul>
+            <li>5% de descuento</li>
+            <li>Entrega estándar</li>
+            <li>Soporte por correo</li>
+          </ul>
+          <a class="mem-btn" href="#contacto">Elegir plan</a>
         </div>
 
-        <div class="form-group">
-          <label>Teléfono</label>
-          <input type="tel" placeholder="+52 55 0000 0000">
+        <div class="mem-card featured reveal">
+          <span class="badge">Más popular</span>
+          <div class="plan">Standard</div>
+          <h3>Profesional</h3>
+          <div class="per">Hoteles y negocios en crecimiento</div>
+          <ul>
+            <li>15% de descuento</li>
+            <li>Entrega 48h</li>
+            <li>Asesor dedicado</li>
+            <li>Facturación mensual</li>
+          </ul>
+          <a class="mem-btn" href="#contacto">Elegir plan</a>
         </div>
 
-        <div class="form-group full">
-          <label>Línea de Interés</label>
+        <div class="mem-card reveal">
+          <div class="plan">VIP</div>
+          <h3>Institucional</h3>
+          <div class="per">Hospitales y cadenas</div>
+          <ul>
+            <li>25%+ por volumen</li>
+            <li>Entrega express 24h</li>
+            <li>Capacitación incluida</li>
+          </ul>
+          <a class="mem-btn" href="#contacto">Contactar ventas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="nosotros">
+    <div class="wrap about-grid">
+      <div class="about-visual reveal">
+        <div class="blob">
+          <img src="images/Logo Maygen Nuevo-01.png" alt="Maygen" class="about-logo" />
+        </div>
+        <div class="stat-chip"><b>10+</b><span>años en el mercado</span></div>
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow" style="background:#EAF6FF; color:var(--blue); box-shadow:none;">Sobre nosotros</span>
+        <h2>Química con energía, servicio con cercanía</h2>
+        <p>Maygen (anteriormente Químicas Maygen) nace para ofrecer soluciones de limpieza e higiene confiables a hoteles, hospitales, negocios y hogares en Honduras.</p>
+        <p>Combinamos formulación técnica con un servicio cercano a cada cliente, industria por industria.</p>
+
+        <div class="about-values">
+          <div><b>Calidad</b><span>Fórmulas consistentes</span></div>
+          <div><b>Cercanía</b><span>Asesoría directa</span></div>
+          <div><b>Cobertura</b><span>Toda la región</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits" id="beneficios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="tag">Ventajas</span>
+        <h2>Beneficios de trabajar con Maygen</h2>
+        <p>Integramos formulación, servicio y continuidad de suministro para operaciones que no pueden detenerse.</p>
+      </div>
+
+      <div class="benefit-grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+          </div>
+          <h3>Respuesta rápida</h3>
+          <p>Atendemos necesidades operativas con soluciones ágiles y enfoque comercial directo.</p>
+        </div>
+
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3 6 5.5V11c0 4 2.7 7.7 6 9 3.3-1.3 6-5 6-9V5.5L12 3Z"/></svg>
+          </div>
+          <h3>Estándares de seguridad</h3>
+          <p>Trabajamos con procesos y líneas orientadas a higiene, control y consistencia de uso.</p>
+        </div>
+
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 19c7 0 12-5 14-14 0 0-10 2-14 9 0 0-1 2 0 5Z"/><path d="M9 15c1.5-1.5 3.5-3 6-4.5"/></svg>
+          </div>
+          <h3>Visión responsable</h3>
+          <p>Promovemos soluciones efectivas con mejor criterio técnico y una operación más consciente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.12); box-shadow:none;">Contáctanos</span>
+        <h2>Hablemos de tu industria</h2>
+        <p>Escríbenos y te ayudamos a elegir la línea de productos correcta para tu operación.</p>
+
+        <div class="contact-row">
+          <div class="ic">
+            <svg viewBox="0 0 24 24"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <div><b>Ubicación</b><span>San Pedro Sula, Honduras</span></div>
+        </div>
+
+        <div class="contact-row">
+          <div class="ic">
+            <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 19a19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 1.8-.6l3 .5A2 2 0 0 1 22 16.9Z"/></svg>
+          </div>
+          <div><b>Teléfono</b><span>+504 0000-0000</span></div>
+        </div>
+
+        <div class="contact-row">
+          <div class="ic">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+          </div>
+          <div><b>Correo</b><span>ventas@maygen.hn</span></div>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <div class="f-row">
+          <input placeholder="Nombre" />
+          <input placeholder="Empresa" />
+        </div>
+        <div class="f-row">
+          <input placeholder="Correo" />
           <select>
-            <option>Selecciona una línea de producto...</option>
-            <option>Línea Industrial</option>
-            <option>Línea Hogar</option>
-            <option>Línea Eco</option>
-            <option>Línea Sanitización</option>
-            <option>Línea Alimentos</option>
-            <option>Línea Premium</option>
+            <option>Industria: Hotelería</option>
+            <option>Hospitales</option>
+            <option>Negocios</option>
+            <option>Casa personal</option>
           </select>
         </div>
-
-        <div class="form-group full">
-          <label>Mensaje</label>
-          <textarea placeholder="Cuéntanos sobre tus necesidades de limpieza e higiene..."></textarea>
+        <div class="f-row">
+          <textarea placeholder="Cuéntanos qué necesitas..."></textarea>
         </div>
-
-        <button type="submit" class="btn-submit">Enviar Solicitud</button>
-      </form>
+        <button class="form-submit">Enviar mensaje</button>
+      </div>
     </div>
   </section>
 
   <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="logo-footer">MAYGEN</span>
-        <p>Soluciones químicas con efervescencia natural. Innovación, calidad y compromiso en cada gota.</p>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="images/Logo Maygen Nuevo-01.png" alt="Logo de Maygen" class="footer-logo" />
+            <div class="logo-mark">
+              <span class="mini" style="color:var(--lime);">Químicas</span>
+              <span class="wordmark" style="color:#fff;">Maygen</span>
+            </div>
+          </div>
+          <p style="font-size:13.5px; max-width:280px;">Soluciones de limpieza e higiene profesional para Honduras.</p>
+        </div>
 
-        <div class="redes">
-          <a href="#" class="red-icon" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.6.4-1 1-1Z"/></svg>
-          </a>
-          <a href="#" class="red-icon" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
-          </a>
-          <a href="#" class="red-icon" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M8 10v8"/><path d="M12 18v-4.5a2.5 2.5 0 0 1 5 0V18"/><circle cx="8" cy="7" r="1"/><path d="M16 10a4 4 0 0 1 4 4v4"/></svg>
-          </a>
-          <a href="#" class="red-icon" aria-label="X">
-            <svg viewBox="0 0 24 24"><path d="M4 4l16 16"/><path d="M20 4 4 20"/></svg>
-          </a>
+        <div>
+          <h4>Sitio</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#membresias">Membresías</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#nosotros">Sobre nosotros</a></li>
+            <li><a href="#beneficios">Ventajas</a></li>
+            <li><a href="#contacto">Contáctanos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Industrias</h4>
+          <ul>
+            <li>Hotelería</li>
+            <li>Hospitales</li>
+            <li>Negocios</li>
+            <li>Casas</li>
+          </ul>
         </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Productos</h4>
-        <ul>
-          <li><a href="#productos">Línea Industrial</a></li>
-          <li><a href="#productos">Línea Hogar</a></li>
-          <li><a href="#productos">Línea Eco</a></li>
-          <li><a href="#productos">Línea Sanitización</a></li>
-          <li><a href="#productos">Línea Premium</a></li>
-        </ul>
+      <div class="foot-bottom">
+        <span>© 2026 Maygen.</span>
+        <span>San Pedro Sula, Honduras</span>
       </div>
-
-      <div class="footer-col">
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#beneficios">Beneficios</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="#contacto">Ciudad de México</a></li>
-          <li><a href="#contacto">55 0000 0000</a></li>
-          <li><a href="#contacto">info@maygen.mx</a></li>
-          <li><a href="#contacto">Lun–Vie 9–18h</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      © 2026 Maygen — Todos los derechos reservados.
     </div>
   </footer>
 
   <script>
-    const burbujasBg = document.getElementById('burbujasBg');
-
-    function crearBurbuja() {
-      const b = document.createElement('div');
-      b.className = 'burbuja';
-      const size = Math.random() * 80 + 20;
-      b.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        left: ${Math.random() * 100}%;
-        animation-duration: ${Math.random() * 15 + 10}s;
-        animation-delay: ${Math.random() * 5}s;
-      `;
-      burbujasBg.appendChild(b);
-      setTimeout(() => b.remove(), 25000);
-    }
-
-    setInterval(crearBurbuja, 1500);
-    for (let i = 0; i < 8; i++) setTimeout(crearBurbuja, i * 300);
-
-    const particulasEl = document.getElementById('particulas');
-    const colores = ['rgba(0,102,255,', 'rgba(0,170,255,', 'rgba(0,229,204,', 'rgba(0,255,136,'];
-
-    function crearParticula() {
-      const p = document.createElement('div');
-      p.className = 'particula';
-      const size = Math.random() * 6 + 2;
-      const color = colores[Math.floor(Math.random() * colores.length)];
-
-      p.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        left: ${Math.random() * 100}%;
-        bottom: ${Math.random() * 30}%;
-        background: ${color}0.8);
-      `;
-
-      p.style.animationDuration = (Math.random() * 6 + 4) + 's';
-      p.style.animationDelay = (Math.random() * 3) + 's';
-      particulasEl.appendChild(p);
-      setTimeout(() => p.remove(), 10000);
-    }
-
-    setInterval(crearParticula, 400);
-    for (let i = 0; i < 15; i++) setTimeout(crearParticula, i * 200);
-
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
     const cursorGlow = document.getElementById('cursorGlow');
     document.addEventListener('mousemove', (e) => {
       cursorGlow.style.left = e.clientX + 'px';
       cursorGlow.style.top = e.clientY + 'px';
     });
 
-    const revealEls = document.querySelectorAll('.reveal, .paso');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+    const bubblesWrap = document.getElementById('ambientBubbles');
+    function createBubble(){
+      const bubble = document.createElement('span');
+      bubble.className = 'ambient-bubble';
+      const size = Math.random() * 70 + 18;
+      bubble.style.width = size + 'px';
+      bubble.style.height = size + 'px';
+      bubble.style.left = Math.random() * 100 + '%';
+      bubble.style.animationDuration = (Math.random() * 10 + 8) + 's';
+      bubble.style.animationDelay = (Math.random() * 3) + 's';
+      bubblesWrap.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 19000);
+    }
+    setInterval(createBubble, 1200);
+    for(let i=0;i<10;i++){ setTimeout(createBubble, i * 240); }
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.14 });
 
-    revealEls.forEach(el => observer.observe(el));
+    revealEls.forEach(el => revealObserver.observe(el));
 
-    const statNums = document.querySelectorAll('.stat-num[data-target]');
-    const statObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.dataset.target);
-          let current = 0;
-          const step = target / 60;
+    const links = document.querySelectorAll('.nav-pills a');
+    const sections = [...document.querySelectorAll('section[id]')];
 
-          const timer = setInterval(() => {
-            current = Math.min(current + step, target);
-            el.textContent = Math.floor(current);
-            if (current >= target) clearInterval(timer);
-          }, 25);
+    function updateActiveLink(){
+      const scrollPos = window.scrollY + 180;
+      let current = '#inicio';
 
-          statObserver.unobserve(el);
+      sections.forEach(sec => {
+        if(scrollPos >= sec.offsetTop){
+          current = '#' + sec.id;
         }
       });
-    }, { threshold: 0.5 });
 
-    statNums.forEach(el => statObserver.observe(el));
-
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.btn-submit');
-      btn.textContent = '✓ Solicitud enviada con éxito';
-      btn.style.background = 'linear-gradient(135deg, #00FF88, #00E5CC)';
-
-      setTimeout(() => {
-        btn.textContent = 'Enviar Solicitud';
-        btn.style.background = '';
-        e.target.reset();
-      }, 3000);
+      links.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === current);
+      });
     }
 
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 200) current = s.id;
-      });
-
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--turquesa)' : '';
-      });
-    });
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
   </script>
-
 </body>
 </html>
