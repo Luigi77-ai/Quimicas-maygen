@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos — Maygen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--azul:#0066FF;--azul-claro:#00AAFF;--turquesa:#00E5CC;--verde:#00FF88;--blanco:#FFFFFF;--gris-oscuro:#0A0F1E;--gris-medio:#1A2035;--gradiente:linear-gradient(135deg,#0066FF 0%,#00AAFF 50%,#00E5CC 100%)}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--gris-oscuro);color:var(--blanco);overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--gris-oscuro)}::-webkit-scrollbar-thumb{background:var(--azul-claro);border-radius:3px}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s ease}
+nav.scrolled{background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(0,170,255,0.2);box-shadow:0 4px 30px rgba(0,102,255,0.15)}
+.logo{font-size:28px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gradiente);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.activo{color:var(--turquesa)}
+.nav-links a:hover::after,.nav-links a.activo::after{width:100%}
+.nav-cta{background:var(--gradiente);color:white!important;padding:10px 24px;border-radius:25px;font-weight:700!important;box-shadow:0 4px 20px rgba(0,102,255,0.4)}
+/* HERO PRODUCTOS */
+.hero-pag{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 50%,rgba(0,102,255,0.2) 0%,transparent 60%),radial-gradient(ellipse at 70% 30%,rgba(0,229,204,0.12) 0%,transparent 50%);padding-top:100px}
+.hero-pag-content{text-align:center;z-index:2;padding:60px 20px}
+.etiqueta{display:inline-block;color:var(--turquesa);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px}
+.hero-pag h1{font-size:clamp(40px,6vw,80px);font-weight:900;line-height:1;margin-bottom:20px}
+.hero-pag h1 span{display:block;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-pag p{color:rgba(255,255,255,0.65);font-size:18px;max-width:600px;margin:0 auto}
+.olas{position:absolute;bottom:-2px;left:0;width:100%}
+/* FILTROS */
+.filtros-wrap{padding:60px;text-align:center;position:relative;z-index:2}
+.filtros{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.filtro-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:10px 24px;border-radius:25px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;cursor:pointer;transition:all 0.3s}
+.filtro-btn:hover,.filtro-btn.activo{background:var(--gradiente);border-color:transparent;color:white;box-shadow:0 4px 20px rgba(0,102,255,0.4)}
+/* GRID PRODUCTOS */
+.productos-seccion{padding:0 60px 120px;max-width:1400px;margin:0 auto}
+.categoria-titulo{font-size:28px;font-weight:800;margin-bottom:40px;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:15px}
+.categoria-titulo span{background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.productos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:30px;margin-bottom:80px}
+.prod-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:24px;overflow:hidden;transition:all 0.4s ease;cursor:pointer;position:relative}
+.prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradiente);transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+.prod-card:hover{transform:translateY(-8px);background:rgba(255,255,255,0.06);border-color:rgba(0,170,255,0.3);box-shadow:0 25px 50px rgba(0,102,255,0.2)}
+.prod-card:hover::before{transform:scaleX(1)}
+.prod-img{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.prod-img-industrial{background:linear-gradient(135deg,rgba(0,102,255,0.3),rgba(0,170,255,0.1))}
+.prod-img-hogar{background:linear-gradient(135deg,rgba(0,229,204,0.3),rgba(0,255,136,0.1))}
+.prod-img-eco{background:linear-gradient(135deg,rgba(0,255,136,0.3),rgba(0,229,204,0.1))}
+.prod-img-sanit{background:linear-gradient(135deg,rgba(100,0,255,0.3),rgba(0,102,255,0.1))}
+.prod-img-alim{background:linear-gradient(135deg,rgba(255,140,0,0.2),rgba(0,229,204,0.2))}
+.prod-icono-grande{font-size:72px;filter:drop-shadow(0 0 30px rgba(0,170,255,0.5));animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.prod-badge{position:absolute;top:15px;right:15px;background:var(--gradiente);color:white;font-size:11px;font-weight:700;letter-spacing:1px;padding:5px 12px;border-radius:20px}
+.prod-body{padding:25px}
+.prod-body h3{font-size:20px;font-weight:700;margin-bottom:10px}
+.prod-body p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;margin-bottom:20px}
+.prod-specs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.spec-tag{background:rgba(0,170,255,0.1);border:1px solid rgba(0,170,255,0.25);color:var(--azul-claro);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:0.5px}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;padding-top:15px;border-top:1px solid rgba(255,255,255,0.07)}
+.prod-cta{background:var(--gradiente);color:white;border:none;padding:10px 20px;border-radius:20px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.3s}
+.prod-cta:hover{transform:scale(1.05);box-shadow:0 5px 20px rgba(0,102,255,0.5)}
+.prod-linea{font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+/* CTA SECCION */
+.cta-seccion{text-align:center;padding:80px 60px;background:linear-gradient(135deg,rgba(0,102,255,0.15),rgba(0,229,204,0.08));border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)}
+.cta-seccion h2{font-size:clamp(28px,4vw,48px);font-weight:800;margin-bottom:15px}
+.cta-seccion h2 span{background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-seccion p{color:rgba(255,255,255,0.65);font-size:17px;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+.btn-prim{display:inline-block;background:var(--gradiente);color:white;padding:16px 40px;border-radius:50px;font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;box-shadow:0 8px 30px rgba(0,102,255,0.4)}
+.btn-prim:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,102,255,0.6)}
+/* FOOTER */
+footer{background:rgba(0,0,0,0.5);border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;text-align:center}
+.footer-logo{font-size:24px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:20px}
+.footer-nav{display:flex;gap:30px;justify-content:center;list-style:none;margin-bottom:20px;flex-wrap:wrap}
+.footer-nav a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;transition:color 0.3s}
+.footer-nav a:hover{color:var(--turquesa)}
+.footer-bottom{color:rgba(255,255,255,0.35);font-size:13px}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* PARTÍCULAS */
+.burbujas-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.burbuja{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(0,170,255,0.25),rgba(0,229,204,0.04));border:1px solid rgba(0,170,255,0.15);animation:flotar linear infinite}
+@keyframes flotar{0%{transform:translateY(110vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:0.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+@media(max-width:900px){nav{padding:15px 25px}.filtros-wrap,.productos-seccion,.cta-seccion{padding-left:20px;padding-right:20px}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<div class="burbujas-bg" id="burbujasBg"></div>
+<nav id="mainNav">
+  <a href="index.html" class="logo">MAYGEN</a>
+  <ul class="nav-links">
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="productos.html" class="activo">Productos</a></li>
+    <li><a href="membresias.html">Membresías</a></li>
+    <li><a href="contacto.html" class="nav-cta">Contáctanos</a></li>
+  </ul>
+</nav>
+
+<section class="hero-pag">
+  <div class="hero-pag-content">
+    <span class="etiqueta">✶ Catálogo Completo ✶</span>
+    <h1>Nuestros <span>Productos</span></h1>
+    <p>Soluciones de limpieza e higiene para cada necesidad. Formulaciones avanzadas con resultados comprobados.</p>
+  </div>
+  <svg class="olas" viewBox="0 0 1440 60" fill="none"><path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" fill="rgba(10,15,30,0.9)"/></svg>
+</section>
+
+<div class="filtros-wrap">
+  <div class="filtros">
+    <button class="filtro-btn activo" onclick="filtrar('todos')">Todos</button>
+    <button class="filtro-btn" onclick="filtrar('industrial')">Industrial</button>
+    <button class="filtro-btn" onclick="filtrar('hogar')">Hogar</button>
+    <button class="filtro-btn" onclick="filtrar('eco')">Eco</button>
+    <button class="filtro-btn" onclick="filtrar('sanitizacion')">Sanitización</button>
+    <button class="filtro-btn" onclick="filtrar('alimentos')">Alimentos</button>
+  </div>
+</div>
+
+<div class="productos-seccion">
+
+  <!-- INDUSTRIAL -->
+  <div class="categoria-titulo reveal"><span>⚡</span> Línea Industrial</div>
+  <div class="productos-grid">
+    <div class="prod-card reveal" data-cat="industrial">
+      <div class="prod-img prod-img-industrial">
+        <span class="prod-icono-grande">🪧</span>
+        <span class="prod-badge">Alta Potencia</span>
+      </div>
+      <div class="prod-body">
+        <h3>Desengrasante Industrial PRO</h3>
+        <p>Formula concentrada de alta potencia para eliminar grasa, aceite y suciedad pesada en superficies metálicas e industriales.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Concentrado</span>
+          <span class="spec-tag">Sin disolventes</span>
+          <span class="spec-tag">Biodegradable</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Industrial</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card reveal" data-cat="industrial">
+      <div class="prod-img prod-img-industrial">
+        <span class="prod-icono-grande">💧</span>
+        <span class="prod-badge">Multi-superficie</span>
+      </div>
+      <div class="prod-body">
+        <h3>Limpiador Multiusos Industrial</h3>
+        <p>Limpiador versátil para pisos industriales, maquinaria y áreas de trabajo. Eficaz contra aceites, grasas y residuos de producción.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Alta dilucón</span>
+          <span class="spec-tag">Neutro pH</span>
+          <span class="spec-tag">Rápido secado</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Industrial</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card reveal" data-cat="industrial">
+      <div class="prod-img prod-img-industrial">
+        <span class="prod-icono-grande">🔧</span>
+        <span class="prod-badge">Especializado</span>
+      </div>
+      <div class="prod-body">
+        <h3>Removedor de Incrustaciones</h3>
+        <p>Elimina cal, óxido y depósitos minerales en tuberías, calentadores y equipos industriales. Fórmula ácida controlada.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Anti-incrustante</span>
+          <span class="spec-tag">Acero inox</span>
+          <span class="spec-tag">Tuberías</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Industrial</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOGAR -->
+  <div class="categoria-titulo reveal"><span>🏠</span> Línea Hogar</div>
+  <div class="productos-grid">
+    <div class="prod-card reveal" data-cat="hogar">
+      <div class="prod-img prod-img-hogar">
+        <span class="prod-icono-grande">🧹</span>
+        <span class="prod-badge">Fragancia Premium</span>
+      </div>
+      <div class="prod-body">
+        <h3>Limpiapisos Efervescente</h3>
+        <p>Limpiador de pisos con tecnología efervescente que penetra profundo y deja brillante. Disponible en múltiples fragancias naturales.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">7 fragancias</span>
+          <span class="spec-tag">Antibacterial</span>
+          <span class="spec-tag">Brillante</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Hogar</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card reveal" data-cat="hogar">
+      <div class="prod-img prod-img-hogar">
+        <span class="prod-icono-grande">🚽</span>
+        <span class="prod-badge">Familiar</span>
+      </div>
+      <div class="prod-body">
+        <h3>Limpiador de Baños</h3>
+        <p>Formula especial para sanitarios, azulejos y griferías. Elimina manchas de cal, jaboná, herrumbre y bacterias. Seguro para toda la familia.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Anti-cal</span>
+          <span class="spec-tag">Antibácteriano</span>
+          <span class="spec-tag">Sin cloro</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Hogar</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card reveal" data-cat="hogar">
+      <div class="prod-img prod-img-hogar">
+        <span class="prod-icono-grande">💨</span>
+        <span class="prod-badge">Novedad</span>
+      </div>
+      <div class="prod-body">
+        <h3>Desengrasante Cocina</h3>
+        <p>Corta la grasa de estufas, campanas y utensilios de cocina. Fórmula segura en contacto con superficies usadas para alimentos.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Food Safe</span>
+          <span class="spec-tag">Rápida acción</span>
+          <span class="spec-tag">Sin residuos</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Hogar</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECO -->
+  <div class="categoria-titulo reveal"><span>🌱</span> Línea Eco</div>
+  <div class="productos-grid">
+    <div class="prod-card reveal" data-cat="eco">
+      <div class="prod-img prod-img-eco">
+        <span class="prod-icono-grande">🌿</span>
+        <span class="prod-badge">Biodegradable</span>
+      </div>
+      <div class="prod-body">
+        <h3>Limpiador Natural Citrus</h3>
+        <p>Formulado con extractos cítricos naturales. 100% biodegradable, sin fosfatos ni compuestos tóxicos. Mismo poder limpiador, menor impacto ambiental.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">100% Natural</span>
+          <span class="spec-tag">Sin fosfatos</span>
+          <span class="spec-tag">Cert. Eco</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Eco</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card reveal" data-cat="eco">
+      <div class="prod-img prod-img-eco">
+        <span class="prod-icono-grande">🌊</span>
+        <span class="prod-badge">Agua Segura</span>
+      </div>
+      <div class="prod-body">
+        <h3>Detergente Eco Plus</h3>
+        <p>Detergente multiusos con fórmula eco-friendly. No daña sistemas de agua ni ecosistemas. Ideal para empresas con compromiso ambiental.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Ecosistema</span>
+          <span class="spec-tag">ISO 14001</span>
+          <span class="spec-tag">Empresarial</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Eco</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SANITIZACIÓN -->
+  <div class="categoria-titulo reveal"><span>🏥</span> Línea Sanitización</div>
+  <div class="productos-grid">
+    <div class="prod-card reveal" data-cat="sanitizacion">
+      <div class="prod-img prod-img-sanit">
+        <span class="prod-icono-grande">🧼</span>
+        <span class="prod-badge">Grado Médico</span>
+      </div>
+      <div class="prod-body">
+        <h3>Desinfectante Hospitalario</h3>
+        <p>Desinfectante de amplio espectro con acción virucida, bactericida y fungicida. Aprobado para uso en entornos hospitalarios y clínicos.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Virucida</span>
+          <span class="spec-tag">Bactericida</span>
+          <span class="spec-tag">Fungicida</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Sanitización</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card reveal" data-cat="sanitizacion">
+      <div class="prod-img prod-img-sanit">
+        <span class="prod-icono-grande">🛡️</span>
+        <span class="prod-badge">Comercial</span>
+      </div>
+      <div class="prod-body">
+        <h3>Sanitizante Multiuso</h3>
+        <p>Para oficinas, comercios, restaurantes y espacios públicos. Elimina el 99.9% de bacterias y virus en superficies de alto contacto.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">99.9% efectivo</span>
+          <span class="spec-tag">Sin enjuague</span>
+          <span class="spec-tag">Rápido</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Sanitización</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALIMENTOS -->
+  <div class="categoria-titulo reveal"><span>🍽️</span> Línea Alimentos</div>
+  <div class="productos-grid">
+    <div class="prod-card reveal" data-cat="alimentos">
+      <div class="prod-img prod-img-alim">
+        <span class="prod-icono-grande">🍽️</span>
+        <span class="prod-badge">Food Grade</span>
+      </div>
+      <div class="prod-body">
+        <h3>Desinfectante de Vegetales</h3>
+        <p>Solución especial para lavar y desinfectar frutas, verduras y hortalizas. Elimina pesticidas, bacterias y virus sin dejar residuos tóxicos.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">Sin olor</span>
+          <span class="spec-tag">Sin sabor</span>
+          <span class="spec-tag">COFEPRIS</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Alimentos</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card reveal" data-cat="alimentos">
+      <div class="prod-img prod-img-alim">
+        <span class="prod-icono-grande">🧴</span>
+        <span class="prod-badge">HACCP</span>
+      </div>
+      <div class="prod-body">
+        <h3>Limpiador de Equipos Alimentarios</h3>
+        <p>Para marmitas, mesas de trabajo, cortadoras y equipos en contacto directo con alimentos. Cumple normas HACCP y estándares sanitarios internacionales.</p>
+        <div class="prod-specs">
+          <span class="spec-tag">HACCP</span>
+          <span class="spec-tag">Acero inox</span>
+          <span class="spec-tag">Trazable</span>
+        </div>
+        <div class="prod-footer">
+          <span class="prod-linea">Línea Alimentos</span>
+          <button class="prod-cta" onclick="location.href='contacto.html'">Cotizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-seccion">
+  <h2>¿No encuentras lo que <span>necesitas?</span></h2>
+  <p>Desarrollamos fórmulas personalizadas según tus requerimientos específicos.</p>
+  <a href="contacto.html" class="btn-prim">Solicitar Formulación Especial</a>
+</div>
+
+<footer>
+  <span class="logo-footer footer-logo">MAYGEN</span>
+  <ul class="footer-nav">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="productos.html">Productos</a></li>
+    <li><a href="membresias.html">Membresías</a></li>
+    <li><a href="contacto.html">Contáctanos</a></li>
+  </ul>
+  <div class="footer-bottom">© 2026 Maygen — Todos los derechos reservados ✶</div>
+</footer>
+
+<script>
+const burbujasBg = document.getElementById('burbujasBg');
+function crearBurbuja(){const b=document.createElement('div');b.className='burbuja';const s=Math.random()*60+20;b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*5}s`;burbujasBg.appendChild(b);setTimeout(()=>b.remove(),25000)}
+setInterval(crearBurbuja,2000);for(let i=0;i<5;i++)setTimeout(crearBurbuja,i*400);
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*80)})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+function filtrar(cat){
+  document.querySelectorAll('.filtro-btn').forEach(b=>b.classList.remove('activo'));
+  event.target.classList.add('activo');
+  document.querySelectorAll('.prod-card').forEach(c=>{
+    if(cat==='todos'||c.dataset.cat===cat){c.style.display='block'}else{c.style.display='none'}
+  });
+}
+</script>
+</body>
+</html>
