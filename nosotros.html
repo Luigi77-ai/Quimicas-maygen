@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre Nosotros — Maygen</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--azul:#0066FF;--azul-claro:#00AAFF;--turquesa:#00E5CC;--verde:#00FF88;--gris-oscuro:#0A0F1E;--gris-medio:#1A2035;--gradiente:linear-gradient(135deg,#0066FF 0%,#00AAFF 50%,#00E5CC 100%)}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--gris-oscuro);color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--azul-claro);border-radius:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
+nav.scrolled{background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(0,170,255,0.2);box-shadow:0 4px 30px rgba(0,102,255,0.15)}
+.logo{font-size:28px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gradiente);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.activo{color:var(--turquesa)}
+.nav-links a:hover::after,.nav-links a.activo::after{width:100%}
+.nav-cta{background:var(--gradiente);color:white!important;padding:10px 24px;border-radius:25px;font-weight:700!important;box-shadow:0 4px 20px rgba(0,102,255,0.4)}
+/* HERO */
+.hero-pag{min-height:60vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 60%,rgba(0,102,255,0.2),transparent 65%),radial-gradient(ellipse at 80% 10%,rgba(0,229,204,0.12),transparent 50%);padding-top:100px}
+.hero-pag-content{text-align:center;z-index:2;padding:60px 20px}
+.etiqueta-hero{display:inline-block;color:var(--turquesa);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px}
+.hero-pag h1{font-size:clamp(40px,6vw,80px);font-weight:900;line-height:1;margin-bottom:20px}
+.hero-pag h1 span{display:block;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-pag .frase{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,2.5vw,22px);color:rgba(255,255,255,0.65);max-width:650px;margin:0 auto;line-height:1.5}
+.olas{position:absolute;bottom:-2px;left:0;width:100%}
+/* MISION VISION */
+.mv-seccion{padding:100px 60px;max-width:1200px;margin:0 auto}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-bottom:80px}
+.mv-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:28px;padding:50px 40px;position:relative;overflow:hidden;transition:all 0.4s}
+.mv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradiente)}
+.mv-card:hover{transform:translateY(-5px);border-color:rgba(0,170,255,0.3);box-shadow:0 20px 50px rgba(0,102,255,0.15)}
+.mv-icono{font-size:52px;margin-bottom:20px;display:block;filter:drop-shadow(0 0 20px rgba(0,170,255,0.4))}
+.mv-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--turquesa);margin-bottom:12px}
+.mv-card h2{font-size:26px;font-weight:800;margin-bottom:15px}
+.mv-card p{color:rgba(255,255,255,0.7);font-size:15px;line-height:1.8}
+/* PRINCIPIO */
+.principio-seccion{padding:60px;text-align:center;background:linear-gradient(135deg,rgba(0,102,255,0.12),rgba(0,229,204,0.06));border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);position:relative;z-index:2}
+.principio-seccion blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,3.5vw,36px);line-height:1.4;color:white;max-width:800px;margin:0 auto 25px;position:relative}
+.principio-seccion blockquote::before,.principio-seccion blockquote::after{content:'"';font-size:80px;line-height:0.8;color:rgba(0,170,255,0.3);position:absolute}
+.principio-seccion blockquote::before{top:-10px;left:-30px}
+.principio-seccion blockquote::after{content:'"';bottom:-30px;right:-30px}
+.principio-autor{color:rgba(255,255,255,0.5);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+/* VALORES */
+.valores-seccion{padding:100px 60px;position:relative;z-index:2}
+.seccion-titulo{text-align:center;margin-bottom:60px}
+.etiqueta{display:inline-block;color:var(--turquesa);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px}
+.seccion-titulo h2{font-size:clamp(28px,4vw,50px);font-weight:800}
+.seccion-titulo h2 span{background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.valores-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;max-width:1200px;margin:0 auto}
+.valor-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:35px 25px;text-align:center;transition:all 0.4s;cursor:default}
+.valor-card:hover{background:rgba(0,170,255,0.1);border-color:rgba(0,170,255,0.3);transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,102,255,0.2)}
+.valor-icono{font-size:40px;margin-bottom:15px;display:block;filter:drop-shadow(0 0 15px rgba(0,229,204,0.4))}
+.valor-card h3{font-size:15px;font-weight:700;margin-bottom:10px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.valor-card p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.6}
+/* HISTORIA / TIMELINE */
+.historia-seccion{padding:100px 60px;max-width:1000px;margin:0 auto}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:0;top:10px;bottom:10px;width:2px;background:linear-gradient(to bottom,var(--azul),var(--turquesa),var(--verde))}
+.timeline-item{position:relative;margin-bottom:55px;padding-left:40px}
+.timeline-punto{position:absolute;left:-49px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--azul-claro);border:3px solid var(--gris-oscuro);box-shadow:0 0 15px rgba(0,170,255,0.5);transition:all 0.3s}
+.timeline-item:hover .timeline-punto{background:var(--turquesa);box-shadow:0 0 25px rgba(0,229,204,0.7);transform:scale(1.3)}
+.timeline-anno{font-size:13px;font-weight:700;letter-spacing:3px;color:var(--azul-claro);margin-bottom:8px;text-transform:uppercase}
+.timeline-item h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.timeline-item p{color:rgba(255,255,255,0.65);font-size:14px;line-height:1.7}
+/* EQUIPO */
+.equipo-seccion{padding:100px 60px;background:linear-gradient(180deg,transparent,rgba(0,102,255,0.05),transparent);position:relative;z-index:2}
+.equipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;max-width:1200px;margin:0 auto}
+.miembro-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:24px;padding:35px 25px;text-align:center;transition:all 0.4s}
+.miembro-card:hover{transform:translateY(-8px);border-color:rgba(0,170,255,0.3);box-shadow:0 20px 40px rgba(0,102,255,0.2)}
+.miembro-avatar{width:90px;height:90px;border-radius:50%;background:var(--gradiente);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;margin:0 auto 20px;box-shadow:0 8px 25px rgba(0,102,255,0.4)}
+.miembro-nombre{font-size:18px;font-weight:700;margin-bottom:5px}
+.miembro-cargo{color:var(--turquesa);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.miembro-desc{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.5}
+/* OBJETIVOS */
+.objetivos-seccion{padding:100px 60px;position:relative;z-index:2}
+.objetivos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1200px;margin:0 auto}
+.objetivo-item{display:flex;align-items:flex-start;gap:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px;transition:all 0.3s}
+.objetivo-item:hover{border-color:rgba(0,170,255,0.3);background:rgba(0,170,255,0.07);transform:translateX(5px)}
+.objetivo-num{font-size:36px;font-weight:900;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0;line-height:1}
+.objetivo-texto h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.objetivo-texto p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.6}
+/* CTA */
+.cta-seccion{text-align:center;padding:80px 60px;background:var(--gradiente);position:relative;overflow:hidden}
+.cta-seccion::before{content:'';position:absolute;top:-50%;left:-10%;right:-10%;bottom:-50%;background:radial-gradient(ellipse,rgba(255,255,255,0.08),transparent 60%);animation:pulso 4s ease-in-out infinite}
+@keyframes pulso{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.cta-seccion h2{font-size:clamp(26px,4vw,46px);font-weight:900;margin-bottom:15px;position:relative;z-index:1}
+.cta-seccion p{font-size:17px;opacity:0.9;margin-bottom:35px;position:relative;z-index:1}
+.btn-blanco{display:inline-block;background:white;color:var(--azul);padding:16px 40px;border-radius:50px;font-weight:800;font-size:14px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;position:relative;z-index:1}
+.btn-blanco:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,0,0,0.3)}
+/* FOOTER */
+footer{background:rgba(0,0,0,0.5);border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;text-align:center}
+.footer-logo{font-size:24px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:20px}
+.footer-nav{display:flex;gap:30px;justify-content:center;list-style:none;margin-bottom:20px;flex-wrap:wrap}
+.footer-nav a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;transition:color 0.3s}
+.footer-nav a:hover{color:var(--turquesa)}
+.footer-bottom{color:rgba(255,255,255,0.35);font-size:13px}
+/* BURBUJAS */
+.burbujas-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.burbuja{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(0,170,255,0.25),rgba(0,229,204,0.04));border:1px solid rgba(0,170,255,0.15);animation:flotar linear infinite}
+@keyframes flotar{0%{transform:translateY(110vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:0.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){nav{padding:15px 25px}.nav-links{display:none}.mv-grid{grid-template-columns:1fr}.valores-grid{grid-template-columns:repeat(2,1fr)}.equipo-grid{grid-template-columns:repeat(2,1fr)}.objetivos-grid{grid-template-columns:1fr}.mv-seccion,.valores-seccion,.historia-seccion,.equipo-seccion,.objetivos-seccion,.cta-seccion{padding-left:20px;padding-right:20px}}
+</style>
+</head>
+<body>
+<div class="burbujas-bg" id="burbujasBg"></div>
+<nav id="mainNav">
+  <a href="index.html" class="logo">MAYGEN</a>
+  <ul class="nav-links">
+    <li><a href="nosotros.html" class="activo">Nosotros</a></li>
+    <li><a href="productos.html">Productos</a></li>
+    <li><a href="membresias.html">Membresías</a></li>
+    <li><a href="contacto.html" class="nav-cta">Contáctanos</a></li>
+  </ul>
+</nav>
+
+<section class="hero-pag">
+  <div class="hero-pag-content">
+    <span class="etiqueta-hero">✶ Nuestra historia ✶</span>
+    <h1>Sobre <span>Nosotros</span></h1>
+    <p class="frase">Creamos confianza a través de soluciones de limpieza que transforman espacios y vidas.</p>
+  </div>
+  <svg class="olas" viewBox="0 0 1440 60" fill="none"><path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" fill="rgba(10,15,30,0.9)"/></svg>
+</section>
+
+<!-- MISIÓN Y VISIÓN -->
+<div class="mv-seccion">
+  <div class="mv-grid">
+    <div class="mv-card reveal">
+      <span class="mv-icono">🎯</span>
+      <div class="mv-label">Nuestra Misión</div>
+      <h2>Por qué existimos</h2>
+      <p>Crear confianza ofreciendo soluciones de limpieza de alta calidad, brindando una experiencia de servicio cercana, humana y confiable en cada interacción. Cada producto que entregamos lleva consigo nuestro compromiso con la excelencia y el cuidado genuino por nuestros clientes.</p>
+    </div>
+    <div class="mv-card reveal">
+      <span class="mv-icono">🔭</span>
+      <div class="mv-label">Nuestra Visión</div>
+      <h2>A dónde vamos</h2>
+      <p>Ser una empresa referente en el mercado nacional y regional, reconocida por la calidad de sus productos y por ofrecer una experiencia de servicio memorable que construya relaciones sólidas y sostenibles. Aspiramos a ser sinónimo de confianza en cada hogar e industria.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRINCIPIO -->
+<div class="principio-seccion">
+  <blockquote>En Químicas Maygen no solo vendemos productos de limpieza; creamos experiencias agradables que generan confianza.</blockquote>
+  <p class="principio-autor">✶ Principio Cultura Maygen ✶</p>
+</div>
+
+<!-- VALORES -->
+<div class="valores-seccion">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Lo que nos define</span>
+    <h2>Nuestros <span>Valores</span></h2>
+  </div>
+  <div class="valores-grid">
+    <div class="valor-card reveal">
+      <span class="valor-icono">🤝</span>
+      <h3>Compromiso con el Cliente</h3>
+      <p>Atención respetuosa, oportuna y orientada a soluciones reales que satisfacen cada necesidad.</p>
+    </div>
+    <div class="valor-card reveal">
+      <span class="valor-icono">💯</span>
+      <h3>Integridad</h3>
+      <p>Honestidad, ética, coherencia y cumplimiento de promesas en cada acción y decisión.</p>
+    </div>
+    <div class="valor-card reveal">
+      <span class="valor-icono">⭐</span>
+      <h3>Excelencia</h3>
+      <p>Hacer bien las cosas desde el primer momento, cuidando cada detalle con precisión y dedicación.</p>
+    </div>
+    <div class="valor-card reveal">
+      <span class="valor-icono">💼</span>
+      <h3>Responsabilidad</h3>
+      <p>Compromiso con seriedad, disciplina, orden y asumir las consecuencias de nuestros actos.</p>
+    </div>
+    <div class="valor-card reveal">
+      <span class="valor-icono">🚀</span>
+      <h3>Mejora Continua</h3>
+      <p>Aprendizaje constante de la experiencia y modificación inmediata para mejorar nuestro servicio.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORIA -->
+<div class="historia-seccion">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Nuestra trayectoria</span>
+    <h2>Historia de <span>Maygen</span></h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-punto"></div>
+      <div class="timeline-anno">Los orígenes</div>
+      <h3>El nacimiento de una idea</h3>
+      <p>Químicas Maygen nació de la visión de crear productos de limpieza que fueran más que simples químicos: experiencias que generan confianza. Con un pequeño laboratorio y grandes sueños, comenzamos a formular nuestras primeras soluciones.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-punto"></div>
+      <div class="timeline-anno">Crecimiento</div>
+      <h3>Expansión del catálogo</h3>
+      <p>Desarrollamos nuevas líneas de productos especializados: industrial, hogar, sanitización y alimentos. Nuestra reputación creció gracias a la calidad comprobada y al servicio cercano que nos caracteriza.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-punto"></div>
+      <div class="timeline-anno">Consolidación</div>
+      <h3>Referentes en el mercado</h3>
+      <p>Con más de 500 clientes activos, presencia a nivel nacional y certificaciones de calidad, Maygen se consolida como empresa referente en soluciones de limpieza e higiene, con enfoque en la sostenibilidad.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-punto"></div>
+      <div class="timeline-anno">Hoy</div>
+      <h3>Innovación constante</h3>
+      <p>Seguimos innovando con formulaciones eco-friendly, tecnología de efervescencia y una plataforma digital que acerca nuestros productos a cada rincio del país. El futuro de Maygen es brillante y sustentable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EQUIPO -->
+<div class="equipo-seccion">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Las personas detrás de Maygen</span>
+    <h2>Nuestro <span>Equipo</span></h2>
+  </div>
+  <div class="equipo-grid">
+    <div class="miembro-card reveal">
+      <div class="miembro-avatar">DG</div>
+      <div class="miembro-nombre">Dirección General</div>
+      <div class="miembro-cargo">Liderazgo Estratégico</div>
+      <p class="miembro-desc">Visión y dirección que impulsan el crecimiento nacional y regional de Maygen.</p>
+    </div>
+    <div class="miembro-card reveal">
+      <div class="miembro-avatar">QI</div>
+      <div class="miembro-nombre">Equipo de Química</div>
+      <div class="miembro-cargo">Innovación & I+D</div>
+      <p class="miembro-desc">Profesionales que desarrollan fórmulas de vanguardia con rigurosos controles de calidad.</p>
+    </div>
+    <div class="miembro-card reveal">
+      <div class="miembro-avatar">CS</div>
+      <div class="miembro-nombre">Atención al Cliente</div>
+      <div class="miembro-cargo">Experiencia & Servicio</div>
+      <p class="miembro-desc">El corazón de Maygen: el equipo que crea relaciones de confianza con cada cliente.</p>
+    </div>
+    <div class="miembro-card reveal">
+      <div class="miembro-avatar">LG</div>
+      <div class="miembro-nombre">Logística & Ventas</div>
+      <div class="miembro-cargo">Distribución Nacional</div>
+      <p class="miembro-desc">Garantizamos que tus productos lleguen en tiempo, forma y perfectas condiciones.</p>
+    </div>
+  </div>
+</div>
+
+<!-- OBJETIVOS -->
+<div class="objetivos-seccion">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Nuestro norte</span>
+    <h2>Objetivos <span>Estratégicos</span></h2>
+  </div>
+  <div class="objetivos-grid">
+    <div class="objetivo-item reveal">
+      <div class="objetivo-num">01</div>
+      <div class="objetivo-texto">
+        <h3>Elevar la Experiencia del Cliente</h3>
+        <p>Cada interacción con Maygen debe ser memorable, cercana y útil. La satisfacción del cliente es nuestra métrica principal.</p>
+      </div>
+    </div>
+    <div class="objetivo-item reveal">
+      <div class="objetivo-num">02</div>
+      <div class="objetivo-texto">
+        <h3>Fortalecer la Recompra</h3>
+        <p>Construir relaciones duraderas que conviertan a cada cliente en un aliado a largo plazo a través de calidad consistente.</p>
+      </div>
+    </div>
+    <div class="objetivo-item reveal">
+      <div class="objetivo-num">03</div>
+      <div class="objetivo-texto">
+        <h3>Optimizar Procesos</h3>
+        <p>Reducir errores, mejorar tiempos de entrega y elevar los estándares de calidad en toda la cadena de valor.</p>
+      </div>
+    </div>
+    <div class="objetivo-item reveal">
+      <div class="objetivo-num">04</div>
+      <div class="objetivo-texto">
+        <h3>Liderazgo Nacional</h3>
+        <p>Impulsar el crecimiento con presencia en mercados regionales y posicionamiento como marca referente en México.</p>
+      </div>
+    </div>
+    <div class="objetivo-item reveal">
+      <div class="objetivo-num">05</div>
+      <div class="objetivo-texto">
+        <h3>Cultura Interna Sólida</h3>
+        <p>Desarrollar un equipo comprometido con los valores institucionales que refleje hacia afuera la excelencia interna.</p>
+      </div>
+    </div>
+    <div class="objetivo-item reveal">
+      <div class="objetivo-num">06</div>
+      <div class="objetivo-texto">
+        <h3>Sostenibilidad Ambiental</h3>
+        <p>Desarrollar productos con menor impacto ambiental y certificaciones eco que respondan al compromiso con el planeta.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-seccion">
+  <h2>Forma parte de la familia Maygen</h2>
+  <p>Trabajemos juntos para transformar tu espacio con química de confianza.</p>
+  <a href="contacto.html" class="btn-blanco">Contáctanos Hoy</a>
+</div>
+
+<footer>
+  <span class="footer-logo">MAYGEN</span>
+  <ul class="footer-nav">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="productos.html">Productos</a></li>
+    <li><a href="membresias.html">Membresías</a></li>
+    <li><a href="contacto.html">Contáctanos</a></li>
+  </ul>
+  <div class="footer-bottom">© 2026 Maygen — Todos los derechos reservados ✶</div>
+</footer>
+
+<script>
+const burbujasBg=document.getElementById('burbujasBg');
+function crearBurbuja(){const b=document.createElement('div');b.className='burbuja';const s=Math.random()*60+15;b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*5}s`;burbujasBg.appendChild(b);setTimeout(()=>b.remove(),25000)}
+setInterval(crearBurbuja,2000);for(let i=0;i<5;i++)setTimeout(crearBurbuja,i*400);
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50));
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*100)})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
