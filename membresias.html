@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membresías — Maygen</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--azul:#0066FF;--azul-claro:#00AAFF;--turquesa:#00E5CC;--verde:#00FF88;--gris-oscuro:#0A0F1E;--gris-medio:#1A2035;--gradiente:linear-gradient(135deg,#0066FF 0%,#00AAFF 50%,#00E5CC 100%)}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--gris-oscuro);color:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--azul-claro);border-radius:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
+nav.scrolled{background:rgba(10,15,30,0.95);backdrop-filter:blur(20px);padding:14px 60px;border-bottom:1px solid rgba(0,170,255,0.2);box-shadow:0 4px 30px rgba(0,102,255,0.15)}
+.logo{font-size:28px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gradiente);transition:width 0.3s}
+.nav-links a:hover,.nav-links a.activo{color:var(--turquesa)}
+.nav-links a:hover::after,.nav-links a.activo::after{width:100%}
+.nav-cta{background:var(--gradiente);color:white!important;padding:10px 24px;border-radius:25px;font-weight:700!important;box-shadow:0 4px 20px rgba(0,102,255,0.4)}
+/* HERO */
+.hero-pag{min-height:55vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 20% 60%,rgba(0,102,255,0.2),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(0,229,204,0.15),transparent 50%);padding-top:100px}
+.hero-pag-content{text-align:center;z-index:2;padding:60px 20px}
+.etiqueta{display:inline-block;color:var(--turquesa);font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px}
+.hero-pag h1{font-size:clamp(40px,6vw,80px);font-weight:900;line-height:1;margin-bottom:20px}
+.hero-pag h1 span{display:block;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-pag p{color:rgba(255,255,255,0.65);font-size:18px;max-width:600px;margin:0 auto}
+.olas{position:absolute;bottom:-2px;left:0;width:100%}
+/* TOGGLE BILLING */
+.billing-toggle-wrap{text-align:center;padding:50px 20px 10px;position:relative;z-index:2}
+.billing-toggle{display:inline-flex;align-items:center;gap:15px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:6px;border-radius:30px}
+.billing-toggle span{font-size:13px;font-weight:600;color:rgba(255,255,255,0.6);padding:8px 16px;border-radius:25px;cursor:pointer;transition:all 0.3s}
+.billing-toggle span.activo{background:var(--gradiente);color:white}
+.ahorro-badge{background:rgba(0,255,136,0.2);border:1px solid rgba(0,255,136,0.4);color:var(--verde);font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;margin-left:5px}
+/* PLANES */
+.planes-seccion{padding:40px 60px 120px;max-width:1200px;margin:0 auto}
+.planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;align-items:start}
+.plan-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:28px;padding:45px 35px;transition:all 0.4s;position:relative;overflow:hidden}
+.plan-card.destacado{background:linear-gradient(145deg,rgba(0,102,255,0.15),rgba(0,229,204,0.05));border-color:rgba(0,170,255,0.4);transform:scale(1.03);box-shadow:0 30px 60px rgba(0,102,255,0.25)}
+.plan-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(0,102,255,0.2)}
+.plan-card.destacado:hover{transform:scale(1.03) translateY(-8px)}
+.plan-popular{position:absolute;top:20px;right:20px;background:var(--gradiente);color:white;font-size:11px;font-weight:700;letter-spacing:1px;padding:5px 14px;border-radius:20px}
+.plan-icono{font-size:48px;margin-bottom:20px;display:block;filter:drop-shadow(0 0 20px rgba(0,170,255,0.4))}
+.plan-nombre{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--azul-claro);margin-bottom:10px}
+.plan-titulo{font-size:28px;font-weight:800;margin-bottom:20px}
+.plan-precio{margin-bottom:30px}
+.plan-precio .monto{font-size:52px;font-weight:900;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.plan-precio .moneda{font-size:22px;font-weight:700;vertical-align:super;color:var(--azul-claro)}
+.plan-precio .periodo{font-size:14px;color:rgba(255,255,255,0.5);font-weight:400;margin-left:5px}
+.plan-desc{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.6;margin-bottom:30px;padding-bottom:25px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.plan-features{list-style:none;margin-bottom:35px}
+.plan-features li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.8);font-size:14px;line-height:1.4}
+.plan-features li:last-child{border-bottom:none}
+.check{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;margin-top:1px}
+.check.si{background:rgba(0,229,204,0.2);color:var(--turquesa);border:1px solid rgba(0,229,204,0.4)}
+.check.no{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.1)}
+.plan-features li.inactivo{opacity:0.4}
+.plan-btn{display:block;text-align:center;padding:16px;border-radius:50px;font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;cursor:pointer;font-family:'Montserrat',sans-serif;border:none;width:100%}
+.plan-btn-prim{background:var(--gradiente);color:white;box-shadow:0 8px 25px rgba(0,102,255,0.4)}
+.plan-btn-prim:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(0,102,255,0.6)}
+.plan-btn-sec{background:transparent;color:var(--azul-claro);border:2px solid rgba(0,170,255,0.4)!important}
+.plan-btn-sec:hover{background:rgba(0,170,255,0.1);border-color:var(--azul-claro)!important}
+/* BENEFICIOS EXTRA */
+.beneficios-extra{padding:80px 60px;background:linear-gradient(180deg,transparent,rgba(0,102,255,0.06),transparent);position:relative;z-index:2}
+.seccion-titulo{text-align:center;margin-bottom:60px}
+.seccion-titulo .etiqueta{display:block;margin-bottom:15px}
+.seccion-titulo h2{font-size:clamp(28px,4vw,48px);font-weight:800}
+.seccion-titulo h2 span{background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.beneficios-extra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.bene-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:30px 20px;text-align:center;transition:all 0.3s}
+.bene-item:hover{background:rgba(0,170,255,0.08);border-color:rgba(0,170,255,0.25);transform:translateY(-5px)}
+.bene-icono{font-size:36px;margin-bottom:15px;display:block;filter:drop-shadow(0 0 15px rgba(0,229,204,0.4))}
+.bene-item h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.bene-item p{color:rgba(255,255,255,0.55);font-size:13px;line-height:1.5}
+/* FAQ */
+.faq-seccion{padding:80px 60px;max-width:900px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.07);overflow:hidden}
+.faq-pregunta{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;font-size:16px;font-weight:600;gap:20px;transition:color 0.3s}
+.faq-pregunta:hover{color:var(--turquesa)}
+.faq-icono{font-size:22px;color:var(--azul-claro);flex-shrink:0;transition:transform 0.3s;font-weight:300}
+.faq-respuesta{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
+.faq-respuesta p{color:rgba(255,255,255,0.65);font-size:14px;line-height:1.8;padding-bottom:20px}
+.faq-item.abierto .faq-icono{transform:rotate(45deg)}
+.faq-item.abierto .faq-respuesta{max-height:200px;padding-top:5px}
+/* CTA */
+.cta-final{text-align:center;padding:80px 60px;background:var(--gradiente);position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;top:-50%;left:-10%;right:-10%;bottom:-50%;background:radial-gradient(ellipse,rgba(255,255,255,0.1),transparent 60%);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.cta-final h2{font-size:clamp(28px,4vw,50px);font-weight:900;margin-bottom:15px;position:relative;z-index:1}
+.cta-final p{font-size:17px;opacity:0.9;margin-bottom:35px;position:relative;z-index:1}
+.btn-blanco{display:inline-block;background:white;color:var(--azul);padding:16px 40px;border-radius:50px;font-weight:800;font-size:14px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all 0.3s;position:relative;z-index:1}
+.btn-blanco:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(0,0,0,0.3)}
+/* FOOTER */
+footer{background:rgba(0,0,0,0.5);border-top:1px solid rgba(255,255,255,0.06);padding:40px 60px;text-align:center}
+.footer-logo{font-size:24px;font-weight:900;letter-spacing:3px;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:20px}
+.footer-nav{display:flex;gap:30px;justify-content:center;list-style:none;margin-bottom:20px;flex-wrap:wrap}
+.footer-nav a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;transition:color 0.3s}
+.footer-nav a:hover{color:var(--turquesa)}
+.footer-bottom{color:rgba(255,255,255,0.35);font-size:13px}
+/* BURBUJAS */
+.burbujas-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.burbuja{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(0,170,255,0.25),rgba(0,229,204,0.04));border:1px solid rgba(0,170,255,0.15);animation:flotar linear infinite}
+@keyframes flotar{0%{transform:translateY(110vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:0.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){nav{padding:15px 25px}.nav-links{display:none}.planes-grid{grid-template-columns:1fr}.plan-card.destacado{transform:none}.beneficios-extra-grid{grid-template-columns:repeat(2,1fr)}.planes-seccion,.beneficios-extra,.faq-seccion,.cta-final{padding-left:20px;padding-right:20px}}
+</style>
+</head>
+<body>
+<div class="burbujas-bg" id="burbujasBg"></div>
+<nav id="mainNav">
+  <a href="index.html" class="logo">MAYGEN</a>
+  <ul class="nav-links">
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="productos.html">Productos</a></li>
+    <li><a href="membresias.html" class="activo">Membresías</a></li>
+    <li><a href="contacto.html" class="nav-cta">Contáctanos</a></li>
+  </ul>
+</nav>
+
+<section class="hero-pag">
+  <div class="hero-pag-content">
+    <span class="etiqueta">✶ Planes para cada necesidad ✶</span>
+    <h1>Membresías <span>Maygen</span></h1>
+    <p>Elige el plan perfecto para tu negocio. Accede a precios preferenciales, soporte prioritario y ventajas exclusivas.</p>
+  </div>
+  <svg class="olas" viewBox="0 0 1440 60" fill="none"><path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,15 1440,30 L1440,60 L0,60 Z" fill="rgba(10,15,30,0.9)"/></svg>
+</section>
+
+<div class="billing-toggle-wrap reveal">
+  <div class="billing-toggle">
+    <span class="activo" id="btn-mensual" onclick="cambiarBilling('mensual')">Mensual</span>
+    <span id="btn-anual" onclick="cambiarBilling('anual')">Anual <span class="ahorro-badge">-20%</span></span>
+  </div>
+</div>
+
+<div class="planes-seccion">
+  <div class="planes-grid">
+
+    <!-- ESENCIAL -->
+    <div class="plan-card reveal">
+      <span class="plan-icono">💧</span>
+      <div class="plan-nombre">Esencial</div>
+      <div class="plan-titulo">Para empezar</div>
+      <div class="plan-precio">
+        <span class="moneda">$</span><span class="monto plan-monto" data-mensual="299" data-anual="239">299</span><span class="periodo">/mes</span>
+      </div>
+      <p class="plan-desc">Ideal para pequeños negocios, emprendedores y uso doméstico frecuente que buscan calidad garantizada a precio accesible.</p>
+      <ul class="plan-features">
+        <li><span class="check si">✓</span> Acceso a catálogo completo</li>
+        <li><span class="check si">✓</span> 5% descuento en compras</li>
+        <li><span class="check si">✓</span> Soporte por WhatsApp</li>
+        <li><span class="check si">✓</span> Envío gratis en pedidos +$500</li>
+        <li><span class="check no">−</span><span style="opacity:0.4"> Precios mayoristas</span></li>
+        <li><span class="check no">−</span><span style="opacity:0.4"> Asesoría técnica dedicada</span></li>
+        <li><span class="check no">−</span><span style="opacity:0.4"> Formulaciones personalizadas</span></li>
+      </ul>
+      <button class="plan-btn plan-btn-sec" onclick="location.href='contacto.html'">Comenzar Ahora</button>
+    </div>
+
+    <!-- PRO -->
+    <div class="plan-card destacado reveal">
+      <span class="plan-popular">★ Más Popular</span>
+      <span class="plan-icono">⚡</span>
+      <div class="plan-nombre">Pro</div>
+      <div class="plan-titulo">Para negocios</div>
+      <div class="plan-precio">
+        <span class="moneda">$</span><span class="monto plan-monto" data-mensual="799" data-anual="639">799</span><span class="periodo">/mes</span>
+      </div>
+      <p class="plan-desc">Diseñado para PYMES, restaurantes, hoteles y negocios con consumo regular que necesitan precios competitivos y atención personalizada.</p>
+      <ul class="plan-features">
+        <li><span class="check si">✓</span> Todo lo de Esencial</li>
+        <li><span class="check si">✓</span> 15% descuento permanente</li>
+        <li><span class="check si">✓</span> Precios mayoristas desde lote 10</li>
+        <li><span class="check si">✓</span> Asesoría técnica mensual</li>
+        <li><span class="check si">✓</span> Envío gratis en todos los pedidos</li>
+        <li><span class="check si">✓</span> Acceso a nuevos productos antes de lanzamiento</li>
+        <li><span class="check no">−</span><span style="opacity:0.4"> Formulaciones exclusivas</span></li>
+      </ul>
+      <button class="plan-btn plan-btn-prim" onclick="location.href='contacto.html'">Quiero el Plan Pro</button>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="plan-card reveal">
+      <span class="plan-icono">🏆</span>
+      <div class="plan-nombre">Enterprise</div>
+      <div class="plan-titulo">Para industrias</div>
+      <div class="plan-precio">
+        <span style="font-size:28px;font-weight:800;background:var(--gradiente);-webkit-background-clip:text;-webkit-text-fill-color:transparent">A medida</span>
+      </div>
+      <p class="plan-desc">Soluciones completas para empresas industriales, cadenas de hoteles, hospitales y grandes distribuidoras con necesidades especializadas.</p>
+      <ul class="plan-features">
+        <li><span class="check si">✓</span> Todo lo de Pro</li>
+        <li><span class="check si">✓</span> Hasta 30% descuento</li>
+        <li><span class="check si">✓</span> Formulaciones personalizadas</li>
+        <li><span class="check si">✓</span> Asesor técnico dedicado</li>
+        <li><span class="check si">✓</span> Entrega programada y logística</li>
+        <li><span class="check si">✓</span> Capacitación para tu equipo</li>
+        <li><span class="check si">✓</span> SLA y soporte 24/7</li>
+      </ul>
+      <button class="plan-btn plan-btn-sec" onclick="location.href='contacto.html'">Contactar Ventas</button>
+    </div>
+  </div>
+</div>
+
+<!-- BENEFICIOS EXTRA -->
+<div class="beneficios-extra">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Todos los planes incluyen</span>
+    <h2>Ventajas <span>exclusivas</span></h2>
+  </div>
+  <div class="beneficios-extra-grid">
+    <div class="bene-item reveal">
+      <span class="bene-icono">📜</span>
+      <h3>Ficha Técnica</h3>
+      <p>Acceso a fichas de seguridad (SDS) y especificaciones técnicas de todos los productos.</p>
+    </div>
+    <div class="bene-item reveal">
+      <span class="bene-icono">🚚</span>
+      <h3>Logística Confiable</h3>
+      <p>Red de distribución que garantiza la entrega en tiempo y en óptimas condiciones.</p>
+    </div>
+    <div class="bene-item reveal">
+      <span class="bene-icono">🧑‍🔬</span>
+      <h3>Expertos Químicos</h3>
+      <p>Equipo de profesionales listos para resolver dudas técnicas y recomendar la mejor solución.</p>
+    </div>
+    <div class="bene-item reveal">
+      <span class="bene-icono">🔄</span>
+      <h3>Reposición Automática</h3>
+      <p>Configura pedidos periódicos para nunca quedarte sin tus productos esenciales.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-seccion">
+  <div class="seccion-titulo reveal">
+    <span class="etiqueta">Preguntas frecuentes</span>
+    <h2>Todo sobre tus <span>membresías</span></h2>
+  </div>
+  <div class="faq-item reveal">
+    <div class="faq-pregunta" onclick="toggleFaq(this)">¿Puedo cambiar de plan en cualquier momento? <span class="faq-icono">+</span></div>
+    <div class="faq-respuesta"><p>Sí, puedes hacer upgrade o downgrade de tu plan cuando lo desees. Los cambios se aplican al inicio del siguiente ciclo de facturación.</p></div>
+  </div>
+  <div class="faq-item reveal">
+    <div class="faq-pregunta" onclick="toggleFaq(this)">¿Hay contrato de permanencia? <span class="faq-icono">+</span></div>
+    <div class="faq-respuesta"><p>No existe contrato de permanencia obligatorio en los planes Esencial y Pro. Puedes cancelar en cualquier momento. El plan Enterprise puede incluir acuerdos marco según el proyecto.</p></div>
+  </div>
+  <div class="faq-item reveal">
+    <div class="faq-pregunta" onclick="toggleFaq(this)">¿Cuál es el pedido mínimo? <span class="faq-icono">+</span></div>
+    <div class="faq-respuesta"><p>El pedido mínimo varía según el plan. En Esencial no hay mínimo. En Pro el pedido mínimo es de $300 MXN para aprovechar los precios mayoristas.</p></div>
+  </div>
+  <div class="faq-item reveal">
+    <div class="faq-pregunta" onclick="toggleFaq(this)">¿Aceptan factura? <span class="faq-icono">+</span></div>
+    <div class="faq-respuesta"><p>Sí, emitimos CFDI (factura fiscal mexicana) para todos los planes. El proceso es inmediato una vez confirmado el pago.</p></div>
+  </div>
+  <div class="faq-item reveal">
+    <div class="faq-pregunta" onclick="toggleFaq(this)">¿Tienen muestras gratis? <span class="faq-icono">+</span></div>
+    <div class="faq-respuesta"><p>Los planes Pro y Enterprise incluyen un kit de muestras de bienvenida. Para el plan Esencial, las muestras tienen un costo mínimo de envío.</p></div>
+  </div>
+</div>
+
+<div class="cta-final">
+  <h2>¿Listo para unirte a Maygen?</h2>
+  <p>Habla con nuestro equipo y encuentra el plan ideal para tu negocio.</p>
+  <a href="contacto.html" class="btn-blanco">Hablar con un Asesor</a>
+</div>
+
+<footer>
+  <span class="footer-logo">MAYGEN</span>
+  <ul class="footer-nav">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="productos.html">Productos</a></li>
+    <li><a href="membresias.html">Membresías</a></li>
+    <li><a href="contacto.html">Contáctanos</a></li>
+  </ul>
+  <div class="footer-bottom">© 2026 Maygen — Todos los derechos reservados ✶</div>
+</footer>
+
+<script>
+const burbujasBg=document.getElementById('burbujasBg');
+function crearBurbuja(){const b=document.createElement('div');b.className='burbuja';const s=Math.random()*60+15;b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*5}s`;burbujasBg.appendChild(b);setTimeout(()=>b.remove(),25000)}
+setInterval(crearBurbuja,2000);for(let i=0;i<5;i++)setTimeout(crearBurbuja,i*400);
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>50));
+const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*100)})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+let billingActual='mensual';
+function cambiarBilling(tipo){
+  billingActual=tipo;
+  document.getElementById('btn-mensual').classList.toggle('activo',tipo==='mensual');
+  document.getElementById('btn-anual').classList.toggle('activo',tipo==='anual');
+  document.querySelectorAll('.plan-monto').forEach(el=>{
+    const val=tipo==='mensual'?el.dataset.mensual:el.dataset.anual;
+    if(val){el.textContent=val}
+  });
+}
+function toggleFaq(el){
+  const item=el.parentElement;
+  const wasOpen=item.classList.contains('abierto');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('abierto'));
+  if(!wasOpen)item.classList.add('abierto');
+}
+</script>
+</body>
+</html>
