@@ -1704,6 +1704,29 @@
         font-size:13px;
       }
     }
+
+    /* --- Centrado de texto del Hero (ajuste solicitado) --- */
+    .hero-content{
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .hero-content .eyebrow{
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .hero-content h1,
+    .hero-content .lede{
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .hero-content .hero-actions{
+      justify-content:center;
+    }
+    .hero-content .hero-stats{
+      width:100%;
+    }
   </style>
 </head>
 <body>
@@ -1734,7 +1757,7 @@
 
   <section class="hero" id="inicio">
     <div class="wrap hero-grid">
-      <div class="reveal">
+      <div class="reveal hero-content">
         <span class="eyebrow">Soluciones químicas profesionales</span>
         <h1>Limpieza con <em>energía</em> para tu industria</h1>
         <p class="lede">
