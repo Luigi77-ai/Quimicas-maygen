@@ -10,7 +10,43 @@ document.addEventListener('DOMContentLoaded', function () {
   initReveal();
   initBackToTop();
   initContactForm();
+  initCounters();
 });
+
+function initCounters() {
+  var counters = document.querySelectorAll('.counter');
+  if (!counters.length) return;
+  var obs = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      animateCounter(entry.target);
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(function (el) { obs.observe(el); });
+}
+
+function animateCounter(el) {
+  var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+  var prefix = el.getAttribute('data-prefix') || '';
+  var suffix = el.getAttribute('data-suffix') || '';
+  var duration = 1500;
+  var startTime = null;
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = Math.min((timestamp - startTime) / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    var value = Math.floor(eased * target);
+    el.textContent = prefix + value + suffix;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      el.textContent = prefix + target + suffix;
+    }
+  }
+  window.requestAnimationFrame(step);
+}
 
 function setYear() {
   var el = document.getElementById('year');
@@ -222,7 +258,7 @@ var MAYGEN_PRODUCTS = [
     "catLabel": "Car Wash",
     "size": "900 mL",
     "img": "silicon para tablero 900 mL.png",
-    "best": false
+    "best": true
   },
   {
     "name": "Alcohol Clínico",
@@ -326,7 +362,7 @@ var MAYGEN_PRODUCTS = [
     "catLabel": "Otros",
     "size": "240 mL",
     "img": "images/Maxi Kill 240 mL.png",
-    "best": false
+    "best": true
   },
   {
     "name": "Ospho Blanco",
