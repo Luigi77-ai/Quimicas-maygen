@@ -304,7 +304,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 /* ---------- Logo nuevo (recorte a medida) ---------- */
 .logo-link{display:flex;align-items:center}
 .logo-crop{display:block;width:105px;height:76px;overflow:hidden;position:relative}
-.logo-crop .logo{position:absolute;top:-48px;left:-16px;width:137px;height:172px;max-width:none;object-fit:none}
+.logo-crop .logo{position:absolute;top:-48px;left:-16px;width:137px;height:172px;max-width:none}
 header{border-bottom:none}
 .header{height:100px}
 
