@@ -2,167 +2,92 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<title>Productos — Maygen</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Catálogo completo de productos químicos de limpieza e higiene profesional Maygen para hoteles, hospitales, negocios, car wash y hogares en Honduras." />
-<link rel="icon" type="image/png" href="images/Logo Maygen Nuevo-01.png" />
-<link rel="apple-touch-icon" href="images/Logo Maygen Nuevo-01.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css" />
+<title>Productos | Maygen</title>
+<meta name="description" content="Catálogo completo de productos de limpieza profesional, car wash e industriales Maygen.">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <header>
-  <div class="wrap nav">
-    <a href="index.html" class="brand">
-      <img src="images/Logo Maygen Nuevo-01.png" alt="Logo de Maygen" />
-      <div class="brand-meta"><span class="kicker">Químicas</span><span class="word">Maygen</span></div>
-    </a>
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a href="index.html">Inicio</a>
-      <a href="productos.html">Productos</a>
-      <a href="membresias.html">Membresías</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="contacto.html">Contáctanos</a>
-    </nav>
-    <a href="contacto.html" class="nav-cta"><span class="full">Cotiza ahora</span> →</a>
-    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
-  </div>
-  <div class="mobile-menu">
-    <a href="index.html">Inicio</a>
-    <a href="productos.html">Productos</a>
-    <a href="membresias.html">Membresías</a>
-    <a href="nosotros.html">Nosotros</a>
-    <a href="contacto.html">Contáctanos</a>
-  </div>
+<div class="header">
+<a href="index.html" class="logo-link"><img src="images/Logo Maygen Nuevo-01.png" class="logo" alt="Maygen"></a>
+<nav class="nav-links"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="productos.html" class="active">Productos</a><a href="membresias.html">Membresía</a><a href="productos.html?cat=industriales">Industrias</a><a href="contacto.html">Contáctanos</a></nav>
+<div class="header-right">
+<a href="contacto.html" class="cta desktop-only">Cotiza ahora →</a>
+<button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</div>
+</div>
+<div class="mobile-menu"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="productos.html" class="active">Productos</a><a href="membresias.html">Membresía</a><a href="productos.html?cat=industriales">Industrias</a><a href="contacto.html">Contáctanos</a><a href="contacto.html" class="cta">Cotiza ahora →</a></div>
 </header>
-
-<section class="section" style="padding-top:52px;padding-bottom:8px">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="tag">Catálogo completo</span>
-      <h2>Nuestros productos</h2>
-      <p>Más de 69 fórmulas profesionales para hotelería, hospitales, negocios, car wash y hogar. Calidad consistente, resultados que se notan.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section bestsellers" style="padding-top:24px;padding-bottom:56px">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="tag on-dark">Elegidos por nuestros clientes</span>
-      <h2>Más vendidos</h2>
-      <p>Los productos con mayor rotación dentro de nuestro catálogo.</p>
-    </div>
-    <div class="prod-grid" id="bestsellerGrid"></div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:56px">
-  <div class="wrap">
-    <div class="section-head left reveal">
-      <span class="tag">Catálogo</span>
-      <h2>Todos nuestros productos</h2>
-      <p>Usa el buscador o filtra por categoría para encontrar justo lo que necesitas.</p>
-    </div>
-    <div class="catalog-toolbar reveal">
-      <div class="search-box">
-        <input type="text" id="catalogSearch" placeholder="Buscar producto...">
-        <button type="button" onclick="document.getElementById('catalogSearch').focus()">Buscar</button>
-      </div>
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="todos" type="button">Todos</button>
-        <button class="filter-btn" data-filter="limpieza" type="button">Limpieza Profesional</button>
-        <button class="filter-btn" data-filter="desinfectantes" type="button">Desinfectantes</button>
-        <button class="filter-btn" data-filter="ambientadores" type="button">Ambientadores</button>
-        <button class="filter-btn" data-filter="carwash" type="button">Car Wash</button>
-        <button class="filter-btn" data-filter="jabones" type="button">Jabones y Manos</button>
-        <button class="filter-btn" data-filter="industriales" type="button">Industriales</button>
-        <button class="filter-btn" data-filter="otros" type="button">Otros</button>
-      </div>
-    </div>
-    <p class="catalog-count" id="catalogCount"></p>
-    <div class="prod-grid" id="catalogGrid"></div>
-    <p class="catalog-empty" id="catalogEmpty">No encontramos productos que coincidan con tu búsqueda. Intenta con otro término o categoría.</p>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="wrap">
-    <div class="cta-banner reveal">
-      <div>
-        <h2>¿No encuentras lo que necesitas?</h2>
-        <p>Formulamos soluciones a la medida de tu operación.</p>
-      </div>
-      <a href="contacto.html" class="btn btn-primary">Solicitar cotización</a>
-    </div>
-  </div>
-</section>
-
+<section class="product-hero">
+<div class="reveal"><h1>Nuestros Productos</h1><p>Contamos con una amplia gama de productos de alta calidad para limpieza profesional, car wash, industria y hogar.</p></div>
+<img src="images/Gla Solution 900 mL.png" alt="Productos Maygen">
+</section><section class="bestsellers">
+<div class="wrap">
+<div class="section-head reveal"><h2>Los más vendidos</h2><p>Los favoritos de nuestros clientes.</p></div>
+<div class="grid30" id="bestsellerGrid"></div>
+</div>
+</section><section class="wrap">
+<div class="products-layout">
+<aside class="side">
+<h4>CATEGORÍAS</h4>
+<button class="filter-btn active" data-filter="todos">Todos los productos</button>
+<button class="filter-btn" data-filter="limpieza">Limpieza Profesional</button>
+<button class="filter-btn" data-filter="carwash">Car Wash</button>
+<button class="filter-btn" data-filter="industriales">Industriales</button>
+<button class="filter-btn" data-filter="ambientadores">Ambientadores</button>
+<button class="filter-btn" data-filter="desinfectantes">Desinfectantes</button>
+<button class="filter-btn" data-filter="jabones">Jabones y Manos</button>
+<button class="filter-btn" data-filter="otros">Otros</button>
+</aside>
+<main>
+<div class="searchbar"><input id="catalogSearch" placeholder="Buscar producto..."><button type="button">Buscar</button></div>
+<p class="catalog-count" id="catalogCount"></p>
+<div class="grid30" id="catalogGrid"></div>
+<div class="catalog-empty" id="catalogEmpty">No encontramos productos con ese criterio. Intenta otra búsqueda o categoría.</div>
+</main>
+</div>
+</section><div class="footer-benefits">
+<div><span class="ico">✧</span><span><h4>Calidad Garantizada</h4><p>Productos confiables y de alto rendimiento.</p></span></div>
+<div><span class="ico">▣</span><span><h4>Entregas Rápidas</h4><p>Cobertura eficiente en todo el país.</p></span></div>
+<div><span class="ico">☏</span><span><h4>Asesoría Experta</h4><p>Te ayudamos a elegir la mejor solución.</p></span></div>
+<div><span class="ico">♢</span><span><h4>Soporte Personalizado</h4><p>Estamos para ayudarte en todo momento.</p></span></div>
+</div>
+<div class="cta-banner reveal">
+<div class="wrap">
+<h2>¿Listo para encontrar la solución ideal para tu negocio?</h2>
+<p>Escríbenos y te asesoramos sin costo sobre los productos que necesitas.</p>
+<div class="actions">
+<a href="contacto.html" class="cta white">Cotiza ahora →</a>
+<a href="https://wa.me/50494398387" target="_blank" rel="noopener" class="cta outline">Escríbenos por WhatsApp</a>
+</div>
+</div>
+</div>
 <footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brand">
-          <img src="images/Logo Maygen Nuevo-01.png" alt="Logo de Maygen" />
-          <div class="brand-meta"><span class="kicker" style="color:var(--lime)">Químicas</span><span class="word" style="color:#fff">Maygen</span></div>
-        </div>
-        <p style="max-width:280px;font-size:13px;">Fabricantes y distribuidores de productos de limpieza e higiene profesional en Honduras.</p>
-      </div>
-      <div>
-        <h4>Sitio</h4>
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="membresias.html">Membresías</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Empresa</h4>
-        <ul>
-          <li><a href="nosotros.html">Sobre nosotros</a></li>
-          <li><a href="contacto.html">Contáctanos</a></li>
-          <li><a href="productos.html">Catálogo completo</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="tel:+50494398387">+504 9439-8387</a></li>
-          <li><a href="mailto:info@maygenhn.com">info@maygenhn.com</a></li>
-          <li>San Pedro Sula, Cortés</li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© <span id="year"></span> Maygen. Todos los derechos reservados.</span>
-      <span>San Pedro Sula, Honduras</span>
-    </div>
-  </div>
+<div class="wrap foot-main">
+<div><img src="images/Logo Maygen Nuevo-01.png" class="flogo" alt="Maygen"><p>Fabricamos y distribuimos productos de limpieza profesional de alta calidad para hogares, negocios e industrias en toda Honduras.</p></div>
+<div><h4>Enlaces</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="productos.html">Productos</a></li><li><a href="membresias.html">Membresía</a></li><li><a href="contacto.html">Contáctanos</a></li></ul></div>
+<div><h4>Categorías</h4><ul><li><a href="productos.html?cat=limpieza">Limpieza Profesional</a></li><li><a href="productos.html?cat=carwash">Car Wash</a></li><li><a href="productos.html?cat=desinfectantes">Desinfectantes</a></li><li><a href="productos.html?cat=industriales">Industriales</a></li></ul></div>
+<div><h4>Contacto</h4><ul><li><a href="tel:+50494398387">+504 9439-8387</a></li><li><a href="mailto:info@maygenhn.com">info@maygenhn.com</a></li><li>San Pedro Sula, Cortés, Honduras</li></ul></div>
+</div>
+<div class="foot-bottom">© <span id="year"></span> Químicas Maygen. Todos los derechos reservados.</div>
 </footer>
-
-<a class="float-wa" href="https://wa.me/50494398387" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.1-1.33C8.53 21.53 10.22 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.55 0-3-.44-4.24-1.2l-.3-.19-3.02.79.8-2.94-.2-.31A7.9 7.9 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
-</a>
-<button class="back-top" aria-label="Subir">
-  <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-</button>
+<a href="https://wa.me/50494398387" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">☏</a>
+<button class="back-top" aria-label="Volver arriba">↑</button>
 <div class="toast"></div>
-
 <script src="js/main.js"></script>
 <script>
-  if (typeof MAYGEN_PRODUCTS !== 'undefined') {
-    initBestsellers(MAYGEN_PRODUCTS);
-    initCatalog(MAYGEN_PRODUCTS);
-    var params = new URLSearchParams(window.location.search);
-    var cat = params.get('cat');
-    if (cat) {
-      var btn = document.querySelector('.filter-btn[data-filter="' + cat + '"]');
-      if (btn) btn.click();
-    }
-  }
+document.addEventListener('DOMContentLoaded', function(){
+if (typeof MAYGEN_PRODUCTS === 'undefined') return;
+if (typeof initBestsellers === 'function') initBestsellers(MAYGEN_PRODUCTS);
+if (typeof initCatalog === 'function') initCatalog(MAYGEN_PRODUCTS);
+var params = new URLSearchParams(window.location.search);
+var cat = params.get('cat');
+if (cat) {
+var btn = document.querySelector('.filter-btn[data-filter="' + cat + '"]');
+if (btn) btn.click();
+}
+});
 </script>
 </body>
 </html>
