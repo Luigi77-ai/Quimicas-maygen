@@ -429,7 +429,7 @@ var MAYGEN_PRODUCTS = [
     "cat": "desinfectantes",
     "catLabel": "Desinfectantes",
     "size": "100 mL",
-    "img": "images/alcohol etilico 70% 100 mL.png",
+    "img": "images/alcohol etilico 70%25 100 mL.png",
     "best": false
   },
   {
@@ -437,7 +437,7 @@ var MAYGEN_PRODUCTS = [
     "cat": "desinfectantes",
     "catLabel": "Desinfectantes",
     "size": "240 mL",
-    "img": "images/alcohol etilico 70% 240 mL.png",
+    "img": "images/alcohol etilico 70%25 240 mL.png",
     "best": false
   },
   {
@@ -445,7 +445,7 @@ var MAYGEN_PRODUCTS = [
     "cat": "desinfectantes",
     "catLabel": "Desinfectantes",
     "size": "900 mL",
-    "img": "images/alcohol etilico 70% 900 mL.png",
+    "img": "images/alcohol etilico 70%25 900 mL.png",
     "best": true
   },
   {
