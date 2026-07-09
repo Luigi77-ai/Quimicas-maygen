@@ -1,90 +1,355 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Maygen | Soluciones de Limpieza Profesional</title>
-<style>
-:root{--navy:#063763;--navy2:#052b4f;--blue:#0d5790;--sky:#eff7fc;--line:#dbe7ef;--green:#9cc52b;--text:#0b2a4a;--muted:#5d7081;--shadow:0 14px 35px rgba(6,55,99,.14)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f8fb;color:var(--text)}a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.wrap{width:min(1180px,94%);margin:auto}.page{background:#fff;margin:24px auto;border:1px solid #cfdbe4;box-shadow:0 6px 18px rgba(0,0,0,.13);overflow:hidden}.page-label{font-weight:900;color:var(--navy);font-size:18px;margin:22px auto 0;width:min(1180px,94%)}
-.header{height:78px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid #e5eef4}.logo{width:178px}.menu{display:flex;gap:26px;align-items:center;text-transform:uppercase;font-size:11px;font-weight:900;color:var(--navy)}.menu a.active{border-bottom:3px solid var(--navy);padding-bottom:6px}.cta{background:var(--navy);color:#fff;padding:12px 20px;border-radius:4px;font-weight:900;text-transform:uppercase;font-size:11px;display:inline-block}.cta.white{background:#fff;color:var(--navy)}.cta.outline{background:#fff;color:var(--navy);border:2px solid var(--navy)}
-.hero{display:grid;grid-template-columns:1fr 1.25fr;min-height:340px;background:linear-gradient(90deg,#fff 0%,#f7fbfe 46%,#e8f2f8 100%)}.hero-copy{padding:64px 0 40px 64px}.hero h1{font-size:46px;line-height:1.08;margin:0 0 16px;color:var(--navy)}.hero h1 span{color:#2d6fa7}.hero p{font-size:16px;line-height:1.6;margin:0 0 22px;color:#12395e}.hero-img{display:flex;align-items:end;justify-content:center;overflow:hidden}.hero-img img{height:330px;width:100%;object-fit:cover;object-position:center}.benefits{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid #eef4f8;border-bottom:1px solid #dce8f0;padding:22px 30px}.benefit{display:grid;grid-template-columns:42px 1fr;gap:10px;padding:0 16px;border-right:1px solid #dce8f0}.benefit:last-child{border-right:0}.ico{font-size:34px;line-height:1;color:var(--navy)}.benefit h4{margin:0 0 5px;font-size:13px;color:var(--navy)}.benefit p{margin:0;font-size:11px;line-height:1.35;color:#4a6378}.dark-band{background:linear-gradient(135deg,var(--navy),#032543);padding:28px 38px 34px}.dark-band h2{color:#fff;text-align:center;margin:0 0 22px;font-size:23px}.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.cat{background:#fff;border-radius:6px;overflow:hidden;position:relative}.cat img{height:118px;width:100%;object-fit:cover}.cat-title{background:rgba(6,55,99,.94);color:#fff;font-weight:900;font-size:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}.circle{background:#e6f2d8;color:var(--navy);border-radius:50%;width:23px;height:23px;display:grid;place-items:center}
-.product-hero{background:linear-gradient(90deg,var(--navy),#052848);color:#fff;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:38px 54px 0}.product-hero h1{font-size:32px;margin:0 0 10px}.product-hero p{line-height:1.5;color:#d9e8f3}.product-hero img{height:210px;object-fit:contain;margin-left:auto}.products-layout{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:34px}.side h4{margin:0 0 12px;font-size:12px;color:var(--navy)}.side a{display:block;padding:11px 12px;border-radius:4px;color:var(--navy);font-size:12px;font-weight:800}.side a:first-of-type{background:var(--navy);color:#fff}.searchbar{display:flex;margin-bottom:20px}.searchbar input{flex:1;border:1px solid #d8e5ee;padding:13px;border-radius:4px 0 0 4px}.searchbar button{border:1px solid #d8e5ee;background:#fff;padding:0 16px;border-radius:0 4px 4px 0;color:var(--navy);font-weight:800}.grid30{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.prod{border:1px solid #dce8ef;border-radius:7px;background:#fff;text-align:center;padding:16px 8px;min-height:150px}.bottle{height:74px;margin:auto auto 10px;object-fit:cover;width:70px;border-radius:8px}.prod h5{margin:0 0 4px;color:var(--navy);font-size:11px}.prod p{margin:0;color:#526a7d;font-size:10px}.footer-benefits{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(135deg,var(--navy),#032543);color:#fff;padding:28px 40px;gap:20px}.footer-benefits div{display:grid;grid-template-columns:34px 1fr;gap:10px}.footer-benefits h4{margin:0 0 5px;font-size:13px}.footer-benefits p{margin:0;color:#d7e8f4;font-size:11px;line-height:1.35}
-.member-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;padding:60px 64px;background:linear-gradient(90deg,#fff,#f7fbfe)}.member-hero h1{font-size:32px;color:var(--navy);margin:0 0 12px}.benefit-card{background:linear-gradient(135deg,var(--navy),#032543);color:#fff;border-radius:8px;padding:28px}.benefit-card h3{margin-top:0}.benefit-card li{margin:14px 0;color:#dfeef8}.member-visual{background:url('maygen_productos_hero.png') center/cover;border-radius:10px;min-height:280px;position:relative}.member-card{position:absolute;right:24px;top:42px;background:var(--navy);color:#fff;border-radius:12px;padding:28px;width:270px;box-shadow:var(--shadow);transform:rotate(-4deg)}.member-card h2{letter-spacing:4px;margin:0 0 12px}.plans-sec{padding:36px 60px;text-align:center}.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px}.plan{border:1px solid #dce8ef;border-radius:8px;background:#fff;padding:28px;box-shadow:0 10px 22px rgba(0,0,0,.06)}.plan h3{color:var(--navy);margin:0}.price{font-size:27px;font-weight:900;color:var(--navy);margin:8px}.plan ul{text-align:left;color:#476173;font-size:13px;line-height:2}.plan .cta{width:100%;text-align:center}
-.about{display:grid;grid-template-columns:1fr 1.05fr;padding:38px 38px 0;gap:30px}.about h1{color:var(--navy);font-size:32px}.about p{line-height:1.55;color:#36536b}.factory{min-height:300px;background:linear-gradient(160deg,#dfe8ee,#fff);border-radius:4px;position:relative;overflow:hidden}.factory:before{content:'MAYGEN';position:absolute;inset:auto 40px 80px auto;background:var(--navy);color:#fff;font-size:32px;font-weight:900;letter-spacing:6px;padding:55px 45px;border-radius:4px}.factory:after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(90deg,#c8d7df,#eef4f8)}.values-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}.value{text-align:center}.value .ico{font-size:30px}.value h4{margin:7px 0;color:var(--navy)}.mv{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:36px 52px}.mv h3{font-size:22px;color:var(--navy)}.stats-band{background:linear-gradient(135deg,var(--navy),#032543);color:#fff;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:24px}.stats-band strong{font-size:30px;display:block}
-.contact-page{padding:38px 44px 0}.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px}.contact-grid h1{color:var(--navy);font-size:32px}.info-line{display:grid;grid-template-columns:28px 1fr;gap:12px;margin:15px 0;color:#21415f}.contact-form{border:1px solid #dce8ef;border-radius:7px;padding:24px;background:#fff;box-shadow:var(--shadow)}input,textarea{width:100%;border:1px solid #dce8ef;padding:14px;border-radius:4px;margin-bottom:12px;font-family:inherit}.map{height:135px;background:linear-gradient(135deg,#e9eef1,#f8fbfd);margin:30px -44px 0;position:relative}.pin{position:absolute;left:50%;top:48%;background:var(--navy);color:#fff;border-radius:50%;width:45px;height:45px;display:grid;place-items:center;font-weight:900}.social{background:linear-gradient(135deg,var(--navy),#032543);color:#fff;text-align:center;padding:24px}.social span{display:inline-grid;place-items:center;margin:6px;width:36px;height:36px;border-radius:50%;background:#fff;color:var(--navy);font-weight:900}
-@media(max-width:900px){.menu{display:none}.hero,.product-hero,.member-hero,.about,.mv,.contact-grid,.products-layout{grid-template-columns:1fr}.benefits,.cats,.grid30,.plans,.footer-benefits,.values-row,.stats-band{grid-template-columns:repeat(2,1fr)}.hero-copy{padding:40px}.hero h1{font-size:36px}}
-@media(max-width:540px){.benefits,.cats,.grid30,.plans,.footer-benefits,.values-row,.stats-band{grid-template-columns:1fr}.header{padding:0 18px}.logo{width:145px}.page-label{font-size:15px}.product-hero,.member-hero,.contact-page{padding:28px}.grid30{gap:10px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maygen | Soluciones de Limpieza Profesional</title>
+  <meta
+    name="description"
+    content="Fabricamos y distribuimos productos de limpieza profesional, car wash e industriales en toda Honduras."
+  />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <header>
+    <div class="header">
+      <a href="index.html" class="logo-link">
+        <img
+          src="images/Logo Maygen Nuevo-01.png"
+          class="logo"
+          alt="Maygen"
+        />
+      </a>
 
-<div class="page-label">1. INICIO</div>
-<section class="page" id="inicio">
-  <div class="header"><img src="maygen-logo-new.jpeg" class="logo" alt="Maygen"><div class="menu"><a class="active" href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#productos">Productos</a><a href="#membresia">Membresía</a><a href="#productos">Industrias</a><a href="#contacto">Contacto</a><a class="cta" href="#contacto">Cotiza ahora</a></div></div>
-  <div class="hero"><div class="hero-copy"><h1>Soluciones de limpieza para <span>cada necesidad</span></h1><p>Productos de alta calidad para limpieza profesional, car wash, industria, hogar y más.</p><a class="cta" href="#productos">Ver productos &nbsp; →</a></div><div class="hero-img"><img src="maygen_productos_hero.png" alt="Productos Maygen"></div></div>
-  <div class="benefits"><div class="benefit"><div class="ico">✧</div><div><h4>Calidad Garantizada</h4><p>Productos confiables y de alto rendimiento.</p></div></div><div class="benefit"><div class="ico">◒</div><div><h4>Soluciones Completas</h4><p>Todo lo que necesitas para limpiar, cuidar y proteger.</p></div></div><div class="benefit"><div class="ico">⬟</div><div><h4>Para Cada Industria</h4><p>Soluciones adaptadas a cada tipo de negocio.</p></div></div><div class="benefit"><div class="ico">▣</div><div><h4>Entregas Rápidas</h4><p>Cobertura eficiente y puntual en todo el país.</p></div></div><div class="benefit"><div class="ico">☏</div><div><h4>Asesoría Experta</h4><p>Te ayudamos a elegir la mejor solución para ti.</p></div></div></div>
-  <div class="dark-band"><h2>Nuestras Categorías</h2><div class="cats"><div class="cat"><img src="cat_limpieza.png"><div class="cat-title">Limpieza Profesional <span class="circle">›</span></div></div><div class="cat"><img src="cat_carwash.png"><div class="cat-title">Car Wash <span class="circle">›</span></div></div><div class="cat"><img src="cat_plasticos.png"><div class="cat-title">Plásticos <span class="circle">›</span></div></div><div class="cat"><img src="cat_industrial.png"><div class="cat-title">Industriales <span class="circle">›</span></div></div><div class="cat"><img src="cat_mas.png"><div class="cat-title">Y Más <span class="circle">›</span></div></div></div></div>
-</section>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="productos.html">Productos</a>
+        <a href="membresias.html">Membresía</a>
+        <a href="productos.html?cat=industriales">Industrias</a>
+        <a href="contacto.html">Contáctanos</a>
+      </nav>
 
-<div class="page-label">2. PRODUCTOS</div>
-<section class="page" id="productos">
-  <div class="header"><img src="maygen-logo-new.jpeg" class="logo" alt="Maygen"><div class="menu"><a>Inicio</a><a>Nosotros</a><a class="active">Productos</a><a>Membresía</a><a>Industrias</a><a>Contacto</a><a class="cta">Cotiza ahora</a></div></div>
-  <div class="product-hero"><div><h1>Nuestros Productos</h1><p>Contamos con una amplia gama de productos de alta calidad para cada necesidad.</p></div><img src="maygen_productos_hero.png" alt="Productos Maygen"></div>
-  <div class="products-layout"><aside class="side"><h4>CATEGORÍAS</h4><a>Todos los productos</a><a>Limpieza Profesional</a><a>Car Wash</a><a>Industriales</a><a>Plásticos</a><a>Papel y Dispensadores</a><a>Equipos y Accesorios</a><a>Ambientadores</a><a>Desinfectantes</a><a>Tratamiento de Pisos</a><a>Otros</a></aside><main><div class="searchbar"><input placeholder="Buscar producto..."><button>Filtrar ▾</button></div><div class="grid30">
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Limpiavidrios Maygen"><h5>Limpiavidrios Maygen</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Desengrasante Industrial"><h5>Desengrasante Industrial</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Shampoo para Autos"><h5>Shampoo para Autos</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Cera Líquida"><h5>Cera Líquida</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Cloro Concentrado"><h5>Cloro Concentrado</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Desinfectante Floral"><h5>Desinfectante Floral</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Lavaplatos"><h5>Lavaplatos</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Jabón para Manos"><h5>Jabón para Manos</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Abrillantador de Llantas"><h5>Abrillantador de Llantas</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Removedor de Sarro"><h5>Removedor de Sarro</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Detergente Líquido"><h5>Detergente Líquido</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Limpia Pisos"><h5>Limpia Pisos</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Gel Antibacterial"><h5>Gel Antibacterial</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Suavizante de Telas"><h5>Suavizante de Telas</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Blanqueador"><h5>Blanqueador</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Espuma Activa"><h5>Espuma Activa</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Silicón para Tablero"><h5>Silicón para Tablero</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Vinyl y Plásticos"><h5>Vinyl y Plásticos</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Ambientador Premium"><h5>Ambientador Premium</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Alcohol Multiusos"><h5>Alcohol Multiusos</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Removedor de Cera"><h5>Removedor de Cera</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Sellador de Pisos"><h5>Sellador de Pisos</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Acondicionador de Cuero"><h5>Acondicionador de Cuero</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Desmanchador Textil"><h5>Desmanchador Textil</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Jabón en Polvo"><h5>Jabón en Polvo</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Limpiador de Motor"><h5>Limpiador de Motor</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Desengrasante Fuerte"><h5>Desengrasante Fuerte</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Brillo Secado Rápido"><h5>Brillo Secado Rápido</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Polish para Llantas"><h5>Polish para Llantas</h5><p>1 Galón</p></div>
-<div class="prod"><img class="bottle" src="maygen_productos_hero.png" alt="Protector UV"><h5>Protector UV</h5><p>1 Galón</p></div>
-  </div></main></div><div class="footer-benefits"><div><span class="ico">✧</span><span><h4>Calidad Garantizada</h4><p>Productos confiables y de alto rendimiento.</p></span></div><div><span class="ico">▣</span><span><h4>Entregas Rápidas</h4><p>Cobertura eficiente en todo el país.</p></span></div><div><span class="ico">☏</span><span><h4>Asesoría Experta</h4><p>Te ayudamos a elegir la mejor solución.</p></span></div><div><span class="ico">♢</span><span><h4>Soporte Personalizado</h4><p>Estamos para ayudarte en todo momento.</p></span></div></div>
-</section>
+      <div class="header-right">
+        <a href="contacto.html" class="cta desktop-only">
+          Cotiza ahora →
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
 
-<div class="page-label">3. MEMBRESÍA</div>
-<section class="page" id="membresia">
-  <div class="header"><img src="maygen-logo-new.jpeg" class="logo" alt="Maygen"><div class="menu"><a>Inicio</a><a>Nosotros</a><a>Productos</a><a class="active">Membresía</a><a>Industrias</a><a>Contacto</a><a class="cta">Cotiza ahora</a></div></div>
-  <div class="member-hero"><div><h1>Membresía Maygen</h1><p><b>Más beneficios, más ahorro, más valor para tu negocio.</b></p><p>Únete a nuestra membresía y disfruta de descuentos exclusivos, promociones especiales y beneficios pensados para ti.</p><div class="benefit-card"><h3>Beneficios Exclusivos</h3><ul><li>Descuentos especiales en todos nuestros productos.</li><li>Promociones y ofertas exclusivas para miembros.</li><li>Acumulación de puntos en cada compra.</li><li>Acceso anticipado a nuevos productos.</li><li>Asesoría personalizada.</li></ul><a class="cta white">Únete ahora →</a></div></div><div class="member-visual"><div class="member-card"><h2>MAYGEN</h2><h3>MIEMBRO MAYGEN</h3><p>1234 5678 9101 1121</p></div></div></div>
-  <div class="plans-sec"><h2>Planes de Membresía</h2><p>Elige el plan que mejor se adapte a tu negocio.</p><div class="plans"><div class="plan"><h3>BÁSICO</h3><div class="price">Gratis</div><ul><li>Registro gratuito</li><li>Descuentos especiales</li><li>Acumulación de puntos</li></ul><a class="cta">Regístrate</a></div><div class="plan"><h3>EMPRESARIAL</h3><div class="price">L 299 / mes</div><ul><li>Todos los beneficios del plan Básico</li><li>Descuentos adicionales</li><li>Promociones exclusivas</li><li>Asesoría personalizada</li></ul><a class="cta">Elegir plan</a></div><div class="plan"><h3>PREMIUM</h3><div class="price">L 599 / mes</div><ul><li>Todos los beneficios del plan Empresarial</li><li>Acceso anticipado a nuevos productos</li><li>Atención prioritaria</li><li>Envíos gratis en compras mayores a L. 2,000</li></ul><a class="cta">Elegir plan</a></div></div></div>
-</section>
+    <div class="mobile-menu">
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="productos.html">Productos</a>
+      <a href="membresias.html">Membresía</a>
+      <a href="productos.html?cat=industriales">Industrias</a>
+      <a href="contacto.html">Contáctanos</a>
+      <a href="contacto.html" class="cta">
+        Cotiza ahora →
+      </a>
+    </div>
+  </header>
 
-<div class="page-label">4. SOBRE NOSOTROS</div>
-<section class="page" id="nosotros">
-  <div class="header"><img src="maygen-logo-new.jpeg" class="logo" alt="Maygen"><div class="menu"><a>Inicio</a><a class="active">Nosotros</a><a>Productos</a><a>Membresía</a><a>Industrias</a><a>Contacto</a><a class="cta">Cotiza ahora</a></div></div>
-  <div class="about"><div><h1>Sobre Maygen</h1><p>En Maygen somos una empresa hondureña dedicada a brindar soluciones de limpieza profesional de alta calidad.</p><p>Con más de 10 años de experiencia, nos enfocamos en ofrecer productos confiables, eficientes y seguros para cada tipo de negocio, industria y hogar.</p><div class="values-row"><div class="value"><div class="ico">♢</div><h4>Calidad</h4><p>Productos de alto rendimiento.</p></div><div class="value"><div class="ico">♙</div><h4>Confianza</h4><p>Compromiso con nuestros clientes.</p></div><div class="value"><div class="ico">✶</div><h4>Innovación</h4><p>Soluciones que se adaptan a tus necesidades.</p></div><div class="value"><div class="ico">♡</div><h4>Compromiso</h4><p>Trabajamos por un futuro más limpio.</p></div></div></div><div class="factory"></div></div>
-  <div class="mv"><div><h3>Nuestra Misión</h3><p>Brindar soluciones de limpieza innovadoras y efectivas que contribuyan al bienestar de nuestros clientes y al cuidado del medio ambiente.</p></div><div><h3>Nuestra Visión</h3><p>Ser la empresa líder en soluciones de limpieza profesional en Honduras, reconocida por nuestra calidad, servicio y compromiso.</p></div></div><div class="stats-band"><div><strong>+10</strong>Años de experiencia</div><div><strong>+30</strong>Productos de calidad</div><div><strong>+500</strong>Clientes satisfechos</div><div><strong>Cobertura</strong>A nivel nacional</div></div>
-</section>
+  <section class="hero">
+    <div class="hero-copy reveal">
+      <span class="tag-pill">
+        +10 años cuidando la limpieza de Honduras
+      </span>
+      <h1>
+        Soluciones de limpieza para
+        <span>cada necesidad</span>
+      </h1>
+      <p>
+        Fabricamos y distribuimos productos de alta calidad para limpieza
+        profesional, car wash, industria, hospitales, negocios y hogar en
+        toda Honduras.
+      </p>
+      <div class="hero-actions">
+        <a href="productos.html" class="cta">
+          Ver catálogo →
+        </a>
+        <a
+          href="https://wa.me/50494398387"
+          target="_blank"
+          rel="noopener"
+          class="cta outline"
+        >
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>+10</strong>
+          <span>Años de experiencia</span>
+        </div>
+        <div class="stat">
+          <strong>69</strong>
+          <span>Productos disponibles</span>
+        </div>
+        <div class="stat">
+          <strong>+500</strong>
+          <span>Clientes satisfechos</span>
+        </div>
+      </div>
+    </div>
 
-<div class="page-label">5. CONTÁCTANOS</div>
-<section class="page" id="contacto">
-  <div class="header"><img src="maygen-logo-new.jpeg" class="logo" alt="Maygen"><div class="menu"><a>Inicio</a><a>Nosotros</a><a>Productos</a><a>Membresía</a><a>Industrias</a><a class="active">Contacto</a><a class="cta">Cotiza ahora</a></div></div>
-  <div class="contact-page"><div class="contact-grid"><div><h1>Contáctanos</h1><p>Estamos aquí para ayudarte. Escríbenos, llámanos o visítanos. Nuestro equipo estará encantado de atenderte.</p><div class="info-line"><span>☎</span><div><b>Teléfono</b><br>+504 9439-8387</div></div><div class="info-line"><span>☏</span><div><b>WhatsApp</b><br>+504 9439-8387</div></div><div class="info-line"><span>✉</span><div><b>Correo</b><br>info@maygenhn.com</div></div><div class="info-line"><span>⌖</span><div><b>Dirección</b><br>San Pedro Sula, Cortés, Honduras</div></div><div class="info-line"><span>◷</span><div><b>Horario de Atención</b><br>Lunes a Viernes: 8:00 a.m. - 5:00 p.m.<br>Sábado: 8:00 a.m. - 12:00 p.m.</div></div></div><form class="contact-form"><input placeholder="Nombre completo"><input placeholder="Correo electrónico"><input placeholder="Teléfono"><input placeholder="Empresa (opcional)"><textarea placeholder="Mensaje"></textarea><a class="cta">Enviar mensaje</a></form></div><div class="map"><div class="pin">M</div></div></div><div class="social">Síguenos en nuestras redes<br><span>f</span><span>◎</span><span>𝕏</span><span>▶</span><span>☏</span></div>
-</section>
+    <div class="hero-img reveal">
+      <img
+        src="images/suavel azul 900 mL.png"
+        alt="Productos Maygen"
+      />
+    </div>
+  </section>
 
+  <section class="benefits">
+    <div class="benefit reveal">
+      <div class="ico">✧</div>
+      <div>
+        <h4>Calidad Garantizada</h4>
+        <p>Fórmulas confiables y de alto rendimiento.</p>
+      </div>
+    </div>
+
+    <div class="benefit reveal">
+      <div class="ico">◒</div>
+      <div>
+        <h4>Soluciones Completas</h4>
+        <p>Todo lo que necesitas para limpiar, cuidar y proteger.</p>
+      </div>
+    </div>
+
+    <div class="benefit reveal">
+      <div class="ico">⬟</div>
+      <div>
+        <h4>Para Cada Industria</h4>
+        <p>Soluciones adaptadas a cada tipo de negocio.</p>
+      </div>
+    </div>
+
+    <div class="benefit reveal">
+      <div class="ico">▣</div>
+      <div>
+        <h4>Entregas Rápidas</h4>
+        <p>Cobertura eficiente y puntual en todo el país.</p>
+      </div>
+    </div>
+
+    <div class="benefit reveal">
+      <div class="ico">☏</div>
+      <div>
+        <h4>Asesoría Experta</h4>
+        <p>Te ayudamos a elegir la mejor solución para ti.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-band">
+    <div class="wrap">
+      <h2>Nuestras Categorías</h2>
+      <p>Explora nuestra línea completa de productos por categoría.</p>
+
+      <div class="cats">
+        <a class="cat reveal" href="productos.html?cat=limpieza">
+          <img
+            src="images/cloro 10 1000 mL.png"
+            alt="Limpieza Profesional"
+          />
+          <div class="cat-title">
+            Limpieza Profesional
+            <span class="circle">›</span>
+          </div>
+        </a>
+
+        <a class="cat reveal" href="productos.html?cat=carwash">
+          <img
+            src="images/suavel azul 900 mL.png"
+            alt="Car Wash"
+          />
+          <div class="cat-title">
+            Car Wash
+            <span class="circle">›</span>
+          </div>
+        </a>
+
+        <a class="cat reveal" href="productos.html?cat=desinfectantes">
+          <img
+            src="images/Sanitizante en Spray 450 mL.png"
+            alt="Desinfectantes"
+          />
+          <div class="cat-title">
+            Desinfectantes
+            <span class="circle">›</span>
+          </div>
+        </a>
+
+        <a class="cat reveal" href="productos.html?cat=ambientadores">
+          <img
+            src="images/GlaFresh_Lavanda.png"
+            alt="Ambientadores"
+          />
+          <div class="cat-title">
+            Ambientadores
+            <span class="circle">›</span>
+          </div>
+        </a>
+
+        <a class="cat reveal" href="productos.html?cat=industriales">
+          <img
+            src="images/Ospho Blanco 1 L.png"
+            alt="Industriales"
+          />
+          <div class="cat-title">
+            Industriales
+            <span class="circle">›</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bestsellers">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Los más vendidos</h2>
+        <p>Los productos favoritos de nuestros clientes.</p>
+      </div>
+
+      <div class="grid30" id="bestsellerGrid"></div>
+
+      <div style="text-align: center; margin-top: 30px">
+        <a href="productos.html" class="cta outline">
+          Ver catálogo completo →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner reveal">
+    <div class="wrap">
+      <h2>
+        ¿Listo para encontrar la solución ideal para tu negocio?
+      </h2>
+      <p>
+        Escríbenos y te asesoramos sin costo sobre los productos que
+        necesitas.
+      </p>
+      <div class="actions">
+        <a href="contacto.html" class="cta white">
+          Cotiza ahora →
+        </a>
+        <a
+          href="https://wa.me/50494398387"
+          target="_blank"
+          rel="noopener"
+          class="cta outline"
+        >
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap foot-main">
+      <div>
+        <img
+          src="images/Logo Maygen Nuevo-01.png"
+          class="flogo"
+          alt="Maygen"
+        />
+        <p>
+          Fabricamos y distribuimos productos de limpieza profesional de
+          alta calidad para hogares, negocios e industrias en toda
+          Honduras.
+        </p>
+      </div>
+
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="membresias.html">Membresía</a></li>
+          <li><a href="contacto.html">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Categorías</h4>
+        <ul>
+          <li>
+            <a href="productos.html?cat=limpieza">
+              Limpieza Profesional
+            </a>
+          </li>
+          <li>
+            <a href="productos.html?cat=carwash">
+              Car Wash
+            </a>
+          </li>
+          <li>
+            <a href="productos.html?cat=desinfectantes">
+              Desinfectantes
+            </a>
+          </li>
+          <li>
+            <a href="productos.html?cat=industriales">
+              Industriales
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>
+            <a href="tel:+50494398387">+504 9439-8387</a>
+          </li>
+          <li>
+            <a href="mailto:info@maygenhn.com">info@maygenhn.com</a>
+          </li>
+          <li>San Pedro Sula, Cortés, Honduras</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      © <span id="year"></span> Químicas Maygen. Todos los derechos
+      reservados.
+    </div>
+  </footer>
+
+  <a
+    href="https://wa.me/50494398387"
+    target="_blank"
+    rel="noopener"
+    class="wa-float"
+    aria-label="WhatsApp"
+  >
+    ☏
+  </a>
+
+  <button class="back-top" aria-label="Volver arriba">↑</button>
+
+  <div class="toast"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (
+        typeof initBestsellers === 'function' &&
+        typeof MAYGEN_PRODUCTS !== 'undefined'
+      ) {
+        initBestsellers(MAYGEN_PRODUCTS);
+      }
+    });
+  </script>
 </body>
 </html>
-```[cite: 1]
