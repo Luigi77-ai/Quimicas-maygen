@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap');
 :root{--navy:#063763;--navy2:#052b4f;--blue:#0d5790;--sky:#eff7fc;--line:#dbe7ef;--green:#9cc52b;--text:#0b2a4a;--muted:#5d7081;--shadow:0 14px 35px rgba(6,55,99,.14)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f8fb;color:var(--text)}
+body{margin:0;font-family:'Inter',Arial,Helvetica,sans-serif;background:#f5f8fb;color:var(--text)}
 a{text-decoration:none;color:inherit}
 img{display:block;max-width:100%}
 ul{margin:0;padding:0}
@@ -283,4 +284,32 @@ header{border-bottom:none}
 .hero{grid-template-columns:1fr}
 .hero-img{min-height:220px}
 .hero-img img{min-height:220px}
+}
+
+/* ---------- Tipografia profesional ---------- */
+h1,h2,h3,h4,h5,
+.nav-links a,.mobile-menu a,
+.cta,.tag-pill,
+.hero-stats .stat strong,
+.home-card-btn,.filter-btn,
+.prod-quote,.prod-wa,.searchbar button,
+.cat-title,.plan-tag,.prod-badge{
+font-family:'Poppins',Arial,Helvetica,sans-serif;
+letter-spacing:.2px;
+}
+h1,h2,h3{font-weight:800}
+h4{font-weight:700}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ---------- Logo nuevo (recorte a medida) ---------- */
+.logo-link{display:flex;align-items:center}
+.logo-crop{display:block;width:105px;height:76px;overflow:hidden;position:relative}
+.logo-crop .logo{position:absolute;top:-48px;left:-16px;width:137px;height:172px;max-width:none;object-fit:none}
+header{border-bottom:none}
+.header{height:100px}
+
+@media(max-width:640px){
+.logo-crop{width:80px;height:58px}
+.logo-crop .logo{top:-36px;left:-12px;width:105px;height:131px}
+.header{height:82px;padding:0 18px}
 }
