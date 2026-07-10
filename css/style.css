@@ -265,12 +265,12 @@ header{border-bottom:none}
 .logo{width:160px}
 
 /* ---------- Hero mejorado ---------- */
-.hero{display:grid;grid-template-columns:1fr 1.1fr;min-height:480px;background:linear-gradient(110deg,#fff 0%,#f0f7fc 50%,#ddeef8 100%);align-items:center}
-.hero-copy{padding:56px 0 44px 60px}
-.hero h1{font-size:42px;line-height:1.1;margin:0 0 18px;color:var(--navy)}
-.hero p{font-size:15px;line-height:1.65;margin:0 0 24px;color:#12395e;max-width:460px}
-.hero-img{display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;height:100%}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:right center;min-height:480px}
+
+
+
+
+
+
 
 
 /* ---------- Home overview ---------- */
