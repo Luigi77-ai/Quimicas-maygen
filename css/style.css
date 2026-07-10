@@ -36,21 +36,22 @@ a.cta.outline[href*="wa.me"]:hover{background:#25D366;color:#fff;border-color:#2
 .mobile-menu .cta{margin-top:12px;justify-content:center}
 
 /* ---------- Hero ---------- */
-.hero{display:grid;grid-template-columns:1fr 1.25fr;min-height:340px;background:linear-gradient(90deg,#fff 0%,#f7fbfe 46%,#e8f2f8 100%)}
-.hero-copy{padding:64px 0 40px 64px}
+.hero{position:relative;min-height:480px;display:flex;align-items:center;overflow:hidden;background:var(--navy2)}
+.hero-copy{position:relative;z-index:2;padding:64px 40px 40px 64px;max-width:600px}
 .tag-pill{display:inline-flex;align-items:center;background:var(--navy);color:#fff;font-size:11px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:8px 16px;border-radius:20px;margin-bottom:18px}
 .tag-pill:before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--yellow);margin-right:8px}
-.hero h1{font-size:46px;line-height:1.08;margin:0 0 16px;color:var(--navy)}
-.hero h1 span{color:#2d6fa7}
-.hero p{font-size:16px;line-height:1.6;margin:0 0 22px;color:#12395e;max-width:480px}
+.hero h1{font-size:46px;line-height:1.08;margin:0 0 16px;color:#fff}
+.hero h1 span{color:var(--yellow)}
+.hero p{font-size:16px;line-height:1.6;margin:0 0 22px;color:#eaf1f8;max-width:480px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
 .hero-stats{display:flex;gap:14px;flex-wrap:wrap}
 .hero-stats .stat{background:#fff;border:1px solid var(--line);border-top:3px solid var(--green);border-radius:8px;padding:14px 20px;box-shadow:var(--shadow)}
 .hero-stats .stat:nth-child(2){border-top-color:var(--yellow)}
 .hero-stats .stat strong{display:block;font-size:22px;color:var(--navy)}
 .hero-stats .stat span{font-size:11px;color:var(--muted)}
-.hero-img{display:flex;align-items:end;justify-content:center;overflow:hidden;position:relative}
-.hero-img img{height:330px;width:100%;object-fit:cover;object-position:center}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero-img:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,43,79,.95) 0%,rgba(5,43,79,.85) 34%,rgba(5,43,79,.45) 60%,rgba(5,43,79,.12) 82%)}
 
 /* ---------- Benefits ---------- */
 .benefits{display:grid;grid-template-columns:repeat(5,1fr);background:#fff;border-top:1px solid #eef4f8;border-bottom:1px solid #dce8f0;padding:22px 30px}
@@ -116,12 +117,12 @@ a.cta.outline[href*="wa.me"]:hover{background:#25D366;color:#fff;border-color:#2
 /* ---------- Membership ---------- */
 .member-hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;padding:60px 0}
 .member-hero h1{font-size:32px;color:var(--navy);margin:0 0 12px}
-.benefit-card{background:linear-gradient(135deg,var(--navy),#032543);color:#fff;border-radius:8px;padding:28px;margin-top:20px}
-.benefit-card h3{margin-top:0}
-.benefit-card ul{list-style:none}
-.benefit-card li{margin:14px 0;color:#dfeef8;padding-left:22px;position:relative}
+.benefit-card{background:#fff;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:28px;margin-top:20px;box-shadow:var(--shadow)}
+.benefit-card h3{margin-top:0;color:var(--navy)}
+.benefit-card ul{list-style:none;padding:0}
+.benefit-card li{margin:14px 0;color:#33506a;padding-left:22px;position:relative}
 .benefit-card li:before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900}
-.member-visual{background:linear-gradient(135deg,var(--blue),var(--navy));border-radius:10px;min-height:360px;position:relative;overflow:hidden}
+.member-visual{background:linear-gradient(135deg,rgba(5,43,79,.55),rgba(5,43,79,.72)),url('../ChatGPT Image Jul 9, 2026, 11_18_52 AM.png') center/cover no-repeat;border-radius:10px;min-height:360px;position:relative;overflow:hidden}
 .member-visual:before{content:'';position:absolute;width:260px;height:260px;background:rgba(255,255,255,.08);border-radius:50%;right:-60px;top:-60px}
 .member-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-4deg);background:linear-gradient(135deg,var(--navy2),var(--navy) 55%,var(--blue));color:#fff;border-radius:18px;padding:26px 30px;width:360px;height:220px;box-shadow:0 30px 55px rgba(0,0,0,.35);transition:transform .3s;display:flex;flex-direction:column;justify-content:space-between;border-bottom:5px solid var(--green)}
 .member-visual:hover .member-card{transform:translate(-50%,-50%) rotate(0deg) scale(1.04)}
@@ -151,6 +152,7 @@ a.cta.outline[href*="wa.me"]:hover{background:#25D366;color:#fff;border-color:#2
 /* ---------- About ---------- */
 .about{display:grid;grid-template-columns:1fr 1.05fr;padding:50px 0;gap:36px;align-items:center}
 .about h1{color:var(--navy);font-size:32px}
+.about h2{color:var(--navy);font-size:32px}
 .about p{line-height:1.6;color:#36536b}
 .factory{min-height:300px;background:linear-gradient(160deg,#dfe8ee,#fff);border-radius:8px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .factory .disk{width:230px;height:230px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 45px rgba(6,55,99,.18),0 0 0 8px rgba(156,197,43,.14);border:1px solid var(--line)}
