@@ -365,7 +365,7 @@ header{border-bottom:none}
 .about h1:after,.membership-grid h1:after,.contact-grid h1:after,.page-hero h1:after,.home-about h2:after,.home-member h2:after{content:'';display:block;width:60px;height:4px;background:linear-gradient(90deg,var(--green),var(--yellow));margin-top:14px;border-radius:2px}
 
 /* Hero de productos: texto centrado con productos a los lados */
-.products-hero-inner{display:grid;grid-template-columns:1fr 1.3fr 1fr;align-items:center;gap:18px;min-height:230px;padding:30px 0}
+.page-hero .wrap.products-hero-inner{display:grid;grid-template-columns:1fr 1.3fr 1fr;align-items:center;gap:18px;min-height:230px;padding:30px 0}
 .hero-prod-text{text-align:center}
 .hero-prod-text h1:after{margin-left:auto;margin-right:auto}
 .hero-prod-col{display:flex;flex-direction:column;gap:18px;align-items:center}
@@ -401,7 +401,7 @@ header{border-bottom:none}
 .wa-float svg{display:block}
 
 @media(max-width:980px){
-  .products-hero-inner{grid-template-columns:1fr;padding:24px 0}
+  .page-hero .wrap.products-hero-inner{grid-template-columns:1fr;padding:24px 0}
   .hero-prod-col{flex-direction:row;justify-content:center;margin-top:6px}
   .home-member-grid{grid-template-columns:1fr}
   .contact-form-row{grid-template-columns:1fr}
