@@ -422,9 +422,9 @@ header{border-bottom:none}
 @keyframes catsScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* Nosotros (home): ilustracion de edificio */
-.building.factory{display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+.building.factory{padding:0;overflow:hidden}
 .building.factory:before{content:none}
-.building.factory svg{width:100%;height:100%;max-height:320px}
+.building.factory img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* Membresia (home): imagen mas grande con desvanecido a la izquierda */
 .home-member-grid{grid-template-columns:.85fr 1.25fr}
@@ -444,3 +444,14 @@ header{border-bottom:none}
 /* Contacto: mapa a todo lo ancho */
 .map-full{width:100%;line-height:0}
 .map-full iframe{display:block;width:100%;height:360px;border:0}
+
+
+/* Sesion 5: boton hero, boton conoce mas, imagen membresia sin espacios, tarjeta con forma real, boton ver planes */
+.hero .btn-cta{border:2px solid var(--green);box-shadow:0 0 0 3px rgba(255,255,255,.2)}
+.hero .btn-cta:hover{background:var(--blue);border-color:#fff}
+.home-about-grid .home-card-btn{margin-top:18px}
+.home-member-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.member-card.mini{height:150px;padding:18px 20px}
+.member-card.mini .member-chip{margin-bottom:10px}
+.member-card.mini h2{margin-bottom:6px}
+.home-member-grid .home-card-btn{margin-top:26px}
