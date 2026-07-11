@@ -462,3 +462,7 @@ header{border-bottom:none}
 /* Sesion 6: legibilidad tarjeta mini, boton Unete ahora en blanco, edificio real en nosotros.html */
 .member-box .btn-cta{background:#fff;color:var(--navy)}
 .member-box .btn-cta:hover{background:var(--sky);color:var(--navy)}
+
+.home-member .member-card h2{color:#cfe3f0}
+.home-member .member-card p{color:#fff}
+
