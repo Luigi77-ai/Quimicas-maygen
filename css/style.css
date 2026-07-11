@@ -113,7 +113,7 @@ a.cta.outline[href*="wa.me"]:hover{background:#25D366;color:#fff;border-color:#2
 .member-box li:before{content:'\2713';position:absolute;left:0;color:var(--green);font-weight:900}
 .member-visual{min-height:340px;background:linear-gradient(145deg,#f2f6f8,#dce7ed);border-radius:10px;position:relative;overflow:hidden}
 .member-visual img{position:absolute;left:0;right:0;bottom:-10px;height:70%;width:100%;object-fit:contain;z-index:1}
-.:absolute;right:32px;top:34px;width:290px;background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:14px;color:#fff;padding:24px;transform:rotate(-4deg);box-shadow:0 18px 30px rgba(0,0,0,.22);z-index:2}
+.member-card{position:absolute;right:32px;top:34px;width:290px;background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:14px;color:#fff;padding:24px;transform:rotate(-4deg);box-shadow:0 18px 30px rgba(0,0,0,.22);z-index:2}
 .member-card b{font-size:20px;letter-spacing:2px;display:block;margin-bottom:14px}
 .member-card h2{font-size:16px;margin:0 0 12px;letter-spacing:1px}
 .member-card p{margin:0;font-size:15px;letter-spacing:2px}
