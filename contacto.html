@@ -19,37 +19,34 @@
 </div>
 <div class="mobile-menu"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="productos.html">Productos</a><a href="membresias.html">Membresía</a><a href="productos.html?cat=industriales">Industrias</a><a href="contacto.html" class="active">Contáctanos</a><a href="contacto.html" class="cta">Cotiza ahora →</a></div>
 </header>
-<section class="wrap contact-page">
-<div class="contact-grid">
-<div class="reveal">
+<section class="contact">
+<div class="wrap contact-grid">
+<div>
 <h1>Contáctanos</h1>
-<p>Estamos aquí para ayudarte. Escríbenos, llámanos o visítanos. Nuestro equipo estará encantado de atenderte.</p>
-<div class="info-line"><span class="ico-circle">☎</span><div><b>Teléfono</b><br><a href="tel:+50494398387">+504 9439-8387</a></div></div>
-<div class="info-line"><span class="ico-circle">☏</span><div><b>WhatsApp</b><br><a href="https://wa.me/50494398387" target="_blank" rel="noopener">+504 9439-8387</a></div></div>
-<div class="info-line"><span class="ico-circle">✉</span><div><b>Correo</b><br><a href="mailto:info@maygenhn.com">info@maygenhn.com</a></div></div>
-<div class="info-line"><span class="ico-circle">⌖</span><div><b>Dirección</b><br>San Pedro Sula, Cortés, Honduras</div></div>
-<div class="info-line"><span class="ico-circle">◷</span><div><b>Horario de Atención</b><br>Lunes a Viernes: 8:00 a.m. - 5:00 p.m.<br>Sábado: 8:00 a.m. - 12:00 p.m.</div></div>
-<div class="map reveal"><div class="pin">M</div></div>
+<p>Nuestro equipo estará encantado de atenderte.</p>
+<div class="contact-line"><b>Teléfono</b><br>+504 9439-8387</div>
+<div class="contact-line"><b>WhatsApp</b><br>+504 9439-8387</div>
+<div class="contact-line"><b>Correo</b><br>info@maygenhn.com</div>
+<div class="contact-line"><b>Dirección</b><br>San Pedro Sula, Cortés, Honduras</div>
+<div class="contact-line"><b>Horario de Atención</b><br>Lunes a Viernes: 8:00 a.m. – 5:00 p.m.<br>Sábado: 8:00 a.m. – 12:00 p.m.</div>
 </div>
-<form class="contact-form reveal" id="contactForm">
-<h3>Envíanos un mensaje</h3>
+<form class="form" id="contactForm">
 <input type="text" name="nombre" placeholder="Nombre completo" required>
 <input type="email" name="correo" placeholder="Correo electrónico" required>
 <input type="tel" name="telefono" placeholder="Teléfono">
 <input type="text" name="empresa" placeholder="Empresa (opcional)">
-<textarea name="mensaje" id="mensajeField" placeholder="Mensaje" required></textarea>
-<button type="submit" class="cta">Enviar mensaje →</button>
+<textarea name="mensaje" placeholder="Mensaje" required></textarea>
+<button class="btn" type="submit">Enviar mensaje</button>
 </form>
 </div>
 </section>
-<div class="social">
-<p>Síguenos en nuestras redes</p>
-<div class="s-row">
+<div class="map"><div class="pin"></div></div>
+<div class="social">Síguenos en nuestras redes<br>
 <a href="https://www.facebook.com/Quimicasmaygenhn/?locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><span>f</span></a>
 <a href="https://www.instagram.com/quimicasmaygenhn/" target="_blank" rel="noopener" aria-label="Instagram"><span>◎</span></a>
 <a href="https://wa.me/50494398387" target="_blank" rel="noopener" aria-label="WhatsApp"><span>☏</span></a>
 </div>
-</div>
+
 <footer>
 <div class="wrap foot-main">
 <div><img src="images/Logo Maygen Nuevo-01.png" class="flogo" alt="Maygen"><p>Fabricamos y distribuimos productos de limpieza profesional de alta calidad para hogares, negocios e industrias en toda Honduras.</p></div>
@@ -63,17 +60,5 @@
 <button class="back-top" aria-label="Volver arriba">↑</button>
 <div class="toast"></div>
 <script src="js/main.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-var params = new URLSearchParams(window.location.search);
-var producto = params.get('producto');
-var plan = params.get('plan');
-var field = document.getElementById('mensajeField');
-if (field) {
-if (producto) field.value = 'Hola, quiero cotizar el producto: ' + producto;
-else if (plan) field.value = 'Hola, quiero más información sobre el plan de membresía: ' + plan;
-}
-});
-</script>
 </body>
 </html>
