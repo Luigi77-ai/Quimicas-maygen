@@ -451,7 +451,14 @@ header{border-bottom:none}
 .hero .btn-cta:hover{background:var(--blue);border-color:#fff}
 .home-about-grid .home-card-btn{margin-top:18px}
 .home-member-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
-.member-card.mini{height:150px;padding:18px 20px}
-.member-card.mini .member-chip{margin-bottom:10px}
-.member-card.mini h2{margin-bottom:6px}
+.member-card.mini{height:150px;padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between}
+.member-card.mini .member-chip{margin-bottom:0;width:34px;height:24px}
+.member-card.mini b{margin-bottom:0;font-size:14px}
+.member-card.mini h2{margin:0;font-size:9px;line-height:1.3}
+.member-card.mini p{margin:0;font-size:12px;letter-spacing:1.2px}
 .home-member-grid .home-card-btn{margin-top:26px}
+
+
+/* Sesion 6: legibilidad tarjeta mini, boton Unete ahora en blanco, edificio real en nosotros.html */
+.member-box .btn-cta{background:#fff;color:var(--navy)}
+.member-box .btn-cta:hover{background:var(--sky);color:var(--navy)}
