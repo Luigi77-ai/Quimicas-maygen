@@ -466,3 +466,7 @@ header{border-bottom:none}
 .home-member .member-card h2{color:#cfe3f0}
 .home-member .member-card p{color:#fff}
 
+
+
+/* Fix: legibilidad del numero de la tarjeta de membresia en la pagina principal (evita que quede en gris por conflicto de especificidad con .home-member > div:first-child p) */
+.home-member .member-visual .member-card p{color:#fff}
