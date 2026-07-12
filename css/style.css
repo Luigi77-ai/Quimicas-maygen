@@ -373,7 +373,7 @@ header{border-bottom:none}
 
 /* Home: grid de membresia */
 .home-member-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.home-member-visual{min-height:360px}
+.home-member-visual{background:none;border-radius:0;min-height:360px}
 
 /* Contacto: tarjetas de informacion */
 .info-line{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 12px;box-shadow:0 4px 14px rgba(6,55,99,.05)}
@@ -428,7 +428,7 @@ header{border-bottom:none}
 
 /* Membresia (home): imagen mas grande con desvanecido a la izquierda */
 .home-member-grid{grid-template-columns:.85fr 1.25fr}
-.home-member-visual{min-height:480px}
+.home-member-visual{background:none;border-radius:0;min-height:480px}
 .home-member-visual:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.88) 14%,rgba(255,255,255,0) 46%);z-index:2;pointer-events:none}
 .member-box{position:relative;overflow:hidden}
 .member-box:after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px);pointer-events:none}
