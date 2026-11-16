@@ -6,7 +6,66 @@
 <title>Contáctanos | Maygen</title>
 <meta name="description" content="Contáctanos para cotizar productos de limpieza profesional Maygen en Honduras.">
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+/* Estos estilos afectan únicamente a la nueva sección de empleo. */
+#equipo-maygen {
+  padding-top: 35px;
+  padding-bottom: 60px;
+}
+
+#equipo-maygen .equipo-intro {
+  margin-bottom: 24px;
+}
+
+#equipo-maygen .equipo-intro h2 {
+  margin-bottom: 12px;
+}
+
+#equipo-maygen .equipo-intro p {
+  line-height: 1.6;
+}
+
+#equipo-maygen .equipo-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin-bottom: 18px;
+}
+
+#equipo-maygen .equipo-campo label {
+  font-weight: 600;
+}
+
+#equipo-maygen .equipo-campo input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#equipo-maygen .equipo-ayuda {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+#equipo-maygen .equipo-consentimiento {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0 24px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#equipo-maygen .equipo-consentimiento input {
+  width: auto;
+  flex: 0 0 auto;
+  margin-top: 4px;
+}
+</style>
 </head>
+
 <body>
 <header>
 <div class="header">
@@ -19,6 +78,7 @@
 </div>
 <div class="mobile-menu"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="productos.html">Productos</a><a href="membresias.html">Membresía</a><a href="contacto.html" class="active">Contáctanos</a><a href="contacto.html" class="cta">Cotiza ahora →</a></div>
 </header>
+
 <section class="wrap contact-page">
 <div class="contact-grid">
 <div class="reveal">
@@ -29,8 +89,8 @@
 <div class="info-line"><span class="ico-circle">✉</span><div><b>Correo</b><br><a href="mailto:info@maygenhn.com">info@maygenhn.com</a></div></div>
 <div class="info-line"><span class="ico-circle">⌖</span><div><b>Dirección</b><br>San Pedro Sula, Cortés, Honduras</div></div>
 <div class="info-line"><span class="ico-circle">◷</span><div><b>Horario de Atención</b><br>Lunes a Viernes: 8:00 a.m. - 5:00 p.m.<br>Sábado: 8:00 a.m. - 12:00 p.m.</div></div>
-
 </div>
+
 <form class="contact-form reveal" id="contactForm">
 <h3>Envíanos un mensaje</h3>
 <div class="contact-form-row">
@@ -47,9 +107,115 @@
 </div>
 </section>
 
+<!-- INICIO: Unirse al equipo Maygen -->
+<section
+  class="wrap"
+  id="equipo-maygen"
+  aria-labelledby="equipo-maygen-titulo"
+>
+  <div class="equipo-intro">
+    <h2 id="equipo-maygen-titulo">Unirse al equipo Maygen</h2>
+    <p>
+      ¿Te gustaría formar parte de nuestro equipo?
+      Completa tus datos y adjunta tu currículum.
+    </p>
+  </div>
+
+  <form
+    class="contact-form"
+    id="maygenRecruitmentForm"
+    action="https://formsubmit.co/info@maygenhn.com"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <input
+      type="hidden"
+      name="_subject"
+      value="Nueva solicitud de empleo | Equipo Maygen"
+    >
+
+    <input type="hidden" name="_template" value="table">
+
+    <div class="equipo-campo">
+      <label for="equipo-nombre">Nombre completo</label>
+      <input
+        type="text"
+        id="equipo-nombre"
+        name="nombre_completo"
+        placeholder="Escribe tu nombre completo"
+        autocomplete="name"
+        maxlength="150"
+        required
+      >
+    </div>
+
+    <div class="equipo-campo">
+      <label for="equipo-telefono">Teléfono</label>
+      <input
+        type="tel"
+        id="equipo-telefono"
+        name="telefono"
+        placeholder="Ejemplo: +504 9999-9999"
+        autocomplete="tel"
+        maxlength="30"
+        required
+      >
+    </div>
+
+    <div class="equipo-campo">
+      <label for="equipo-correo">Correo electrónico</label>
+      <input
+        type="email"
+        id="equipo-correo"
+        name="email"
+        placeholder="Escribe tu correo electrónico"
+        autocomplete="email"
+        maxlength="254"
+        required
+      >
+    </div>
+
+    <div class="equipo-campo">
+      <label for="equipo-cv">Adjuntar CV</label>
+      <input
+        type="file"
+        id="equipo-cv"
+        name="attachment"
+        accept=".pdf,application/pdf"
+        aria-describedby="equipo-cv-ayuda"
+        required
+      >
+      <small id="equipo-cv-ayuda" class="equipo-ayuda">
+        Adjunta un archivo PDF de hasta 5 MB.
+        No incluyas documentos de identidad ni datos bancarios.
+      </small>
+    </div>
+
+    <label class="equipo-consentimiento">
+      <input
+        type="checkbox"
+        name="autorizacion"
+        value="Acepto el envío de mis datos y CV para procesos de selección"
+        required
+      >
+      <span>
+        Autorizo el envío de mis datos y mi CV a Maygen para
+        procesos de selección. Entiendo que el formulario utiliza
+        FormSubmit como proveedor externo para procesar el envío.
+      </span>
+    </label>
+
+    <button type="submit" class="cta">
+      Enviar solicitud →
+    </button>
+  </form>
+</section>
+<!-- FIN: Unirse al equipo Maygen -->
+
 <section class="map-full reveal">
 <iframe src="https://www.google.com/maps?q=San+Pedro+Sula,+Cortes,+Honduras&output=embed" width="100%" height="360" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Maygen San Pedro Sula"></iframe>
 </section>
+
 <div class="social">
 <p>Síguenos en nuestras redes</p>
 <div class="s-row">
@@ -58,6 +224,7 @@
 <a href="https://wa.me/50494398387" target="_blank" rel="noopener" aria-label="WhatsApp"><span><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.02 3C9.4 3 4.02 8.38 4.02 15c0 2.23.61 4.32 1.67 6.12L3 29l8.1-2.63A11.9 11.9 0 0 0 16.02 27C22.64 27 28 21.62 28 15S22.64 3 16.02 3zm0 21.6c-1.94 0-3.75-.55-5.28-1.5l-.38-.23-4.8 1.56 1.57-4.68-.25-.39A9.53 9.53 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6 0 5.3-4.3 9.6-9.6 9.6zm5.27-7.19c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.39 0 1.41 1.03 2.77 1.17 2.96.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg></span></a>
 </div>
 </div>
+
 <footer>
 <div class="wrap foot-main">
 <div><img src="images/Logo Maygen Nuevo-01.png" class="flogo" alt="Maygen"><p>Fabricamos y distribuimos productos de limpieza profesional de alta calidad para hogares, negocios e industrias en toda Honduras.</p></div>
@@ -67,21 +234,72 @@
 </div>
 <div class="foot-bottom">© <span id="year"></span> Químicas Maygen. Todos los derechos reservados.</div>
 </footer>
+
 <a href="https://wa.me/50494398387" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.02 3C9.4 3 4.02 8.38 4.02 15c0 2.23.61 4.32 1.67 6.12L3 29l8.1-2.63A11.9 11.9 0 0 0 16.02 27C22.64 27 28 21.62 28 15S22.64 3 16.02 3zm0 21.6c-1.94 0-3.75-.55-5.28-1.5l-.38-.23-4.8 1.56 1.57-4.68-.25-.39A9.53 9.53 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6 0 5.3-4.3 9.6-9.6 9.6zm5.27-7.19c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.39 0 1.41 1.03 2.77 1.17 2.96.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg></a>
+
 <button class="back-top" aria-label="Volver arriba">↑</button>
 <div class="toast"></div>
+
 <script src="js/main.js"></script>
+
 <script>
+/* Conserva el autocompletado del formulario de contacto original. */
 document.addEventListener('DOMContentLoaded', function(){
-var params = new URLSearchParams(window.location.search);
-var producto = params.get('producto');
-var plan = params.get('plan');
-var field = document.getElementById('mensajeField');
-if (field) {
-if (producto) field.value = 'Hola, quiero cotizar el producto: ' + producto;
-else if (plan) field.value = 'Hola, quiero más información sobre el plan de membresía: ' + plan;
-}
+  var params = new URLSearchParams(window.location.search);
+  var producto = params.get('producto');
+  var plan = params.get('plan');
+  var field = document.getElementById('mensajeField');
+
+  if (field) {
+    if (producto) {
+      field.value = 'Hola, quiero cotizar el producto: ' + producto;
+    } else if (plan) {
+      field.value = 'Hola, quiero más información sobre el plan de membresía: ' + plan;
+    }
+  }
 });
+
+/* Validación exclusiva del nuevo formulario de empleo. */
+(function () {
+  var form = document.getElementById('maygenRecruitmentForm');
+  var cvInput = document.getElementById('equipo-cv');
+  var maxSize = 5 * 1024 * 1024;
+
+  function validarCV() {
+    cvInput.setCustomValidity('');
+
+    var file = cvInput.files[0];
+
+    if (!file) return;
+
+    if (!/\.pdf$/i.test(file.name)) {
+      cvInput.setCustomValidity(
+        'Selecciona tu currículum en formato PDF.'
+      );
+    } else if (file.size > maxSize) {
+      cvInput.setCustomValidity(
+        'El archivo supera los 5 MB. Selecciona un PDF más pequeño.'
+      );
+    }
+  }
+
+  cvInput.addEventListener('change', function () {
+    validarCV();
+
+    if (!cvInput.checkValidity()) {
+      cvInput.reportValidity();
+    }
+  });
+
+  form.addEventListener('submit', function (event) {
+    validarCV();
+
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      form.reportValidity();
+    }
+  });
+})();
 </script>
 </body>
 </html>
