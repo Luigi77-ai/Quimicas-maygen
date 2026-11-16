@@ -1,103 +1,490 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Membresía | Maygen</title>
-<meta name="description" content="Únete a la membresía Maygen y obtén descuentos exclusivos y beneficios especiales.">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Membresías para el hogar | Maygen</title>
+  <meta
+    name="description"
+    content="Conoce los cuatro combos de limpieza para el hogar de Maygen. Precios finales con flete y comisión bancaria incluidos."
+  />
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Estilos exclusivos de esta página */
+    .maygen-memberships .plans {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .maygen-memberships .plan {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 28px;
+      border: 1px solid #dce5e1;
+      border-top: 5px solid #23845b;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+
+    .maygen-memberships .plan-eco {
+      border-top-color: #23845b;
+    }
+
+    .maygen-memberships .plan-esencial {
+      border-top-color: #e39a51;
+    }
+
+    .maygen-memberships .plan-familiar {
+      border-top-color: #6f9e47;
+    }
+
+    .maygen-memberships .plan-premium {
+      border-top-color: #d5ad32;
+    }
+
+    .maygen-memberships .combo-label {
+      margin: 0 0 8px;
+      color: #58655f;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .maygen-memberships .plan h3 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+      line-height: 1.3;
+    }
+
+    .maygen-memberships .plan .price {
+      margin: 0 0 8px;
+      color: #176c49;
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .maygen-memberships .price-note {
+      margin: 0 0 22px;
+      color: #58655f;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .maygen-memberships .products-heading {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .maygen-memberships .product-list {
+      flex: 1;
+      margin: 0 0 24px;
+      padding: 0 0 0 20px;
+      list-style: disc;
+    }
+
+    .maygen-memberships .product-list li {
+      display: list-item;
+      margin: 0;
+      padding: 9px 0;
+      border-bottom: 1px solid #edf1ee;
+      color: #37443d;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .maygen-memberships .plan .btn-cta {
+      display: block;
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .maygen-memberships .shipping-note {
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid #d5e8dd;
+      border-radius: 12px;
+      background: #f0f8f3;
+      color: #244b36;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .maygen-memberships .shipping-note p {
+      margin: 0;
+    }
+
+    @media (max-width: 700px) {
+      .maygen-memberships .plans {
+        grid-template-columns: 1fr;
+      }
+
+      .maygen-memberships .plan {
+        padding: 24px 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-<div class="header">
-<a href="index.html" class="logo-link"><img src="images/Logo Maygen Nuevo-01.png" class="logo" alt="Maygen"></a>
-<nav class="nav-links"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="productos.html">Productos</a><a href="membresias.html" class="active">Membresía</a><a href="contacto.html">Contáctanos</a></nav>
-<div class="header-right">
-<a href="contacto.html" class="cta desktop-only">Cotiza ahora →</a>
-<button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
-</div>
-</div>
-<div class="mobile-menu"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="productos.html">Productos</a><a href="membresias.html" class="active">Membresía</a><a href="contacto.html">Contáctanos</a><a href="contacto.html" class="cta">Cotiza ahora →</a></div>
-</header>
-<section class="membership">
-<div class="wrap membership-grid">
-<div>
-<h1>Membresía Maygen</h1>
-<p>Más beneficios, más ahorro, más valor para tu negocio.</p>
-<p>Únete a nuestra membresía y disfruta de descuentos exclusivos, promociones especiales y beneficios pensados para ti.</p>
-<div class="member-box">
-<h3>Beneficios Exclusivos</h3>
-<ul>
-<li>Descuentos especiales en todos nuestros productos.</li>
-<li>Promociones y ofertas exclusivas para miembros.</li>
-<li>Acumulación de puntos en cada compra.</li>
-<li>Acceso anticipado a nuevos productos.</li>
-<li>Asesoría personalizada.</li>
-</ul>
-<a href="contacto.html" class="btn-cta">Únete ahora →</a>
-</div>
-</div>
-<div class="member-visual home-member-visual reveal">
-<img src="ChatGPT Image Jul 9, 2026, 11_18_52 AM.png" alt="Productos Maygen">           <div class="member-card mini">             <div class="member-chip"></div>             <b>M MAYGEN</b>             <h2>MIEMBRO<br>MAYGEN</h2>             <p>1234 5678 9101 1121</p>           </div>
-</div>
-</div>
-</section>
+  <header>
+    <div class="header">
+      <a href="index.html" class="logo-link">
+        <img
+          src="images/Logo Maygen Nuevo-01.png"
+          class="logo"
+          alt="Maygen"
+        >
+      </a>
 
-<section class="plans-wrap">
-<div class="wrap">
-<div class="section-title">
-<h2>Planes de Membresía</h2>
-<p>Elige el plan que mejor se adapte a tu negocio.</p>
-</div>
-<div class="plans">
-<article class="plan">
-<h3>BÁSICO</h3>
-<p class="price">Gratis</p>
-<ul>
-<li>Registro gratuito</li>
-<li>Descuentos especiales</li>
-<li>Acumulación de puntos</li>
-</ul>
-<a href="contacto.html" class="btn-cta">Regístrate</a>
-</article>
-<article class="plan">
-<h3>EMPRESARIAL</h3>
-<p class="price">L. 299 / mes</p>
-<ul>
-<li>Todos los beneficios del plan Básico</li>
-<li>Descuentos adicionales</li>
-<li>Promociones exclusivas</li>
-<li>Asesoría personalizada</li>
-</ul>
-<a href="contacto.html" class="btn-cta">Elegir plan</a>
-</article>
-<article class="plan">
-<h3>PREMIUM</h3>
-<p class="price">L. 599 / mes</p>
-<ul>
-<li>Todos los beneficios del plan Empresarial</li>
-<li>Acceso anticipado</li>
-<li>Atención prioritaria</li>
-<li>Envíos gratis en compras mayores a L. 2,000</li>
-</ul>
-<a href="contacto.html" class="btn-cta">Elegir plan</a>
-</article>
-</div>
-</div>
-</section>
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="productos.html">Productos</a>
+        <a href="membresias.html" class="active">Membresía</a>
+        <a href="contacto.html">Contáctanos</a>
+      </nav>
 
-<footer>
-<div class="wrap foot-main">
-<div><img src="images/Logo Maygen Nuevo-01.png" class="flogo" alt="Maygen"><p>Fabricamos y distribuimos productos de limpieza profesional de alta calidad para hogares, negocios e industrias en toda Honduras.</p></div>
-<div><h4>Enlaces</h4><ul><li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="productos.html">Productos</a></li><li><a href="membresias.html">Membresía</a></li><li><a href="contacto.html">Contáctanos</a></li></ul></div>
-<div><h4>Categorías</h4><ul><li><a href="productos.html?cat=limpieza">Limpieza Profesional</a></li><li><a href="productos.html?cat=carwash">Car Wash</a></li><li><a href="productos.html?cat=desinfectantes">Desinfectantes</a></li><li><a href="productos.html?cat=industriales">Industriales</a></li></ul></div>
-<div><h4>Contacto</h4><ul><li><a href="tel:+50494398387">+504 9439-8387</a></li><li><a href="mailto:info@maygenhn.com">info@maygenhn.com</a></li><li>San Pedro Sula, Cortés, Honduras</li></ul></div>
-</div>
-<div class="foot-bottom">© <span id="year"></span> Químicas Maygen. Todos los derechos reservados.</div>
-</footer>
-<a href="https://wa.me/50494398387" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.02 3C9.4 3 4.02 8.38 4.02 15c0 2.23.61 4.32 1.67 6.12L3 29l8.1-2.63A11.9 11.9 0 0 0 16.02 27C22.64 27 28 21.62 28 15S22.64 3 16.02 3zm0 21.6c-1.94 0-3.75-.55-5.28-1.5l-.38-.23-4.8 1.56 1.57-4.68-.25-.39A9.53 9.53 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6 0 5.3-4.3 9.6-9.6 9.6zm5.27-7.19c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.39 0 1.41 1.03 2.77 1.17 2.96.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg></a>
-<button class="back-top" aria-label="Volver arriba">↑</button>
-<div class="toast"></div>
-<script src="js/main.js"></script>
+      <div class="header-right">
+        <a href="contacto.html" class="cta desktop-only">
+          Cotiza ahora →
+        </a>
+
+        <button class="nav-toggle" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu">
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="productos.html">Productos</a>
+      <a href="membresias.html" class="active">Membresía</a>
+      <a href="contacto.html">Contáctanos</a>
+      <a href="contacto.html" class="cta">Cotiza ahora →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="membership">
+      <div class="wrap membership-grid">
+        <div>
+          <h1>Membresía Maygen</h1>
+
+          <p>
+            La limpieza de tu hogar, en un solo combo.
+          </p>
+
+          <p>
+            Conoce nuestros cuatro planes y elige la combinación
+            de productos que mejor se adapte a las necesidades
+            de tu hogar.
+          </p>
+
+          <div class="member-box">
+            <h3>Elige tu combo para el hogar</h3>
+
+            <ul>
+              <li>Cuatro opciones con diferentes productos de limpieza.</li>
+              <li>Productos y presentaciones detallados en cada plan.</li>
+              <li>Flete incluido en el precio final.</li>
+              <li>Comisión bancaria por transacción incluida.</li>
+            </ul>
+
+            <a href="#planes" class="btn-cta">
+              Ver los combos →
+            </a>
+          </div>
+        </div>
+
+        <div class="member-visual home-member-visual reveal">
+          <img
+            src="ChatGPT Image Jul 9, 2026, 11_18_52 AM.png"
+            alt="Productos de limpieza Maygen"
+          >
+
+          <div class="member-card mini">
+            <div class="member-chip"></div>
+            <b>M MAYGEN</b>
+            <h2>MIEMBRO<br>MAYGEN</h2>
+            <p>1234 5678 9101 1121</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans-wrap maygen-memberships" id="planes">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Planes de Membresía para el Hogar</h2>
+          <p>
+            Elige tu combo. Todos los precios incluyen flete
+            y comisión bancaria por transacción.
+          </p>
+        </div>
+
+        <div class="plans">
+          <article class="plan plan-eco">
+            <p class="combo-label">Combo 1</p>
+            <h3>PLAN HOGAR ECO</h3>
+            <p class="price">L. 610.00</p>
+
+            <p class="price-note">
+              Precio final con flete y comisión bancaria incluidos.
+            </p>
+
+            <h4 class="products-heading">Productos incluidos</h4>
+
+            <ul class="product-list">
+              <li>Lavavajillas Jabón Cristalería — 1 litro.</li>
+              <li>Detergente líquido para ropa — 900 ml.</li>
+              <li>Desinfectante Mágico Olor — 1 galón.</li>
+              <li>Cloro doméstico — 1 galón.</li>
+              <li>Bolsas Búfalo 24 × 32 — rollo de 25 unidades.</li>
+              <li>Bolsas Búfalo 18 × 24 — rollo de 50 unidades.</li>
+            </ul>
+
+            <a
+              href="https://wa.me/50494398387?text=Hola%2C%20quiero%20solicitar%20el%20Plan%20Hogar%20Eco%20%28Combo%201%29%20de%20L.%20610.00."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-cta"
+            >
+              Solicitar Combo 1 →
+            </a>
+          </article>
+
+          <article class="plan plan-esencial">
+            <p class="combo-label">Combo 2</p>
+            <h3>PLAN HOGAR ESENCIAL</h3>
+            <p class="price">L. 1,035.00</p>
+
+            <p class="price-note">
+              Precio final con flete y comisión bancaria incluidos.
+            </p>
+
+            <h4 class="products-heading">Productos incluidos</h4>
+
+            <ul class="product-list">
+              <li>Lavavajillas Jabón Cristalería — 1 litro.</li>
+              <li>Detergente líquido para ropa — 1 galón.</li>
+              <li>Desinfectante GLA — 1 galón.</li>
+              <li>Cloro doméstico — 1 galón.</li>
+              <li>Detergente Ultraklin — 1.1 kg.</li>
+              <li>GLA Solution — 240 ml.</li>
+              <li>GLA Fresh — 240 ml.</li>
+              <li>Bolsas Búfalo 24 × 32 — rollo de 25 unidades.</li>
+              <li>Bolsas Búfalo 18 × 24 — rollo de 50 unidades.</li>
+            </ul>
+
+            <a
+              href="https://wa.me/50494398387?text=Hola%2C%20quiero%20solicitar%20el%20Plan%20Hogar%20Esencial%20%28Combo%202%29%20de%20L.%201%2C035.00."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-cta"
+            >
+              Solicitar Combo 2 →
+            </a>
+          </article>
+
+          <article class="plan plan-familiar">
+            <p class="combo-label">Combo 3</p>
+            <h3>PLAN HOGAR FAMILIAR</h3>
+            <p class="price">L. 1,794.00</p>
+
+            <p class="price-note">
+              Precio final con flete y comisión bancaria incluidos.
+            </p>
+
+            <h4 class="products-heading">Productos incluidos</h4>
+
+            <ul class="product-list">
+              <li>Lavavajillas Jabón Cristalería — 1 litro.</li>
+              <li>Detergente para ropa — 1 galón.</li>
+              <li>Desinfectante GLA — 1 galón.</li>
+              <li>Cloro doméstico — 1 galón.</li>
+              <li>GLA Solution — 240 ml.</li>
+              <li>GLA Fresh — 240 ml.</li>
+              <li>Detergente Ultraklin — 1.1 kg.</li>
+              <li>Suavizante Suavel — 1 galón.</li>
+              <li>Blanqueador de costra — 1 litro.</li>
+              <li>Yuyo Action — 1 litro.</li>
+              <li>Bolsas Búfalo 24 × 32 — rollo de 25 unidades.</li>
+              <li>Bolsas Búfalo 18 × 24 — rollo de 50 unidades.</li>
+              <li>Bolsas negras Búfalo 36 × 54 — rollo de 10 unidades.</li>
+              <li>Limpiavidrios — 700 ml.</li>
+            </ul>
+
+            <a
+              href="https://wa.me/50494398387?text=Hola%2C%20quiero%20solicitar%20el%20Plan%20Hogar%20Familiar%20%28Combo%203%29%20de%20L.%201%2C794.00."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-cta"
+            >
+              Solicitar Combo 3 →
+            </a>
+          </article>
+
+          <article class="plan plan-premium">
+            <p class="combo-label">Combo 4</p>
+            <h3>PLAN HOGAR PREMIUM</h3>
+            <p class="price">L. 1,959.00</p>
+
+            <p class="price-note">
+              La experiencia completa Maygen.
+              Flete y comisión bancaria incluidos.
+            </p>
+
+            <h4 class="products-heading">Productos incluidos</h4>
+
+            <ul class="product-list">
+              <li>Lavavajillas Jabón Cristalería — 1 litro.</li>
+              <li>Detergente para ropa — 1 galón.</li>
+              <li>Desinfectante GLA — 1 galón.</li>
+              <li>Cloro doméstico — 1 galón.</li>
+              <li>GLA Solution — 240 ml.</li>
+              <li>GLA Fresh — 240 ml.</li>
+              <li>Detergente Ultraklin — 1.1 kg.</li>
+              <li>Suavizante Suavel — 1 galón.</li>
+              <li>Blanqueador de costra — 1 litro.</li>
+              <li>Yuyo Action — 1 litro.</li>
+              <li>Limpiavidrios — 700 ml.</li>
+              <li>Bolsas Búfalo 24 × 32 — rollo de 25 unidades.</li>
+              <li>Bolsas Búfalo 18 × 24 — rollo de 50 unidades.</li>
+              <li>Bolsas negras Búfalo 36 × 54 — rollo de 10 unidades.</li>
+              <li>Wypall amarilla — 1 unidad.</li>
+              <li>Paste de doble uso / esponja — 1 unidad.</li>
+              <li>
+                Guantes de nitrilo verde — 1 par.
+                Tallas: M (8), L (9) o XL (10).
+              </li>
+            </ul>
+
+            <a
+              href="https://wa.me/50494398387?text=Hola%2C%20quiero%20solicitar%20el%20Plan%20Hogar%20Premium%20%28Combo%204%29%20de%20L.%201%2C959.00."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-cta"
+            >
+              Solicitar Combo 4 →
+            </a>
+          </article>
+        </div>
+
+        <div class="shipping-note">
+          <p>
+            Todos los precios son finales e incluyen los costos
+            de flete y la comisión bancaria por transacción.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-main">
+      <div>
+        <img
+          src="images/Logo Maygen Nuevo-01.png"
+          class="flogo"
+          alt="Maygen"
+        >
+        <p>
+          Fabricamos y distribuimos productos de limpieza
+          profesional de alta calidad para hogares, negocios
+          e industrias en toda Honduras.
+        </p>
+      </div>
+
+      <div>
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="membresias.html">Membresía</a></li>
+          <li><a href="contacto.html">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Categorías</h4>
+        <ul>
+          <li>
+            <a href="productos.html?cat=limpieza">
+              Limpieza Profesional
+            </a>
+          </li>
+          <li><a href="productos.html?cat=carwash">Car Wash</a></li>
+          <li>
+            <a href="productos.html?cat=desinfectantes">
+              Desinfectantes
+            </a>
+          </li>
+          <li>
+            <a href="productos.html?cat=industriales">
+              Industriales
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>
+            <a href="tel:+50494398387">+504 9439-8387</a>
+          </li>
+          <li>
+            <a href="mailto:info@maygenhn.com">
+              info@maygenhn.com
+            </a>
+          </li>
+          <li>San Pedro Sula, Cortés, Honduras</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      © <span id="year"></span> Químicas Maygen.
+      Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <a
+    href="https://wa.me/50494398387"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="wa-float"
+    aria-label="Contactar por WhatsApp"
+  >
+    <svg
+      viewBox="0 0 32 32"
+      width="28"
+      height="28"
+      fill="#fff"
+      aria-hidden="true"
+    >
+      <path d="M16.02 3C9.4 3 4.02 8.38 4.02 15c0 2.23.61 4.32 1.67 6.12L3 29l8.1-2.63A11.9 11.9 0 0 0 16.02 27C22.64 27 28 21.62 28 15S22.64 3 16.02 3zm0 21.6c-1.94 0-3.75-.55-5.28-1.5l-.38-.23-4.8 1.56 1.57-4.68-.25-.39A9.53 9.53 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6 0 5.3-4.3 9.6-9.6 9.6zm5.27-7.19c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.39 0 1.41 1.03 2.77 1.17 2.96.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/>
+    </svg>
+  </a>
+
+  <button class="back-top" aria-label="Volver arriba">↑</button>
+  <div class="toast"></div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
