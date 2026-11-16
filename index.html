@@ -5,354 +5,860 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Maygen | Soluciones de Limpieza Profesional</title>
 <meta
-name="description"
-content="Fabricamos y distribuimos productos de limpieza profesional, car wash e industriales en toda Honduras."
+  name="description"
+  content="Fabricamos y distribuimos productos de limpieza profesional, car wash e industriales en toda Honduras."
 />
 <link rel="stylesheet" href="css/style.css?v=5" />
+
+<style>
+/* Carrusel azul: conserva las clases existentes. */
+#home-products-carousel .cat > img {
+  object-fit: contain;
+  background: #fff;
+}
+
+#home-products-carousel .cat-title {
+  align-items: center;
+  gap: 8px;
+}
+
+#home-products-carousel .carousel-product-info {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+}
+
+#home-products-carousel .carousel-product-name {
+  display: block;
+  line-height: 1.35;
+}
+
+#home-products-carousel .carousel-product-size {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+#home-products-carousel .carousel-product-best {
+  display: block;
+  margin-top: 5px;
+  color: #e5f3b7;
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+/* Galería nueva: fotografías sobre fondo blanco, sin textos. */
+#maygen-photo-gallery {
+  padding: 35px 0 55px;
+  overflow: hidden;
+  background: #fff;
+}
+
+#maygen-photo-gallery .maygen-photo-window {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  background: #fff;
+}
+
+#maygen-photo-gallery .maygen-photo-track {
+  display: flex;
+  width: max-content;
+  gap: 22px;
+  padding: 5px 0 15px;
+}
+
+#maygen-photo-gallery .maygen-photo-item {
+  flex: 0 0 clamp(230px, 30vw, 380px);
+  width: clamp(230px, 30vw, 380px);
+  margin: 0;
+  background: #fff;
+}
+
+#maygen-photo-gallery .maygen-photo-item img {
+  display: block;
+  width: 100%;
+  height: clamp(190px, 23vw, 280px);
+  object-fit: contain;
+  background: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #home-products-carousel .cats-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  #home-products-carousel .cats-marquee {
+    overflow-x: auto;
+  }
+}
+</style>
 </head>
+
 <body>
 <header>
-<div class="header">
-<a href="index.html" class="logo-link">
-<span class="logo-crop">
-<img
-src="maygen-logo-new.jpeg"
-class="logo"
-alt="Maygen"
-/>
-</span>
-</a>
+  <div class="header">
+    <a href="index.html" class="logo-link">
+      <span class="logo-crop">
+        <img
+          src="maygen-logo-new.jpeg"
+          class="logo"
+          alt="Maygen"
+        />
+      </span>
+    </a>
 
-<nav class="nav-links">
-<a href="index.html">Inicio</a>
-<a href="nosotros.html">Nosotros</a>
-<a href="productos.html">Productos</a>
-<a href="membresias.html">Membresía</a>
-<a href="contacto.html">Contáctanos</a>
-</nav>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="productos.html">Productos</a>
+      <a href="membresias.html">Membresía</a>
+      <a href="contacto.html">Contáctanos</a>
+    </nav>
 
-<div class="header-right">
-<a href="contacto.html" class="cta desktop-only">
-Cotiza ahora →
-</a>
-<button class="nav-toggle" aria-label="Abrir menú">
-<span></span>
-<span></span>
-<span></span>
-</button>
-</div>
-</div>
+    <div class="header-right">
+      <a href="contacto.html" class="cta desktop-only">
+        Cotiza ahora →
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
 
-<div class="mobile-menu">
-<a href="index.html">Inicio</a>
-<a href="nosotros.html">Nosotros</a>
-<a href="productos.html">Productos</a>
-<a href="membresias.html">Membresía</a>
-<a href="contacto.html">Contáctanos</a>
-<a href="contacto.html" class="cta">
-Cotiza ahora →
-</a>
-</div>
+  <div class="mobile-menu">
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="productos.html">Productos</a>
+    <a href="membresias.html">Membresía</a>
+    <a href="contacto.html">Contáctanos</a>
+    <a href="contacto.html" class="cta">Cotiza ahora →</a>
+  </div>
 </header>
 
 <section class="hero">
-<img class="hero-bg" src="ChatGPT Image Jul 9, 2026, 11_18_52 AM.png" alt="Productos Maygen">
-<div class="hero-overlay"></div>
-<div class="wrap hero-grid">
-<div class="reveal">
-<h1>Soluciones de limpieza para <span>cada necesidad</span></h1>
-<p>Fabricamos y distribuimos productos de alta calidad para limpieza profesional, car wash, industria, hogar y más.</p>
-<a href="productos.html" class="btn-cta">Ver productos →</a>
-</div>
-</div>
+  <img
+    class="hero-bg"
+    src="ChatGPT Image Jul 9, 2026, 11_18_52 AM.png"
+    alt="Productos Maygen"
+  >
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <h1>Soluciones de limpieza para <span>cada necesidad</span></h1>
+      <p>
+        Fabricamos y distribuimos productos de alta calidad para
+        limpieza profesional, car wash, industria, hogar y más.
+      </p>
+      <a href="productos.html" class="btn-cta">Ver productos →</a>
+    </div>
+  </div>
 </section>
 
 <section class="benefits">
-<div class="wrap benefit-grid">
-<article class="benefit reveal"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4l2.5 8.5L27 15l-8.5 2.5L16 26l-2.5-8.5L5 15l8.5-2.5L16 4zM35 20l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"/></svg><div><h4>Calidad Garantizada</h4><p>Productos confiables y de alto rendimiento.</p></div></article>
-<article class="benefit reveal"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M40 7C22 8 10 16 8 34c14 3 25-5 32-27z"/><path d="M9 37c7-9 15-15 25-20"/></svg><div><h4>Soluciones Completas</h4><p>Todo lo que necesitas para limpiar, cuidar y proteger.</p></div></article>
-<article class="benefit reveal"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4c6 5 12 6 17 7v12c0 11-6 18-17 22C13 41 7 34 7 23V11c5-1 11-2 17-7z"/></svg><div><h4>Para Cada Industria</h4><p>Soluciones adaptadas a cada tipo de negocio.</p></div></article>
-<article class="benefit reveal"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h25v23H4zM29 18h8l7 8v7H29z"/><circle cx="14" cy="36" r="4"/><circle cx="37" cy="36" r="4"/></svg><div><h4>Entregas Rápidas</h4><p>Cobertura eficiente y puntual en todo el país.</p></div></article>
-<article class="benefit reveal"><svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 26v-5C8 12 15 5 24 5s16 7 16 16v5"/><rect x="5" y="24" width="8" height="14" rx="3"/><rect x="35" y="24" width="8" height="14" rx="3"/></svg><div><h4>Asesoría Experta</h4><p>Te ayudamos a elegir la mejor solución para ti.</p></div></article>
-</div>
+  <div class="wrap benefit-grid">
+    <article class="benefit reveal">
+      <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M16 4l2.5 8.5L27 15l-8.5 2.5L16 26l-2.5-8.5L5 15l8.5-2.5L16 4zM35 20l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"/>
+      </svg>
+      <div>
+        <h4>Calidad Garantizada</h4>
+        <p>Productos confiables y de alto rendimiento.</p>
+      </div>
+    </article>
+
+    <article class="benefit reveal">
+      <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M40 7C22 8 10 16 8 34c14 3 25-5 32-27z"/>
+        <path d="M9 37c7-9 15-15 25-20"/>
+      </svg>
+      <div>
+        <h4>Soluciones Completas</h4>
+        <p>Todo lo que necesitas para limpiar, cuidar y proteger.</p>
+      </div>
+    </article>
+
+    <article class="benefit reveal">
+      <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M24 4c6 5 12 6 17 7v12c0 11-6 18-17 22C13 41 7 34 7 23V11c5-1 11-2 17-7z"/>
+      </svg>
+      <div>
+        <h4>Para Cada Industria</h4>
+        <p>Soluciones adaptadas a cada tipo de negocio.</p>
+      </div>
+    </article>
+
+    <article class="benefit reveal">
+      <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 10h25v23H4zM29 18h8l7 8v7H29z"/>
+        <circle cx="14" cy="36" r="4"/>
+        <circle cx="37" cy="36" r="4"/>
+      </svg>
+      <div>
+        <h4>Entregas Rápidas</h4>
+        <p>Cobertura eficiente y puntual en todo el país.</p>
+      </div>
+    </article>
+
+    <article class="benefit reveal">
+      <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M8 26v-5C8 12 15 5 24 5s16 7 16 16v5"/>
+        <rect x="5" y="24" width="8" height="14" rx="3"/>
+        <rect x="35" y="24" width="8" height="14" rx="3"/>
+      </svg>
+      <div>
+        <h4>Asesoría Experta</h4>
+        <p>Te ayudamos a elegir la mejor solución para ti.</p>
+      </div>
+    </article>
+  </div>
 </section>
 
-<section class="dark-band">
-<div class="wrap">
-<h2>Nuestras Categorías</h2>
-<p>Explora nuestra línea completa de productos por categoría.</p>
+<!-- Carrusel de productos: usa las imágenes del catálogo. -->
+<section class="dark-band" id="home-products-carousel">
+  <div class="wrap">
+    <h2>Más vendidos y otros productos</h2>
+    <p>
+      Descubre nuestros productos más vendidos y otras opciones para ti.
+    </p>
 
-<div class="cats-marquee reveal">
-<div class="cats-track">
-
-<a class="cat" href="productos.html?cat=limpieza">
-<img src="22102026-IMG_9117.jpg" alt="Limpieza Profesional" />
-<div class="cat-title">Limpieza Profesional<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=carwash">
-<img src="22102026-IMG_9124.jpg" alt="Car Wash" />
-<div class="cat-title">Car Wash<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=industriales">
-<img src="22102026-IMG_9126.jpg" alt="Industriales" />
-<div class="cat-title">Industriales<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=ambientadores">
-<img src="22102026-IMG_9130.jpg" alt="Ambientadores" />
-<div class="cat-title">Ambientadores<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=jabones">
-<img src="22102026-IMG_9132.jpg" alt="Jabones y Manos" />
-<div class="cat-title">Jabones y Manos<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=desinfectantes">
-<img src="22102026-IMG_9134.jpg" alt="Desinfectantes" />
-<div class="cat-title">Desinfectantes<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=otros">
-<img src="22102026-IMG_9137.jpg" alt="Y Más" />
-<div class="cat-title">Y Más<span class="circle">›</span></div>
-</a>
-
-<!-- Copias del carrusel: mantienen las mismas fotografías. -->
-<a class="cat" href="productos.html?cat=limpieza" aria-hidden="true" tabindex="-1">
-<img src="22102026-IMG_9117.jpg" alt="" />
-<div class="cat-title">Limpieza Profesional<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=carwash" aria-hidden="true" tabindex="-1">
-<img src="22102026-IMG_9124.jpg" alt="" />
-<div class="cat-title">Car Wash<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=industriales" aria-hidden="true" tabindex="-1">
-<img src="22102026-IMG_9126.jpg" alt="" />
-<div class="cat-title">Industriales<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=ambientadores" aria-hidden="true" tabindex="-1">
-<img src="22102026-IMG_9130.jpg" alt="" />
-<div class="cat-title">Ambientadores<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=jabones" aria-hidden="true" tabindex="-1">
-<img src="22102026-IMG_9132.jpg" alt="" />
-<div class="cat-title">Jabones y Manos<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=desinfectantes" aria-hidden="true" tabindex="-1">
-<img src="22102026-IMG_9134.jpg" alt="" />
-<div class="cat-title">Desinfectantes<span class="circle">›</span></div>
-</a>
-
-<a class="cat" href="productos.html?cat=otros" aria-hidden="true" tabindex="-1">
-<img src="22102026-IMG_9137.jpg" alt="" />
-<div class="cat-title">Y Más<span class="circle">›</span></div>
-</a>
-
-</div>
-</div>
-</div>
+    <div class="cats-marquee reveal">
+      <div class="cats-track" id="homeProductsTrack"></div>
+    </div>
+  </div>
 </section>
 
 <section class="bestsellers">
-<div class="wrap">
-<div class="section-head reveal"><h2>Productos Destacados</h2><p>Los favoritos de nuestros clientes, listos para tu negocio.</p></div>
-<div class="grid30" id="bestsellerGrid"></div>
-<div style="text-align:center;margin-top:30px"><a href="productos.html" class="home-card-btn">Ver todos los productos →</a></div>
-</div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Productos Destacados</h2>
+      <p>Los favoritos de nuestros clientes, listos para tu negocio.</p>
+    </div>
+
+    <div class="grid30" id="bestsellerGrid"></div>
+
+    <div style="text-align:center;margin-top:30px">
+      <a href="productos.html" class="home-card-btn">
+        Ver todos los productos →
+      </a>
+    </div>
+  </div>
 </section>
 
 <section class="home-about">
-<div class="wrap home-about-grid">
-<div class="reveal">
-<span class="eyebrow">Nosotros</span>
-<h2>Sobre Maygen</h2>
-<p>En Maygen somos una empresa hondureña dedicada a brindar soluciones de limpieza profesional de alta calidad, con más de 10 años de experiencia sirviendo negocios, industrias y hogares.</p>
-<div class="values">
-<div class="value"><span class="value-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="18" r="10"/><path d="M18 26l-4 14 10-6 10 6-4-14"/></svg></span><strong>Calidad</strong><span>Productos de alto rendimiento.</span></div>
-<div class="value"><span class="value-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4l16 6v10c0 12-8 20-16 24-8-4-16-12-16-24V10z"/><path d="M17 24l5 5 10-11"/></svg></span><strong>Confianza</strong><span>Comprometidos con nuestros clientes.</span></div>
-<div class="value"><span class="value-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 6c-7 0-12 5-12 12 0 5 3 8 5 10s2 3 2 5h10c0-2 0-3 2-5s5-5 5-10c0-7-5-12-12-12z"/><line x1="19" y1="39" x2="29" y2="39"/><line x1="21" y1="44" x2="27" y2="44"/></svg></span><strong>Innovación</strong><span>Soluciones que se adaptan.</span></div>
-<div class="value"><span class="value-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22l8-8 6 3 6-3 8 8"/><path d="M6 22v8l10 8 6-4 6 4 10-8v-8"/></svg></span><strong>Compromiso</strong><span>Trabajamos por un futuro mejor.</span></div>
-</div>
-<a href="nosotros.html" class="home-card-btn">Conoce más →</a>
-</div>
-<div class="building factory reveal">
-<img src="22102026-IMG_9138.jpg" alt="Maygen" loading="lazy">
-</div>
-</div>
-<div class="wrap mission">
-<div class="reveal"><h2>Nuestra Misión</h2><p>Brindar soluciones de limpieza innovadoras y efectivas que contribuyan al bienestar de nuestros clientes y al cuidado del medio ambiente.</p></div>
-<div class="reveal"><h2>Nuestra Visión</h2><p>Ser la empresa líder en soluciones de limpieza profesional en Honduras, reconocida por nuestra calidad, servicio y compromiso.</p></div>
-</div>
+  <div class="wrap home-about-grid">
+    <div class="reveal">
+      <span class="eyebrow">Nosotros</span>
+      <h2>Sobre Maygen</h2>
+      <p>
+        En Maygen somos una empresa hondureña dedicada a brindar
+        soluciones de limpieza profesional de alta calidad, con más
+        de 10 años de experiencia sirviendo negocios, industrias y hogares.
+      </p>
+
+      <div class="values">
+        <div class="value">
+          <span class="value-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="24" cy="18" r="10"/>
+              <path d="M18 26l-4 14 10-6 10 6-4-14"/>
+            </svg>
+          </span>
+          <strong>Calidad</strong>
+          <span>Productos de alto rendimiento.</span>
+        </div>
+
+        <div class="value">
+          <span class="value-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M24 4l16 6v10c0 12-8 20-16 24-8-4-16-12-16-24V10z"/>
+              <path d="M17 24l5 5 10-11"/>
+            </svg>
+          </span>
+          <strong>Confianza</strong>
+          <span>Comprometidos con nuestros clientes.</span>
+        </div>
+
+        <div class="value">
+          <span class="value-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M24 6c-7 0-12 5-12 12 0 5 3 8 5 10s2 3 2 5h10c0-2 0-3 2-5s5-5 5-10c0-7-5-12-12-12z"/>
+              <line x1="19" y1="39" x2="29" y2="39"/>
+              <line x1="21" y1="44" x2="27" y2="44"/>
+            </svg>
+          </span>
+          <strong>Innovación</strong>
+          <span>Soluciones que se adaptan.</span>
+        </div>
+
+        <div class="value">
+          <span class="value-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 22l8-8 6 3 6-3 8 8"/>
+              <path d="M6 22v8l10 8 6-4 6 4 10-8v-8"/>
+            </svg>
+          </span>
+          <strong>Compromiso</strong>
+          <span>Trabajamos por un futuro mejor.</span>
+        </div>
+      </div>
+
+      <a href="nosotros.html" class="home-card-btn">Conoce más →</a>
+    </div>
+
+    <div class="building factory reveal">
+      <img
+        src="22102026-IMG_9138.jpg"
+        alt="Maygen"
+        loading="lazy"
+      >
+    </div>
+  </div>
+
+  <div class="wrap mission">
+    <div class="reveal">
+      <h2>Nuestra Misión</h2>
+      <p>
+        Brindar soluciones de limpieza innovadoras y efectivas que
+        contribuyan al bienestar de nuestros clientes y al cuidado
+        del medio ambiente.
+      </p>
+    </div>
+    <div class="reveal">
+      <h2>Nuestra Visión</h2>
+      <p>
+        Ser la empresa líder en soluciones de limpieza profesional
+        en Honduras, reconocida por nuestra calidad, servicio y compromiso.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Solo las siete fotos nuevas no utilizadas en otros espacios. -->
+<section id="maygen-photo-gallery" aria-label="Galería de fotografías Maygen">
+  <div class="wrap">
+    <div
+      class="maygen-photo-window"
+      id="maygenPhotoWindow"
+      role="region"
+      aria-label="Carrusel de fotografías. Puedes desplazarte horizontalmente."
+      tabindex="0"
+    >
+      <div class="maygen-photo-track" id="maygenPhotoTrack">
+        <figure class="maygen-photo-item">
+          <img
+            src="22102026-IMG_9117.jpg"
+            alt="Fotografía de Maygen 1"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="maygen-photo-item">
+          <img
+            src="22102026-IMG_9124.jpg"
+            alt="Fotografía de Maygen 2"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="maygen-photo-item">
+          <img
+            src="22102026-IMG_9126.jpg"
+            alt="Fotografía de Maygen 3"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="maygen-photo-item">
+          <img
+            src="22102026-IMG_9130.jpg"
+            alt="Fotografía de Maygen 4"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="maygen-photo-item">
+          <img
+            src="22102026-IMG_9132.jpg"
+            alt="Fotografía de Maygen 5"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="maygen-photo-item">
+          <img
+            src="22102026-IMG_9134.jpg"
+            alt="Fotografía de Maygen 6"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="maygen-photo-item">
+          <img
+            src="22102026-IMG_9137.jpg"
+            alt="Fotografía de Maygen 7"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="stats">
-<div class="wrap stats-grid reveal">
-<div><span class="stat-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="10" width="36" height="32" rx="3"/><line x1="6" y1="18" x2="42" y2="18"/><line x1="14" y1="4" x2="14" y2="14"/><line x1="34" y1="4" x2="34" y2="14"/></svg></span><strong><span class="counter" data-target="10" data-prefix="+">0</span></strong>Años de experiencia</div>
-<div><span class="stat-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4l18 10v20L24 44 6 34V14z"/><path d="M6 14l18 10 18-10"/><line x1="24" y1="24" x2="24" y2="44"/></svg></span><strong><span class="counter" data-target="30" data-prefix="+">0</span></strong>Productos de calidad</div>
-<div><span class="stat-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="16" r="6"/><circle cx="34" cy="18" r="5"/><path d="M4 40c0-8 6-13 12-13s12 5 12 13"/><path d="M28 40c0-6 4-10 10-10s10 4 10 10"/></svg></span><strong><span class="counter" data-target="500" data-prefix="+">0</span></strong>Clientes satisfechos</div>
-<div><span class="stat-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 44s14-13 14-24a14 14 0 1 0-28 0c0 11 14 24 14 24z"/><circle cx="24" cy="20" r="5"/></svg></span><strong>Cobertura</strong>A nivel nacional</div>
-</div>
+  <div class="wrap stats-grid reveal">
+    <div>
+      <span class="stat-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="6" y="10" width="36" height="32" rx="3"/>
+          <line x1="6" y1="18" x2="42" y2="18"/>
+          <line x1="14" y1="4" x2="14" y2="14"/>
+          <line x1="34" y1="4" x2="34" y2="14"/>
+        </svg>
+      </span>
+      <strong><span class="counter" data-target="10" data-prefix="+">0</span></strong>
+      Años de experiencia
+    </div>
+
+    <div>
+      <span class="stat-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M24 4l18 10v20L24 44 6 34V14z"/>
+          <path d="M6 14l18 10 18-10"/>
+          <line x1="24" y1="24" x2="24" y2="44"/>
+        </svg>
+      </span>
+      <strong><span class="counter" data-target="30" data-prefix="+">0</span></strong>
+      Productos de calidad
+    </div>
+
+    <div>
+      <span class="stat-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="16" cy="16" r="6"/>
+          <circle cx="34" cy="18" r="5"/>
+          <path d="M4 40c0-8 6-13 12-13s12 5 12 13"/>
+          <path d="M28 40c0-6 4-10 10-10s10 4 10 10"/>
+        </svg>
+      </span>
+      <strong><span class="counter" data-target="500" data-prefix="+">0</span></strong>
+      Clientes satisfechos
+    </div>
+
+    <div>
+      <span class="stat-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M24 44s14-13 14-24a14 14 0 1 0-28 0c0 11 14 24 14 24z"/>
+          <circle cx="24" cy="20" r="5"/>
+        </svg>
+      </span>
+      <strong>Cobertura</strong>
+      A nivel nacional
+    </div>
+  </div>
 </section>
 
 <section class="home-member">
-<div class="wrap home-member-grid">
-<div class="reveal">
-<span class="eyebrow yellow">Membresía</span>
-<h2>Membresía Maygen</h2>
-<p>Únete a nuestra membresía y disfruta de descuentos exclusivos, promociones especiales y beneficios pensados para tu negocio.</p>
-<div class="member-box">
-<h3>Beneficios Exclusivos</h3>
-<ul>
-<li>Descuentos especiales en todos nuestros productos.</li>
-<li>Promociones y ofertas exclusivas para miembros.</li>
-<li>Acumulación de puntos en cada compra.</li>
-<li>Acceso anticipado a nuevos productos.</li>
-<li>Asesoría personalizada.</li>
-</ul>
-</div>
-<a href="membresias.html" class="home-card-btn">Ver planes →</a>
-</div>
-<div class="member-visual home-member-visual reveal">
-<img src="file_00000000f26c81f5911143c659f57875.png" alt="Cuatro productos Maygen">
-<div class="member-card mini">
-<div class="member-chip"></div>
-<b>M MAYGEN</b>
-<h2>MIEMBRO<br>MAYGEN</h2>
-<p>1234 5678 9101 1121</p>
-</div>
-</div>
-</div>
+  <div class="wrap home-member-grid">
+    <div class="reveal">
+      <span class="eyebrow yellow">Membresía</span>
+      <h2>Membresía Maygen</h2>
+      <p>
+        Únete a nuestra membresía y disfruta de descuentos exclusivos,
+        promociones especiales y beneficios pensados para tu negocio.
+      </p>
+      <div class="member-box">
+        <h3>Beneficios Exclusivos</h3>
+        <ul>
+          <li>Descuentos especiales en todos nuestros productos.</li>
+          <li>Promociones y ofertas exclusivas para miembros.</li>
+          <li>Acumulación de puntos en cada compra.</li>
+          <li>Acceso anticipado a nuevos productos.</li>
+          <li>Asesoría personalizada.</li>
+        </ul>
+      </div>
+      <a href="membresias.html" class="home-card-btn">Ver planes →</a>
+    </div>
+
+    <div class="member-visual home-member-visual reveal">
+      <img
+        src="file_00000000f26c81f5911143c659f57875.png"
+        alt="Cuatro productos Maygen"
+      >
+      <div class="member-card mini">
+        <div class="member-chip"></div>
+        <b>M MAYGEN</b>
+        <h2>MIEMBRO<br>MAYGEN</h2>
+        <p>1234 5678 9101 1121</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="home-contact">
-<div class="wrap">
-<div class="section-head reveal"><h2>¿Tienes preguntas?</h2><p>Contáctanos y con gusto te ayudaremos.</p></div>
-<div class="home-contact-grid">
-<div class="home-contact-info reveal">
-<div class="info-line"><span class="ico-circle">☎</span><div><b>Teléfono</b><a href="tel:+50494398387">+504 9439-8387</a></div></div>
-<div class="info-line"><span class="ico-circle">☏</span><div><b>WhatsApp</b><a href="https://wa.me/50494398387" target="_blank" rel="noopener">+504 9439-8387</a></div></div>
-<div class="info-line"><span class="ico-circle">⌖</span><div><b>Ubicación</b><span>San Pedro Sula, Cortés, Honduras</span></div></div>
-<a href="contacto.html" class="home-card-btn">Contáctanos →</a>
-</div>
-<form class="contact-form reveal" id="contactForm">
-<h3>Envíanos un mensaje</h3>
-<div class="contact-form-row">
-<input type="text" name="nombre" placeholder="Nombre completo" required>
-<input type="email" name="correo" placeholder="Correo electrónico" required>
-</div>
-<div class="contact-form-row">
-<input type="tel" name="telefono" placeholder="Teléfono">
-<input type="text" name="empresa" placeholder="Empresa (opcional)">
-</div>
-<textarea name="mensaje" id="mensajeFieldHome" placeholder="Mensaje" required></textarea>
-<button type="submit" class="cta">Enviar mensaje →</button>
-</form>
-</div>
-</div>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>¿Tienes preguntas?</h2>
+      <p>Contáctanos y con gusto te ayudaremos.</p>
+    </div>
+
+    <div class="home-contact-grid">
+      <div class="home-contact-info reveal">
+        <div class="info-line">
+          <span class="ico-circle">☎</span>
+          <div>
+            <b>Teléfono</b>
+            <a href="tel:+50494398387">+504 9439-8387</a>
+          </div>
+        </div>
+        <div class="info-line">
+          <span class="ico-circle">☏</span>
+          <div>
+            <b>WhatsApp</b>
+            <a href="https://wa.me/50494398387" target="_blank" rel="noopener">
+              +504 9439-8387
+            </a>
+          </div>
+        </div>
+        <div class="info-line">
+          <span class="ico-circle">⌖</span>
+          <div>
+            <b>Ubicación</b>
+            <span>San Pedro Sula, Cortés, Honduras</span>
+          </div>
+        </div>
+        <a href="contacto.html" class="home-card-btn">Contáctanos →</a>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <h3>Envíanos un mensaje</h3>
+        <div class="contact-form-row">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="correo" placeholder="Correo electrónico" required>
+        </div>
+        <div class="contact-form-row">
+          <input type="tel" name="telefono" placeholder="Teléfono">
+          <input type="text" name="empresa" placeholder="Empresa (opcional)">
+        </div>
+        <textarea
+          name="mensaje"
+          id="mensajeFieldHome"
+          placeholder="Mensaje"
+          required
+        ></textarea>
+        <button type="submit" class="cta">Enviar mensaje →</button>
+      </form>
+    </div>
+  </div>
 </section>
 
 <footer>
-<div class="wrap foot-main">
-<div>
-<img
-src="images/Logo Maygen Nuevo-01.png"
-class="flogo"
-alt="Maygen"
-/>
-<p>
-Fabricamos y distribuimos productos de limpieza profesional de
-alta calidad para hogares, negocios e industrias en toda
-Honduras.
-</p>
-</div>
+  <div class="wrap foot-main">
+    <div>
+      <img src="images/Logo Maygen Nuevo-01.png" class="flogo" alt="Maygen" />
+      <p>
+        Fabricamos y distribuimos productos de limpieza profesional de
+        alta calidad para hogares, negocios e industrias en toda Honduras.
+      </p>
+    </div>
 
-<div>
-<h4>Enlaces</h4>
-<ul>
-<li><a href="index.html">Inicio</a></li>
-<li><a href="nosotros.html">Nosotros</a></li>
-<li><a href="productos.html">Productos</a></li>
-<li><a href="membresias.html">Membresía</a></li>
-<li><a href="contacto.html">Contáctanos</a></li>
-</ul>
-</div>
+    <div>
+      <h4>Enlaces</h4>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="membresias.html">Membresía</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
+      </ul>
+    </div>
 
-<div>
-<h4>Categorías</h4>
-<ul>
-<li>
-<a href="productos.html?cat=limpieza">
-Limpieza Profesional
-</a>
-</li>
-<li>
-<a href="productos.html?cat=carwash">
-Car Wash
-</a>
-</li>
-<li>
-<a href="productos.html?cat=desinfectantes">
-Desinfectantes
-</a>
-</li>
-<li>
-<a href="productos.html?cat=ambientadores">
-Ambientadores
-</a>
-</li>
-</ul>
-</div>
+    <div>
+      <h4>Categorías</h4>
+      <ul>
+        <li><a href="productos.html?cat=limpieza">Limpieza Profesional</a></li>
+        <li><a href="productos.html?cat=carwash">Car Wash</a></li>
+        <li><a href="productos.html?cat=desinfectantes">Desinfectantes</a></li>
+        <li><a href="productos.html?cat=ambientadores">Ambientadores</a></li>
+      </ul>
+    </div>
 
-<div>
-<h4>Contacto</h4>
-<ul>
-<li>
-<a href="tel:+50494398387">+504 9439-8387</a>
-</li>
-<li>
-<a href="mailto:info@maygenhn.com">info@maygenhn.com</a>
-</li>
-<li>San Pedro Sula, Cortés, Honduras</li>
-</ul>
-</div>
-</div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+50494398387">+504 9439-8387</a></li>
+        <li><a href="mailto:info@maygenhn.com">info@maygenhn.com</a></li>
+        <li>San Pedro Sula, Cortés, Honduras</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="foot-bottom">
-© <span id="year"></span> Químicas Maygen. Todos los derechos
-reservados.
-</div>
+  <div class="foot-bottom">
+    © <span id="year"></span> Químicas Maygen. Todos los derechos reservados.
+  </div>
 </footer>
 
 <a
-href="https://wa.me/50494398387"
-target="_blank"
-rel="noopener"
-class="wa-float"
-aria-label="WhatsApp"
-><svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.02 3C9.4 3 4.02 8.38 4.02 15c0 2.23.61 4.32 1.67 6.12L3 29l8.1-2.63A11.9 11.9 0 0 0 16.02 27C22.64 27 28 21.62 28 15S22.64 3 16.02 3zm0 21.6c-1.94 0-3.75-.55-5.28-1.5l-.38-.23-4.8 1.56 1.57-4.68-.25-.39A9.53 9.53 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6 0 5.3-4.3 9.6-9.6 9.6zm5.27-7.19c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.39 0 1.41 1.03 2.77 1.17 2.96.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/></svg></a>
+  href="https://wa.me/50494398387"
+  target="_blank"
+  rel="noopener"
+  class="wa-float"
+  aria-label="WhatsApp"
+>
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff">
+    <path d="M16.02 3C9.4 3 4.02 8.38 4.02 15c0 2.23.61 4.32 1.67 6.12L3 29l8.1-2.63A11.9 11.9 0 0 0 16.02 27C22.64 27 28 21.62 28 15S22.64 3 16.02 3zm0 21.6c-1.94 0-3.75-.55-5.28-1.5l-.38-.23-4.8 1.56 1.57-4.68-.25-.39A9.53 9.53 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6 0 5.3-4.3 9.6-9.6 9.6zm5.27-7.19c-.29-.15-1.72-.85-1.99-.94-.27-.1-.46-.15-.66.14-.2.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.19 0-.5.07-.77.36-.26.29-1 .98-1 2.39 0 1.41 1.03 2.77 1.17 2.96.15.19 2.03 3.1 4.92 4.35.69.3 1.22.48 1.64.61.69.22 1.31.19 1.81.11.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z"/>
+  </svg>
+</a>
 
 <button class="back-top" aria-label="Volver arriba">↑</button>
-
 <div class="toast"></div>
 
 <script src="js/main.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-if (
-typeof initBestsellers === 'function' &&
-typeof MAYGEN_PRODUCTS !== 'undefined'
-) {
-initBestsellers(MAYGEN_PRODUCTS);
-}
+  if (
+    typeof initBestsellers === 'function' &&
+    typeof MAYGEN_PRODUCTS !== 'undefined'
+  ) {
+    initBestsellers(MAYGEN_PRODUCTS);
+  }
+
+  initHomeProductCarousel();
+  initMaygenPhotoGallery();
 });
+
+function initHomeProductCarousel() {
+  var track = document.getElementById('homeProductsTrack');
+
+  if (
+    !track ||
+    typeof MAYGEN_PRODUCTS === 'undefined' ||
+    !Array.isArray(MAYGEN_PRODUCTS)
+  ) {
+    return;
+  }
+
+  var masVendidos = MAYGEN_PRODUCTS.filter(function (producto) {
+    return producto.best === true;
+  });
+
+  var adicionalesDeseados = [
+    { name: 'Jabón para Cristalería', size: '900 mL' },
+    { name: 'Gla Clean Naranja', size: null },
+    { name: 'Shampoo para Carro', size: '900 mL' },
+    { name: 'Vidriol', size: '700 mL' }
+  ];
+
+  var adicionales = adicionalesDeseados.map(function (seleccion) {
+    return MAYGEN_PRODUCTS.find(function (producto) {
+      return (
+        producto.name === seleccion.name &&
+        (producto.size || null) === seleccion.size
+      );
+    });
+  }).filter(function (producto) {
+    return Boolean(producto);
+  });
+
+  var usados = new Set();
+
+  var seleccionados = masVendidos.concat(adicionales).filter(
+    function (producto) {
+      var clave = producto.name + '|' + (producto.size || '');
+
+      if (usados.has(clave)) return false;
+
+      usados.add(clave);
+      return true;
+    }
+  );
+
+  function crearTarjeta(producto, esCopia) {
+    var enlace = document.createElement('a');
+    enlace.className = 'cat';
+    enlace.href =
+      'contacto.html?producto=' +
+      encodeURIComponent(
+        producto.name +
+        (producto.size ? ' (' + producto.size + ')' : '')
+      );
+
+    if (esCopia) {
+      enlace.setAttribute('aria-hidden', 'true');
+      enlace.setAttribute('tabindex', '-1');
+    } else {
+      enlace.setAttribute(
+        'aria-label',
+        'Cotizar ' + producto.name +
+        (producto.size ? ', ' + producto.size : '')
+      );
+    }
+
+    var imagen = document.createElement('img');
+    imagen.setAttribute('src', producto.img);
+    imagen.alt = esCopia ? '' : producto.name;
+    imagen.loading = 'lazy';
+    imagen.decoding = 'async';
+
+    var titulo = document.createElement('div');
+    titulo.className = 'cat-title';
+
+    var informacion = document.createElement('span');
+    informacion.className = 'carousel-product-info';
+
+    var nombre = document.createElement('span');
+    nombre.className = 'carousel-product-name';
+    nombre.textContent = producto.name;
+    informacion.appendChild(nombre);
+
+    if (producto.size) {
+      var presentacion = document.createElement('span');
+      presentacion.className = 'carousel-product-size';
+      presentacion.textContent = producto.size;
+      informacion.appendChild(presentacion);
+    }
+
+    if (producto.best) {
+      var etiqueta = document.createElement('span');
+      etiqueta.className = 'carousel-product-best';
+      etiqueta.textContent = 'Más vendido';
+      informacion.appendChild(etiqueta);
+    }
+
+    var flecha = document.createElement('span');
+    flecha.className = 'circle';
+    flecha.textContent = '›';
+    flecha.setAttribute('aria-hidden', 'true');
+
+    titulo.appendChild(informacion);
+    titulo.appendChild(flecha);
+    enlace.appendChild(imagen);
+    enlace.appendChild(titulo);
+
+    return enlace;
+  }
+
+  var fragmento = document.createDocumentFragment();
+
+  seleccionados.forEach(function (producto) {
+    fragmento.appendChild(crearTarjeta(producto, false));
+  });
+
+  seleccionados.forEach(function (producto) {
+    fragmento.appendChild(crearTarjeta(producto, true));
+  });
+
+  track.replaceChildren(fragmento);
+}
+
+function initMaygenPhotoGallery() {
+  var viewport = document.getElementById('maygenPhotoWindow');
+  var track = document.getElementById('maygenPhotoTrack');
+
+  if (!viewport || !track) return;
+
+  var reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  );
+
+  if (reducedMotion.matches) return;
+
+  var originales = Array.from(track.children);
+  var primerClon = null;
+
+  originales.forEach(function (item) {
+    var copia = item.cloneNode(true);
+    copia.setAttribute('aria-hidden', 'true');
+    copia.querySelector('img').alt = '';
+    track.appendChild(copia);
+
+    if (!primerClon) primerClon = copia;
+  });
+
+  var limite = 0;
+  var posicion = 0;
+  var anterior = null;
+  var punteroDentro = false;
+  var enfocado = false;
+  var pausaHasta = 0;
+
+  function medir() {
+    if (!primerClon) return;
+
+    limite =
+      primerClon.getBoundingClientRect().left -
+      originales[0].getBoundingClientRect().left;
+  }
+
+  medir();
+  window.addEventListener('resize', medir);
+  window.addEventListener('load', medir, { once: true });
+
+  viewport.addEventListener('mouseenter', function () {
+    punteroDentro = true;
+  });
+
+  viewport.addEventListener('mouseleave', function () {
+    punteroDentro = false;
+    posicion = viewport.scrollLeft;
+  });
+
+  viewport.addEventListener('focusin', function () {
+    enfocado = true;
+  });
+
+  viewport.addEventListener('focusout', function (event) {
+    enfocado = viewport.contains(event.relatedTarget);
+    posicion = viewport.scrollLeft;
+  });
+
+  function pausarInteraccion() {
+    pausaHasta = performance.now() + 4000;
+  }
+
+  viewport.addEventListener('pointerdown', pausarInteraccion);
+  viewport.addEventListener('touchmove', pausarInteraccion, { passive: true });
+  viewport.addEventListener('wheel', pausarInteraccion, { passive: true });
+  viewport.addEventListener('keydown', pausarInteraccion);
+
+  function animar(tiempo) {
+    var transcurrido = anterior === null
+      ? 0
+      : Math.min(tiempo - anterior, 50);
+
+    anterior = tiempo;
+
+    if (
+      reducedMotion.matches ||
+      document.hidden ||
+      punteroDentro ||
+      enfocado ||
+      tiempo < pausaHasta ||
+      !limite
+    ) {
+      posicion = viewport.scrollLeft;
+    } else {
+      posicion += transcurrido * 0.025;
+
+      if (posicion >= limite) {
+        posicion = posicion % limite;
+      }
+
+      viewport.scrollLeft = posicion;
+    }
+
+    window.requestAnimationFrame(animar);
+  }
+
+  window.requestAnimationFrame(animar);
+}
 </script>
 </body>
 </html>
