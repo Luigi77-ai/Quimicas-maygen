@@ -99,7 +99,7 @@
   flex-shrink: 0;
 }
 
-/* Galería inferior: solo fotografías sobre fondo blanco. */
+/* Galería inferior: fotografías sobre fondo blanco. */
 #maygen-photo-gallery {
   padding: 35px 0 55px;
   overflow: hidden;
@@ -193,11 +193,12 @@
   </div>
 </header>
 
+<!-- Imagen principal actualizada. -->
 <section class="hero">
   <img
     class="hero-bg"
-    src="ChatGPT Image Jul 9, 2026, 11_18_52 AM.png"
-    alt="Productos Maygen"
+    src="22102026-IMG_9137.jpg"
+    alt="Maygen"
   >
 
   <div class="hero-overlay"></div>
@@ -468,7 +469,7 @@
   </div>
 </section>
 
-<!-- Galería: se retiró 22102026-IMG_9124.jpg. -->
+<!-- Galería: se mantiene retirada 22102026-IMG_9124.jpg. -->
 <section
   id="maygen-photo-gallery"
   aria-label="Galería de fotografías Maygen"
@@ -1072,16 +1073,19 @@ function initMaygenPhotoGallery() {
   }
 
   viewport.addEventListener('pointerdown', pausarInteraccion);
+
   viewport.addEventListener(
     'touchmove',
     pausarInteraccion,
     { passive: true }
   );
+
   viewport.addEventListener(
     'wheel',
     pausarInteraccion,
     { passive: true }
   );
+
   viewport.addEventListener('keydown', pausarInteraccion);
 
   function animar(tiempo) {
